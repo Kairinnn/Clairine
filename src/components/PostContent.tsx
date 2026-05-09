@@ -18,19 +18,15 @@ export default function PostContent({ html }: { html: string }) {
 
       btn.addEventListener("click", () => {
         const code = pre.querySelector("code");
-        const text = code ? code.textContent || 。
- : pre.textContent || 。
-;
+        const text = code ? code.textContent || "" : pre.textContent || "";
         navigator.clipboard.writeText(text).then(() => {
           btn.textContent = "✓ 已复制";
           btn.style.color = "#4ade80";
           btn.style.borderColor = "rgba(74,222,128,0.5)";
           setTimeout(() => {
             btn.textContent = "复制";
-            btn.style.color = ""
-;
-            btn.style.borderColor = ""
-;
+            btn.style.color = "";
+            btn.style.borderColor = "";
           }, 2000);
         });
       });
