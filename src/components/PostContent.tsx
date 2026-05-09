@@ -27,9 +27,9 @@ export default function PostContent({ html }: { html: string }) {
           btn.style.borderColor = "rgba(74,222,128,0.5)";
           setTimeout(() => {
             btn.textContent = "复制";
-            btn.style.color = 。
+            btn.style.color = ""
 ;
-            btn.style.borderColor = 。
+            btn.style.borderColor = ""
 ;
           }, 2000);
         });
