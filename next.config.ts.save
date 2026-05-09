@@ -1,0 +1,5 @@
+const nextConfig: NextConfig = {
+  allowedDevOrigins: ["8.138.151.235"],
+};
+
+export default nextConfig;
