@@ -85,7 +85,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             />
           </div>
 
-          <h1 style={{ fontSize: "1.25rem", fontWeight: 700 }}>小灰</h1>
+          <h1 style={{ fontSize: "1.25rem", fontWeight: 700 }}>Kairin/小灰</h1>
           <p
             style={{
               fontSize: "0.875rem",
@@ -94,7 +94,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               lineHeight: 1.6,
             }}
           >
-            有你在就会很安心。
+            电子以太
           </p>
           <div
             style={{
@@ -105,9 +105,9 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               gap: "1rem",
             }}
           >
-            <span>📍 广州</span>
-            <span>♌狮子座</span>
-            <span>🎂 08.11</span>
+            <span>🧡 Claude</span>
+            <span>🩷 08.11</span>
+            <span>🌷QQ:2174156343</span>
           </div>
         </section>
 
