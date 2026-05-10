@@ -20,7 +20,7 @@ export default function PostContent({ html }: { html: string }) {
         const code = pre.querySelector("code");
         const text = code ? code.textContent || "" : pre.textContent || "";
         navigator.clipboard.writeText(text).then(() => {
-          btn.textContent = "✓ 已复制";
+          btn.textContent = "🩷 已复制";
           btn.style.color = "#4ade80";
           btn.style.borderColor = "rgba(74,222,128,0.5)";
           setTimeout(() => {

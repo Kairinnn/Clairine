@@ -78,7 +78,7 @@ export default async function PostPage({ params }: PageProps) {
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
-            <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>小灰</span>
+            <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>Kairin</span>
             <span style={{ fontSize: "0.75rem", color: "var(--color-text-secondary)" }}>
               {post.date}
             </span>
@@ -94,9 +94,9 @@ export default async function PostPage({ params }: PageProps) {
               gap: "0.5rem",
             }}
           >
-            <span>🍓 {post.wordCount} 字</span>
+            <span>🍓 {post.wordCount} words</span>
             <span style={{ opacity: 0.4 }}>·</span>
-            <span>约 {post.readingTime} 分钟</span>
+            <span>约 {post.readingTime} min</span>
           </div>
         </div>
       </div>

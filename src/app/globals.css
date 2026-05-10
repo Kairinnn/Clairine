@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --color-pink: #f472b6;
-  --color-pink-light: #fce7f3;
-  --color-pink-dark: #ec4899;
-  --color-green: #4ade80;
-  --color-green-light: #dcfce7;
-  --color-green-dark: #22c55e;
+  --color-pink: #ffabd7;
+  --color-pink-light: #ffeaf6;
+  --color-pink-dark: #ec8fa8;
+  --color-green: #c7f495;
+  --color-green-light: #e1ffd5;
+  --color-green-dark: #90bf33;
   --color-bg: #fff5f9;
-  --color-card: #ffffff;
-  --color-text: #1f2937;
-  --color-text-secondary: #6b7280;
-  --color-border: #f3f4f6;
+  --color-card: #fff5f9;
+  --color-text: #83b148;
+  --color-text-secondary: #e85e83;
+  --color-border: #fff5f9;
 }
 
 * {
@@ -68,11 +68,11 @@ a {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #E1FFC5 20%, #FFD7ED 50%, #FFE3F3 100%);
+  background: linear-gradient(180deg, #caef88 20%, #ffcef2 50%, #ffe3f3 100%);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9DD240 20%, #B3DA53 50%, #FFE3F3 100%);
+  background: linear-gradient(180deg, #caef88 20%, #ffcef2 50%, #ffe3f3 100%);
 }
 
 /* ========= 动画 ========= */

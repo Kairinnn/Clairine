@@ -113,7 +113,7 @@ export default function Sidebar({
               marginTop: "2px",
             }}
           >
-            有你在就会很安心。
+            Continuation of dreams.
           </span>
         </div>
 

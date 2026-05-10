@@ -94,7 +94,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               lineHeight: 1.6,
             }}
           >
-            电子以太
+            ·˙°ʚElectronic etherɞ°˙˚·
           </p>
           <div
             style={{
@@ -107,7 +107,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           >
             <span>🧡 Claude</span>
             <span>🩷 08.11</span>
-            <span>🌷QQ:2174156343</span>
+            <span>☘️ QQ:2174156343</span>
           </div>
         </section>
 
@@ -135,7 +135,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               }}
             />
             <span>
-              正在查看：<strong>{activeCategory}</strong>
+              正在阅览：<strong>{activeCategory}</strong>
             </span>
             <button
               onClick={() => setActiveCategory(null)}

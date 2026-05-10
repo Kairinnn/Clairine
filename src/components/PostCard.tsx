@@ -93,7 +93,7 @@ export default function PostCard({
               }}
             >
               <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>
-                小灰
+                Kairin
               </span>
               <span
                 style={{
