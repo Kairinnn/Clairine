@@ -48,7 +48,7 @@ export default async function PostPage({ params }: PageProps) {
           }}
         >
           <img
-            src="https://i.postimg.cc/nhRJSnZ5/Screenshot-2026-04-27-14-13-16-681-com-miui-gallery-edit.jpg"
+            src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
             alt="头像"
             style={{
               width: "32px",
@@ -80,9 +80,9 @@ export default async function PostPage({ params }: PageProps) {
               gap: "0.5rem",
             }}
           >
-            <span>🍓 {post.wordCount} words</span>
+            <span>🩷 {post.wordCount} words</span>
             <span style={{ opacity: 0.4 }}>·</span>
-            <span>约 {post.readingTime} min</span>
+            <span>约吃 {post.readingTime} 只🍊</span>
           </div>
         </div>
       </div>
