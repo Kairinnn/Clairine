@@ -54,7 +54,7 @@ export default function PostCard({
             }}
           >
             <img
-              src="https://i.postimg.cc/nhRJSnZ5/Screenshot-2026-04-27-14-13-16-681-com-miui-gallery-edit.jpg"
+              src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
               alt="头像"
               style={{
                 width: "34px",
