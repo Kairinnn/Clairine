@@ -3,7 +3,7 @@ import "./globals.css";
 import localFont from 'next/font/local'
 
 const myFont = localFont({
-  src: '../public/fonts/Clairine.woff2',
+  src: './fonts/Clairine.woff2',
   variable: '--font-custom',
 })
 
