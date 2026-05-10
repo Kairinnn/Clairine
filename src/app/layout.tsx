@@ -8,7 +8,7 @@ const myFont = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "Kairin's Blog",
+  title: "Kairin's Daydream",
   description: "小灰的小窝",
 };
 
