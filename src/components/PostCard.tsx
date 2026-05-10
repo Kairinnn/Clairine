@@ -44,7 +44,7 @@ export default function PostCard({
         }}
       >
         <div style={{ display: "flex", gap: "0.75rem" }}>
-          {/* 头像+框 */}
+          {/* ========= 🩷头像 ========= */}
           <div
             style={{
               position: "relative",
@@ -67,22 +67,9 @@ export default function PostCard({
                 transform: "translate(-50%, -50%)",
               }}
             />
-            <img
-              src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
-              alt=""
-              style={{
-                width: "40px",
-                height: "40px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                pointerEvents: "none",
-              }}
-            />
           </div>
 
-          {/* 内容 */}
+          {/* ========= 🩷内容 ========= */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{

@@ -31,7 +31,7 @@ export default async function PostPage({ params }: PageProps) {
         animation: "pageIn 0.5s ease",
       }}
     >
-      {/* 文章头 */}
+      {/* 🩷文章头 */}
       <div
         style={{
           display: "flex",
@@ -59,22 +59,8 @@ export default async function PostPage({ params }: PageProps) {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-            }}
-          />
-          <img
-            src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
-            alt=""
-
-            style={{
-              width: "40px",
-              height: "40px",
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              pointerEvents: "none",
-            }}
-          />
+           }}
+         />
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
@@ -83,7 +69,7 @@ export default async function PostPage({ params }: PageProps) {
               {post.date}
             </span>
           </div>
-          {/* 字数 + 阅读时长 */}
+          {/* 🩷字数 + 阅读时长 */}
           <div
             style={{
               fontSize: "0.6875rem",
@@ -101,7 +87,7 @@ export default async function PostPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* 标题 */}
+      {/* 🩷标题 */}
       <h1
         style={{
           fontSize: "1.5rem",
@@ -113,7 +99,7 @@ export default async function PostPage({ params }: PageProps) {
         {post.title}
       </h1>
 
-      {/* 标签 */}
+      {/* 🩷标签 */}
       {post.tags.length > 0 && (
         <div
           style={{
@@ -129,7 +115,7 @@ export default async function PostPage({ params }: PageProps) {
         </div>
       )}
 
-      {/* 正文（带复制按钮） */}
+      {/* 🩷正文（带复制按钮） */}
       <PostContent html={post.contentHtml} />
 
       <div style={{ height: "4rem" }} />

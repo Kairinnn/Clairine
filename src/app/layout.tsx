@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import localFont from 'next/font/local'
+
+const myFont = localFont({
+  src: '../public/fonts/Clairine.ttf',
+  variable: '--font-custom',
+})
 
 export const metadata: Metadata = {
   title: "Kairin's Blog",

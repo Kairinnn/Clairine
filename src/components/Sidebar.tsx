@@ -22,7 +22,7 @@ export default function Sidebar({
 
   return (
     <>
-      {/* 毛玻璃遮罩 */}
+      {/* ========= 🩷毛玻璃遮罩 ========= */}
       <div
         onClick={onClose}
         style={{
@@ -38,7 +38,7 @@ export default function Sidebar({
         }}
       />
 
-      {/* 侧边栏本体 */}
+      {/* ========= 🩷侧边栏本体 ========= */}
       <nav
         style={{
           position: "fixed",
@@ -59,7 +59,7 @@ export default function Sidebar({
           transition: "transform 0.4s cubic-bezier(.34,1.3,.64,1), box-shadow 0.3s ease",
         }}
       >
-        {/* 头像区 */}
+        {/* ========= 🩷头像区 ========= */}
         <div
           style={{
             display: "flex",
@@ -88,21 +88,8 @@ export default function Sidebar({
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-              }}
-            />
-            <img
-              src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
-              alt="头像框"
-              style={{
-                width: "80px",
-                height: "80px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                pointerEvents: "none",
-              }}
-            />
+             }}
+           />
           </div>
 
           <span style={{ fontSize: "1rem", fontWeight: 700 }}>小灰</span>
@@ -117,7 +104,7 @@ export default function Sidebar({
           </span>
         </div>
 
-        {/* 虚线分隔 */}
+        {/* ========= 🩷虚线分隔 ========= */}
         <div
           style={{
             borderTop: "2px dashed rgba(179,218,83,0.4)",
@@ -125,7 +112,7 @@ export default function Sidebar({
           }}
         />
 
-        {/* 导航列表 */}
+        {/* ========= 🩷导航列表 ========= */}
         <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
           <SidebarItem
             icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
@@ -144,7 +131,7 @@ export default function Sidebar({
           ))}
         </div>
 
-        {/* 底部 */}
+        {/* ========= 🩷底部 ========= */}
         <div
           style={{
             borderTop: "2px dashed rgba(179,218,83,0.4)",
@@ -156,14 +143,14 @@ export default function Sidebar({
             opacity: 0.6,
           }}
         >
-          🍓 Kairin's Blog
+          ☘️ Kairin's Nest
         </div>
       </nav>
     </>
   );
 }
 
-/* 侧边栏按钮小组件 */
+/* ========= 🩷侧边栏按钮小组件 ========= */
 function SidebarItem({
   icon,
   label,

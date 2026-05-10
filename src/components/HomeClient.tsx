@@ -41,7 +41,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           animation: "pageIn 0.5s ease",
         }}
       >
-        {/* 个人简介 */}
+        {/* ========= 🩷个人简介 ========= */}
         <section
           style={{
             padding: "2rem 1.25rem 1.25rem",
@@ -68,21 +68,8 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-              }}
-            />
-            <img
-              src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
-              alt="头像框"
-              style={{
-                width: "72px",
-                height: "72px",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                pointerEvents: "none",
-              }}
-            />
+            }}
+          />
           </div>
 
           <h1 style={{ fontSize: "1.25rem", fontWeight: 700 }}>Kairin/小灰</h1>
@@ -111,7 +98,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           </div>
         </section>
 
-        {/*筛选提示 */}
+        {/* ========= 🩷筛选提示 ========= */}
         {activeCategory && (
           <div
             style={{
@@ -154,7 +141,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           </div>
         )}
 
-        {/* 文章列表 */}
+        {/* ========= 🩷文章列表 ========= */}
         {filteredPosts.length > 0 ? (
           filteredPosts.map((post, i) => (
             <PostCard key={post.slug} {...post} index={i} />
