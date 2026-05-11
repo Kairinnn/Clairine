@@ -3,6 +3,7 @@ import Tag from "@/components/Tag";
 import PostContent from "@/components/PostContent";
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
 import BottomNav from "@/components/BottomNav";
+
 export function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map((slug) => ({ slug }));
@@ -21,6 +22,18 @@ export default async function PostPage({ params }: PageProps) {
   } catch {
     notFound();
   }
+
+  // 获取前后文章
+  const allPosts = getAllPosts();
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prevPost =
+    currentIndex < allPosts.length - 1
+      ? { title: allPosts[currentIndex + 1].title, slug: allPosts[currentIndex + 1].slug }
+      : null;
+  const nextPost =
+    currentIndex > 0
+      ? { title: allPosts[currentIndex - 1].title, slug: allPosts[currentIndex - 1].slug }
+      : null;
 
   return (
     <main
@@ -59,8 +72,8 @@ export default async function PostPage({ params }: PageProps) {
               top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-           }}
-         />
+            }}
+          />
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
@@ -69,7 +82,6 @@ export default async function PostPage({ params }: PageProps) {
               {post.date}
             </span>
           </div>
-          {/* 🩷字数 + 阅读时长 */}
           <div
             style={{
               fontSize: "0.6875rem",
@@ -115,47 +127,11 @@ export default async function PostPage({ params }: PageProps) {
         </div>
       )}
 
-      {/* 🩷正文（带复制按钮） */}
+      {/* 🩷正文 */}
       <PostContent html={post.contentHtml} />
 
-      import { notFound } from "next/navigation";
-import Tag from "@/components/Tag";
-import PostContent from "@/components/PostContent";
-import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
-import BottomNav from "@/components/BottomNav";
-
-// ...generateStaticParams 和 interface 保持不变...
-
-export default async function PostPage({ params }: PageProps) {
-  const { slug } = await params;
-
-  let post;
-  try {
-    post = await getPostBySlug(slug);
-  } catch {
-    notFound();
-  }
-
-  // 获取前后文章
-  const allPosts = getAllPosts(); // 你应该已经有这个函数了
-  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
-  const prevPost = currentIndex < allPosts.length - 1
-    ? { title: allPosts[currentIndex + 1].title, slug: allPosts[currentIndex + 1].slug }
-    : null;
-  const nextPost = currentIndex > 0
-    ? { title: allPosts[currentIndex - 1].title, slug: allPosts[currentIndex - 1].slug }
-    : null;
-
-  return (
-    <main /* ...你原来的style不变... */ >
-      {/* ...标题、标签、正文全部保持原样... */}
-
-      {/* 🩷底部导航 替换掉原来的 4rem 空div */}
+      {/* 🩷底部导航 */}
       <BottomNav prevPost={prevPost} nextPost={nextPost} />
-    </main>
-  );
-}
-
     </main>
   );
 }
