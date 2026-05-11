@@ -59,7 +59,7 @@ export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
                 width: "2px",
                 height: "1rem",
                 borderRadius: "1px",
-                background: "rgba(255,171,215,0.4)",
+                background: "rgba(255,255,255,0.4)",
                 flexShrink: 0,
               }}
             />
