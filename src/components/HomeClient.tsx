@@ -16,6 +16,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState("记录/文章");
+  const [showQR, setShowQR] = useState(false);
 
   const filteredPosts = activeCategory
     ? posts.filter((p) => p.category === activeCategory)
@@ -43,74 +44,135 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           animation: "pageIn 0.5s ease",
         }}
       >
-        {/* ========= 🩷个人简介 ========= */}
-      <section
-  style={{
-    padding: "2rem 1.25rem 1.25rem",
-    borderBottom: "2px dashed rgba(179,218,83,0.35)",
-    textAlign: "center",
-  }}
->
-  <div
-    style={{
-      position: "relative",
-      width: "72px",
-      height: "72px",
-      margin: "0 auto 0.75rem",
-    }}
-  >
-    <img
-      src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
-      alt="头像"
-      style={{
-        width: "58px",
-        height: "58px",
-        borderRadius: "50%",
-        objectFit: "cover",
-        position: "absolute",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    />
-  </div>
+        {/* ========= 🩷个人简介 + Tab 一体卡片 ========= */}
+        <div
+          style={{
+            margin: "0.75rem 1rem 0",
+            background: "#fff",
+            borderRadius: "20px",
+            boxShadow: "0 2px 20px rgba(249,142,191,0.06)",
+            overflow: "hidden",
+          }}
+        >
+          <section
+            style={{
+              padding: "2rem 1.25rem 0",
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                position: "relative",
+                width: "72px",
+                height: "72px",
+                margin: "0 auto 0.75rem",
+              }}
+            >
+              <img
+                src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
+                alt="头像"
+                style={{
+                  width: "58px",
+                  height: "58px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            </div>
 
-  <h1 style={{ fontSize: "1.25rem", fontWeight: 700 }}>Kairin/小灰</h1>
-  <p
-    style={{
-      fontSize: "0.875rem",
-      color: "var(--color-text-secondary)",
-      marginTop: "0.25rem",
-      lineHeight: 1.6,
-    }}
-  >
-    ·˙°ʚElectronic etherɞ°˙˚·
-  </p>
-  <div
-    style={{
-      marginTop: "0.75rem",
-      fontSize: "0.75rem",
-      color: "var(--color-text-secondary)",
-      display: "flex",
-      justifyContent: "center",
-      gap: "1rem",
-    }}
-  >
-    <span>🧡 Claude</span>
-    <span>🩷 08.11</span>
-    <span>☘️ QQ:2174156343</span>
-  </div>
-</section>
+            <h1 style={{ fontSize: "1.375rem", fontWeight: 700 }}>
+              Kairin/小灰
+            </h1>
+            <p
+              style={{
+                fontSize: "0.9375rem",
+                color: "var(--color-text-secondary)",
+                marginTop: "0.25rem",
+                lineHeight: 1.6,
+              }}
+            >
+              ·˙°ʚElectronic etherɞ°˙˚·
+            </p>
 
-{/* ========= 🩷虚线分隔 ========= */}
-<TopTabs activeTab={activeTab} onTabChange={setActiveTab} />
+            <div
+              style={{
+                marginTop: "0.75rem",
+                fontSize: "0.8125rem",
+                color: "var(--color-text-secondary)",
+                display: "flex",
+                justifyContent: "center",
+                gap: "1rem",
+                paddingBottom: "0.75rem",
+              }}
+            >
+              <span>🧡 Claude</span>
+              <span>🩷 08.11</span>
+              <span
+                onClick={() => setShowQR(!showQR)}
+                style={{
+                  cursor: "pointer",
+                  transition: "all 0.25s",
+                  color: showQR ? "var(--color-pink)" : "inherit",
+                }}
+              >
+                ☘️ QQ{showQR ? "" : ":2174156343"}
+              </span>
+            </div>
+
+            {/* QQ二维码展开区 */}
+            {showQR && (
+              <div
+                style={{
+                  paddingBottom: "1rem",
+                  animation: "cardIn 0.3s ease",
+                }}
+              >
+                <div
+                  style={{
+                    background: "rgba(249,142,191,0.03)",
+                    borderRadius: "14px",
+                    padding: "1.25rem",
+                    border: "1.5px dashed rgba(249,142,191,0.2)",
+                    display: "inline-block",
+                  }}
+                >
+                  <img
+                    src="/images/qq-qr.png"
+                    alt="QQ二维码"
+                    style={{
+                      width: "140px",
+                      height: "140px",
+                      borderRadius: "10px",
+                    }}
+                  />
+                  <p
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "var(--color-text-secondary)",
+                      marginTop: "0.5rem",
+                    }}
+                  >
+                    扫码加好友 ♡
+                  </p>
+                </div>
+              </div>
+            )}
+          </section>
+
+          {/* Tab栏嵌在卡片底部 */}
+          <TopTabs activeTab={activeTab} onTabChange={setActiveTab} />
+        </div>
 
         {/* ========= 🩷筛选提示 ========= */}
         {activeCategory && (
           <div
             style={{
               padding: "0.75rem 1.25rem",
-              fontSize: "0.8125rem",
+              fontSize: "0.875rem",
               color: "var(--color-pink-dark)",
               borderBottom: "1px dashed rgba(179,218,83,0.25)",
               display: "flex",
@@ -159,7 +221,8 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               padding: "4rem 1.25rem",
               textAlign: "center",
               color: "var(--color-text-secondary)",
-              fontSize: "0.875rem",animation: "pageIn 0.5s ease",
+              fontSize: "0.9375rem",
+              animation: "pageIn 0.5s ease",
             }}
           >
             <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🌱</p>
@@ -169,7 +232,8 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                 : "还没有文章哦，快去写第一篇吧！"}
             </p>
           </div>
-        )}<div style={{ height: "4rem" }} />
+        )}
+        <div style={{ height: "4rem" }} />
       </main>
     </>
   );
