@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Tag from "@/components/Tag";
 import PostContent from "@/components/PostContent";
-import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
+import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
 import BottomNav from "@/components/BottomNav";
 export function generateStaticParams() {
   const slugs = getAllPostSlugs();
