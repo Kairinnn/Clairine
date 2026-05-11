@@ -208,4 +208,61 @@ a {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+  
+  /* ========= 🩷代码块 ========= */
+.post-content pre {
+  background: #1a1625;
+  border: 2px solid #81C520;
+  border-radius: 14px;
+  padding: 1.25rem 1rem;
+  padding-right: 5rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.post-content pre code {
+  color: #e2e8f0;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.post-content pre .copy-btn {
+  position: absolute;
+  right: 0.625rem;
+  bottom: 0.625rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(129,197,32,0.4);
+  background: rgba(129,197,32,0.08);
+  color: #81C520;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.post-content pre .copy-btn:hover {
+  background: rgba(129,197,32,0.15);
+  border-color: rgba(129,197,32,0.6);
+}
+
+/* ========= 🩷引用块 ========= */
+.post-content blockquote {
+  background: #fff;
+  border: none;
+  border-left: none;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+  box-shadow: 0 2px 12px rgba(249,142,191,0.08);
+  color: #F98EBF;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+
+.post-content blockquote p {
+  margin: 0;
+  color: inherit;
+}
 }
