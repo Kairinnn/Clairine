@@ -42,61 +42,42 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
         }}
       >
         {/* ========= 🩷个人简介 ========= */}
-        <section
-          style={{
-            padding: "2rem 1.25rem 1.25rem",
-            borderBottom: "2px dashed rgba(179,218,83,0.35)",
-          }}
+      <section
+        style={{
+         padding: "2rem 1.25rem 1.25rem",
+          borderBottom: "2px dashed rgba(179,218,83,0.35)",
+         textAlign: "center",
+         }}
+       >
+      <div
+       style={{
+         position: "relative",
+         width: "72px",
+         height: "72px",
+         marginBottom: "0.75rem",
+         margin: "0 auto 0.75rem",
+        }}
         >
-          <div
-            style={{
-              position: "relative",
-              width: "72px",
-              height: "72px",
-              marginBottom: "0.75rem",
-            }}
-          >
-            <img
-              src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
-              alt="头像"
-              style={{
-                width: "58px",
-                height: "58px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-            }}
-          />
-          </div>
+      </div>
+   </div>
 
-          <h1 style={{ fontSize: "1.25rem", fontWeight: 700 }}>Kairin/小灰</h1>
-          <p
-            style={{
-              fontSize: "0.875rem",
-              color: "var(--color-text-secondary)",
-              marginTop: "0.25rem",
-              lineHeight: 1.6,
-            }}
-          >
-            ·˙°ʚElectronic etherɞ°˙˚·
-          </p>
-          <div
-            style={{
-              marginTop: "0.75rem",
-              fontSize: "0.75rem",
-              color: "var(--color-text-secondary)",
-              display: "flex",
-              gap: "1rem",
-            }}
-          >
-            <span>🧡 Claude</span>
-            <span>🩷 08.11</span>
-            <span>☘️ QQ:2174156343</span>
-          </div>
-        </section>
+
+    <div
+      style={{
+        marginTop: "0.75rem",
+         fontSize: "0.75rem",
+         color: "var(--color-text-secondary)",
+          display: "flex",
+          justifyContent: "center",  // ← 加这个
+          gap: "1rem",
+         }}
+       >
+       <span>🧡 Claude</span>
+      <span>🩷 08.11</span>
+    <span>☘️ QQ:2174156343</span>
+  </div>
+   </section>
+
 
         {/* ========= 🩷筛选提示 ========= */}
         {activeCategory && (
