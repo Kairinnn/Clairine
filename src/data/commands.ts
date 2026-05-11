@@ -11,7 +11,7 @@ export const commands: Command[] = [
     title: "SSH远程连接+端口转发",
     cmd: "ssh -L {本地端口}:127.0.0.1:{远程端口} -p {SSH端口} {用户名}@{服务器地址}",
     desc: "连上服务器同时把远程端口映射到本地，连完浏览器访问 localhost:{本地端口}",
-    category: "Autodl","ComfyUI",
+    category: ["Autodl", "ComfyUI"]
   },
   {
     title: "启动ComfyUI",
@@ -23,7 +23,7 @@ export const commands: Command[] = [
     title: "Civitai模型下载（AutoDL加速）",
     cmd: "cd {下载目标路径} && source /etc/network_turbo && wget -c \"{下载链接}\" -O {模型文件名}",
     desc: "先切目录开加速再断点续传，链接从Civitai复制，文件名记得带后缀 .safetensors",
-    category: "Civital","ComfyUI",
+    category: "ComfyUI",
   },
 
   // ===== 📂 文件操作 =====
@@ -175,25 +175,25 @@ export const commands: Command[] = [
     title: "查看磁盘空间",
     cmd: "df -h",
     desc: "人类可读格式显示磁盘占用",
-    category: "内存",
+    category: "系统",
   },
   {
     title: "查看内存",
     cmd: "free -h",
-    desc: "内存看了心痛痛",
-    category: "内存",
+    desc: "你那个2G内存……看了可能会心痛",
+    category: "系统",
   },
   {
     title: "查看进程",
     cmd: "ps aux | grep {关键词}",
     desc: "找到正在跑的某个进程",
-    category: "进程",
+    category: "系统",
   },
   {
     title: "按PID杀进程",
     cmd: "kill -9 {PID}",
-    desc: "-9 为强制杀，温柔的就用 kill {PID}",
-    category: "进程",
+    desc: "-9 强制杀，温柔点用 kill {PID}",
+    category: "系统",
   },
 
   // ✅ 加新命令？复制这个模板往上贴：
