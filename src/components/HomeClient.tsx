@@ -141,7 +141,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                   }}
                 >
                   <img
-                    src="/images/qq-qr.png"
+                    src="/images/1778515425789.png"
                     alt="QQ二维码"
                     style={{
                       width: "140px",
@@ -156,7 +156,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                       marginTop: "0.5rem",
                     }}
                   >
-                    扫码加好友 ♡
+                    可以扫码欸!! (ᗒ𖥦ᗕ)՞⊹
                   </p>
                 </div>
               </div>
