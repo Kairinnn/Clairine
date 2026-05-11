@@ -118,7 +118,44 @@ export default async function PostPage({ params }: PageProps) {
       {/* 🩷正文（带复制按钮） */}
       <PostContent html={post.contentHtml} />
 
-      <div style={{ height: "4rem" }} />
+      import { notFound } from "next/navigation";
+import Tag from "@/components/Tag";
+import PostContent from "@/components/PostContent";
+import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
+import BottomNav from "@/components/BottomNav";
+
+// ...generateStaticParams 和 interface 保持不变...
+
+export default async function PostPage({ params }: PageProps) {
+  const { slug } = await params;
+
+  let post;
+  try {
+    post = await getPostBySlug(slug);
+  } catch {
+    notFound();
+  }
+
+  // 获取前后文章
+  const allPosts = getAllPosts(); // 你应该已经有这个函数了
+  const currentIndex = allPosts.findIndex((p) => p.slug === slug);
+  const prevPost = currentIndex < allPosts.length - 1
+    ? { title: allPosts[currentIndex + 1].title, slug: allPosts[currentIndex + 1].slug }
+    : null;
+  const nextPost = currentIndex > 0
+    ? { title: allPosts[currentIndex - 1].title, slug: allPosts[currentIndex - 1].slug }
+    : null;
+
+  return (
+    <main /* ...你原来的style不变... */ >
+      {/* ...标题、标签、正文全部保持原样... */}
+
+      {/* 🩷底部导航 替换掉原来的 4rem 空div */}
+      <BottomNav prevPost={prevPost} nextPost={nextPost} />
+    </main>
+  );
+}
+
     </main>
   );
 }
