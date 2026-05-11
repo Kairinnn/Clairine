@@ -59,8 +59,6 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
         }}
         >
       </div>
-   </div>
-
 
     <div
       style={{
