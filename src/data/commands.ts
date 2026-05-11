@@ -2,7 +2,7 @@ export type Command = {
   title: string;
   cmd: string;
   desc: string;
-  category: string;
+  category: string | string[];
 };
 
 export const commands: Command[] = [
