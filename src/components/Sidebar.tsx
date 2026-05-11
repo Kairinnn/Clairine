@@ -100,7 +100,7 @@ export default function Sidebar({
               marginTop: "2px",
             }}
           >
-            Continuation of daydreaming.⊹⁺˚
+            Continuation of dreaming.⊹⁺˚
           </span>
         </div>
 
