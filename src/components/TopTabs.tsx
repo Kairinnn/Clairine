@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 interface TopTabsProps {
   activeTab: string;
   onTabChange: (tab: string) => void;
@@ -8,6 +10,16 @@ interface TopTabsProps {
 const tabs = ["工具", "记录/文章", "合集"];
 
 export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
+  const router = useRouter();
+
+  const handleTab = (tab: string) => {
+    if (tab === "工具") {
+      router.push("/tools");
+      return;
+    }
+    onTabChange(tab);
+  };
+
   return (
     <div
       style={{
@@ -21,7 +33,7 @@ export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
       {tabs.map((tab, i) => (
         <div key={tab} style={{ display: "flex", alignItems: "center" }}>
           <button
-            onClick={() => onTabChange(tab)}
+            onClick={() => handleTab(tab)}
             style={{
               background: "none",
               border: "none",
