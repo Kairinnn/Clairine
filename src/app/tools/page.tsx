@@ -5,6 +5,10 @@ import { commands } from "@/data/commands";
 import FindReplace from "@/components/FindReplace";
 import { useRouter } from "next/navigation";
 
+function getCats(c: { category: string | string[] }): string[] {
+  return Array.isArray(c.category) ? c.category : [c.category];
+}
+
 function parsePlaceholders(cmd: string): string[] {
   const matches = cmd.match(/\{([^}]+)\}/g);
   if (!matches) return [];
@@ -48,9 +52,9 @@ export default function ToolsPage() {
   }, []);
 
   const categories = useMemo(
-    () => [...new Set(commands.map((c) => c.category))],
-    []
-  );
+  () => [...new Set(commands.flatMap((c) => getCats(c)))],
+  []
+);
 
   const filtered = useMemo(() => {
     let list = commands;
@@ -58,7 +62,7 @@ export default function ToolsPage() {
       list = list.filter((c) => favs.has(c.title));
     }
     if (activeCategory) {
-      list = list.filter((c) => c.category === activeCategory);
+      list = list.filter((c) => getCats(c).includes(activeCategory!));
     }
     if (search.trim()) {
       const q = search.toLowerCase();
@@ -200,7 +204,9 @@ export default function ToolsPage() {
                       >
                         🍓
                       </button>
-                      <span className="cmd-cat-tag">{c.category}</span>
+                      {getCats(c).map((cat) => (
+  <span key={cat} className="cmd-cat-tag">{cat}</span>
+))}
                     </div>
                   </div>
 
