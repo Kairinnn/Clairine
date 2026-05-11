@@ -47,7 +47,7 @@ export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
                   width: "60%",
                   height: "2.5px",
                   borderRadius: "2px",
-                  background: "var(--color-pink)",
+                  background: "var(--color-green-light-xl)",
                   transition: "all 0.3s ease",
                 }}
               />
