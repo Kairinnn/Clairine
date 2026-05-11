@@ -111,6 +111,7 @@ a {
   margin: 0.75rem 0;
   line-height: 1.8;
   color: var(--color-text-secondary);
+  font-size: 1.0625rem;  /* ← 加这行，从默认1rem调到约17px */
 }
 
 .post-content ul,
@@ -119,6 +120,7 @@ a {
   padding-left: 1.5rem;
   color: var(--color-text-secondary);
   line-height: 1.8;
+  font-size: 1.0625rem;  /* ← 列表也跟着调 */
 }
 
 .post-content li::marker {
