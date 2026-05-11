@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import PostCard from "@/components/PostCard";
 import type { PostMeta } from "@/lib/posts";
+import TopTabs from "@/components/TopTabs";
 
 interface HomeClientProps {
   posts: PostMeta[];
@@ -14,6 +15,7 @@ interface HomeClientProps {
 export default function HomeClient({ posts, categories }: HomeClientProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState("记录/文章");
 
   const filteredPosts = activeCategory
     ? posts.filter((p) => p.category === activeCategory)
@@ -100,6 +102,10 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
   </div>
 </section>
 
+{/* ========= 🩷虚线分隔 ========= */}
+</section>
+
+<TopTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
         {/* ========= 🩷筛选提示 ========= */}
         {activeCategory && (
