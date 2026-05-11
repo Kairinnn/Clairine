@@ -159,7 +159,7 @@ a {
 /* ========= 🩷代码块 ========= */
 .post-content pre {
   position: relative;
-  background: #A0C326;
+  background: #A5D665;
   border: 2px solid #81C520;
   border-radius: 14px;
   padding: 1.25rem 1rem;
@@ -171,7 +171,7 @@ a {
 
 .post-content pre code {
   background: none;
-  color: #F3519A;
+  color: #FFFFFF;
   padding: 0;
   font-size: 0.8125rem;
   line-height: 1.7;
