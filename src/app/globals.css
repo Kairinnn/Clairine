@@ -393,6 +393,113 @@ a {
   font-size: 0.9375rem;
 }
 
+/* ========= 🍓 命令卡片扩展 ========= */
+.tools-back {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 0.875rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.tools-back:hover {
+  color: #81C520;
+}
+
+.cmd-card-expanded {
+  border-color: #81C520;
+}
+
+.cmd-title-clickable {
+  cursor: pointer;
+}
+
+.cmd-title-clickable:hover {
+  color: #81C520;
+}
+
+.cmd-expand-icon {
+  margin-right: 0.375rem;
+  font-size: 0.75rem;
+  color: #81C520;
+}
+
+.cmd-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cmd-fav {
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0.25;
+  transition: all 0.25s;
+  padding: 0;
+  filter: grayscale(1);
+  line-height: 1;
+}
+
+.cmd-fav:hover {
+  opacity: 0.55;
+}
+
+.cmd-fav-active {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.cmd-cat-fav.active {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.06);
+}
+
+.cmd-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1.5px dashed rgba(129, 197, 32, 0.25);
+}
+
+.cmd-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.cmd-input-label {
+  font-size: 0.8125rem;
+  color: #81C520;
+  font-weight: 600;
+  min-width: 4.5rem;
+  flex-shrink: 0;
+}
+
+.cmd-input-field {
+  flex: 1;
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1.5px solid #eee;
+  font-size: 0.8125rem;
+  outline: none;
+  transition: border-color 0.2s;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.cmd-input-field:focus {
+  border-color: #81C520;
+}
+
 /* 查找替换 */
 .fr-container {
   display: flex;
