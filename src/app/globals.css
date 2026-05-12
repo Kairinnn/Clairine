@@ -125,6 +125,7 @@ a {
   color: var(--color-pink);
 }
 
+/* ========= 🩷高亮 ========= */
 .post-content mark {
   background: linear-gradient(to top, #fff38bf9 40%, transparent 40%);
   padding: 0.1em 0.2em;
@@ -132,6 +133,13 @@ a {
   color: inherit;
 }
 
+/* ========= 🩷删除线 ========= */
+.post-content del {
+  text-decoration: line-through;
+  color: #C9DD96;
+}
+
+/* ========= 🩷引用块 ========= */
 .post-content blockquote {
   margin: 1rem 0;
   padding: 0.75rem 1rem;
@@ -142,7 +150,7 @@ a {
   font-style: italic;
 }
 
-/* ========= 🩷行内代码：绿色系 ========= */
+/* ========= 🩷行内代码 ========= */
 .post-content code {
   background: var(--color-green-light);
   padding: 0.15rem 0.4rem;
@@ -151,21 +159,20 @@ a {
   color: var(--color-green-dark);
 }
 
-/* ========= 🩷代码块：粉色系 ========= */
+/* ========= 🩷代码块 ========= */
 .post-content pre {
   position: relative;
   margin: 1rem 0;
   padding: 1rem;
-  background: linear-gradient(135deg, #1a1625, #1e1a2e);
+  background: #A6D668;
   border-radius: 12px;
-  border: 1.5px solid rgba(255, 142, 204, 0.829);
-  border-left: 3px solid var(--color-pink);
+  border: 1.5px solid rgba(129, 197, 32, 0.5);
   overflow-x: auto;
 }
 
 .post-content pre code {
   background: none;
-  color: #f0e6f6;
+  color: #fff;
   padding: 0;
   font-size: 1.0rem;
   border-radius: 0;
@@ -178,30 +185,28 @@ a {
   right: 8px;
   padding: 3px 10px;
   border-radius: 6px;
-  border: 1.5px solid rgba(255, 168, 221, 0.774);
-  background: rgba(216, 255, 145, 0.812);
-  color: rgba(240, 230, 246, 0.7);
-  font-size: 0.790rem;
+  border: 1.5px solid rgba(129, 197, 32, 0.4);
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 0.79rem;
   cursor: pointer;
-  opacity: 0;
-  transition: opacity 0.2s, background 0.2s, color 0.2s;
-}
-
-.post-content pre:hover .copy-btn {
-  opacity: 1;
+  transition: opacity 0.2s, background 0.2s;
+  min-width: 2.75rem;
+  text-align: center;
 }
 
 .copy-btn:hover {
-  background: rgba(255, 208, 234, 0.911);
-  color: #fce7f3;
+  background: rgba(255, 255, 255, 0.45);
 }
 
+/* ========= 🩷图片 ========= */
 .post-content img {
   max-width: 100%;
   border-radius: 12px;
   margin: 1rem 0;
 }
 
+/* ========= 🩷分割线 ========= */
 .post-content hr {
   border: none;
   height: 2px;
@@ -210,6 +215,7 @@ a {
   border-radius: 1px;
 }
 
+/* ========= 🩷文章头像卡片 ========= */
 .post-author-card {
   background: rgba(255, 255, 255, 0.75);
   border-radius: 16px;
@@ -217,6 +223,7 @@ a {
   margin-bottom: 1rem;
 }
 
+/* ========= 🩷主页文章卡片 ========= */
 .article-card {
   background: rgba(255, 255, 255, 0.8);
   border-radius: 14px;
