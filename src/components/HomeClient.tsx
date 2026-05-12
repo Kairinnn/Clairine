@@ -123,7 +123,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               </span>
             </div>
 
-            {/* QQ二维码展开区 */}
+            {/* 🩷QQ二维码展开区 */}
             {showQR && (
               <div
                 style={{
@@ -156,7 +156,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                       marginTop: "0.5rem",
                     }}
                   >
-                    可以扫码欸!! (ᗒ𖥦ᗕ)՞⊹
+                    哇可以扫码欸!! (ᗒ𖥦ᗕ)՞⊹
                   </p>
                 </div>
               </div>
@@ -191,7 +191,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               }}
             />
             <span>
-              正在阅览：<strong>{activeCategory}</strong>
+              ☘️正在阅览：<strong>{activeCategory}</strong>
             </span>
             <button
               onClick={() => setActiveCategory(null)}

@@ -9,7 +9,21 @@ const myFont = localFont({
 
 export const metadata: Metadata = {
   title: "Kairin's Daydream",
-  description: "小灰的小窝",
+  description: "·˙°ʚElectronic etherɞ°˙·",
+  openGraph: {
+    title: "Kairin's Daydream",
+    description: "·˙°ʚElectronic etherɞ°˙·",
+    url: "https://kairin.cc",
+    siteName: "Kairin's Daydream",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
