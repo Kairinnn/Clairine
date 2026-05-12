@@ -46,6 +46,7 @@ export default async function PostPage({ params }: PageProps) {
     >
       {/* 🩷文章头 */}
       <div
+        className="post-author-card"
         style={{
           display: "flex",
           gap: "0.75rem",
@@ -94,7 +95,7 @@ export default async function PostPage({ params }: PageProps) {
           >
             <span>🩷 {post.wordCount} words</span>
             <span style={{ opacity: 0.4 }}>·</span>
-            <span>约吃 {post.readingTime} 只🍊</span>
+            <span>约吃 {post.readingTime} 只 🍊</span>
           </div>
         </div>
       </div>

@@ -2,16 +2,15 @@
 
 :root {
   --color-pink: #ffabd7;
-  --color-pink-light: #FFC6E6;
-  --color-pink-dark: #FC79C4;
+  --color-pink-light: #ffeaf6;
+  --color-pink-dark: #ff88c5;
   --color-green: #c7f495;
-  --color-green-light-xl: #fafff0;
   --color-green-light: #e1ffd5;
   --color-green-dark: #90bf33;
   --color-bg: #fff5f9;
   --color-card: #fff5f9;
   --color-text: #83b148;
-  --color-text-secondary: #e85e83;
+  --color-text-secondary: #ff86b8;
   --color-border: #fff5f9;
 }
 
@@ -89,13 +88,13 @@ a {
 
 /* ========= 🩷文章内容 ========= */
 .post-content h1 {
-  font-size: 1.75rem;
+  font-size: 2.012rem;
   font-weight: 700;
   margin: 2rem 0 1rem;
 }
 
 .post-content h2 {
-  font-size: 1.375rem;
+  font-size: 1.581rem;
   font-weight: 600;
   margin: 1.75rem 0 0.75rem;
   padding-bottom: 0.375rem;
@@ -103,36 +102,104 @@ a {
 }
 
 .post-content h3 {
-  font-size: 1.125rem;
+  font-size: 1.293rem;
   font-weight: 600;
   margin: 1.5rem 0 0.5rem;
 }
 
 .post-content p {
-  margin: 0.75rem 0;
+  margin: 0.86rem 0;
   line-height: 1.8;
   color: var(--color-text-secondary);
-  font-size: 1.0625rem;  /* ← 加这行，从默认1rem调到约17px */
 }
 
 .post-content ul,
 .post-content ol {
-  margin: 0.75rem 0;
+  margin: 0.86rem 0;
   padding-left: 1.5rem;
   color: var(--color-text-secondary);
   line-height: 1.8;
-  font-size: 1.0625rem;  /* ← 列表也跟着调 */
 }
 
 .post-content li::marker {
   color: var(--color-pink);
 }
 
+.post-content mark {
+  background: linear-gradient(to top, #fff38bf9 40%, transparent 40%);
+  padding: 0.1em 0.2em;
+  border-radius: 2px;
+  color: inherit;
+}
+
+.post-content blockquote {
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--color-pink);
+  background: var(--color-pink-light);
+  border-radius: 0 8px 8px 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+/* ========= 🩷行内代码：绿色系 ========= */
+.post-content code {
+  background: var(--color-green-light);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-size: 1.0rem;
+  color: var(--color-green-dark);
+}
+
+/* ========= 🩷代码块：粉色系 ========= */
+.post-content pre {
+  position: relative;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, #1a1625, #1e1a2e);
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 142, 204, 0.829);
+  border-left: 3px solid var(--color-pink);
+  overflow-x: auto;
+}
+
+.post-content pre code {
+  background: none;
+  color: #f0e6f6;
+  padding: 0;
+  font-size: 1.0rem;
+  border-radius: 0;
+}
+
+/* ========= 🩷复制按钮 ========= */
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255, 168, 221, 0.774);
+  background: rgba(216, 255, 145, 0.812);
+  color: rgba(240, 230, 246, 0.7);
+  font-size: 0.790rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, color 0.2s;
+}
+
+.post-content pre:hover .copy-btn {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 208, 234, 0.911);
+  color: #fce7f3;
+}
+
 .post-content img {
   max-width: 100%;
   border-radius: 12px;
   margin: 1rem 0;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
 
 .post-content hr {
@@ -143,559 +210,26 @@ a {
   border-radius: 1px;
 }
 
-.post-content del {
-  text-decoration: line-through;
-  color: #C7DC94;
-}
-/* ========= 🩷行内代码 ========= */
-.post-content code {
-  background: var(--color-green-light);
-  padding: 0.15rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.875rem;
-  color: var(--color-pink-dark);
-}
-
-/* ========= 🩷代码块 ========= */
-.post-content pre {
-  position: relative;
-  background: #A5D665;
-  border: 2px solid #81C520;
-  border-radius: 14px;
-  padding: 1.25rem 1rem;
-  padding-right: 5rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-  transition: border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.post-content pre code {
-  background: none;
-  color: #FFFFFF;
-  padding: 0;
-  font-size: 0.875rem;
-  line-height: 1.7;
-  border-radius: 0;
-}
-
-/* ========= 🩷复制按钮（常驻） ========= */
-.post-content pre .copy-btn {
-  position: absolute;
-  right: 0.625rem;
-  bottom: 0.625rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: 8px;
-  border: 1.5px solid rgba(129,197,32,0.4);
-  background: rgba(129,197,32,0.08);
-  color: #81C520;
-  font-size: 0.75rem;
-  cursor: pointer;
-  opacity: 1;
-  transition: all 0.3s ease;
-  font-family: inherit;
-}
-
-.post-content pre .copy-btn:hover {
-  background: rgba(129,197,32,0.15);
-  border-color: rgba(129,197,32,0.6);
-}
-
-/* ========= 🩷引用块 ========= */
-.post-content blockquote {
-  background: #fff;
-  border: none;
-  border-left: none;
-  border-radius: 12px;
-  padding: 1.25rem 1.5rem;
-  margin: 1rem 0;
-  box-shadow: 0 2px 12px rgba(249,142,191,0.08);
-  color: #F98EBF;
-  font-size: 0.9375rem;
-  line-height: 1.8;
-  font-style: normal;
-}
-
-.post-content blockquote p {
-  margin: 0;
-  color: inherit;
-}
-
-/* ========= 🛠 工具页 ========= */
-.tools-page {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem 1.25rem 4rem;
-}
-
-.tools-header h1 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
-}
-
-.tools-subtitle {
-  color: #999;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Tabs */
-.tools-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.tools-tab {
-  flex: 1;
-  padding: 0.625rem;
-  border-radius: 12px;
-  border: 2px solid #eee;
-  background: #fff;
-  font-size: 0.9375rem;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  color: #999;
-  font-family: inherit;
-}
-
-.tools-tab.active {
-  border-color: #81C520;
-  color: #81C520;
-  background: rgba(129, 197, 32, 0.05);
-  font-weight: 600;
-}
-
-/* 命令速查 */
-.cmd-search {
-  width: 100%;
+.post-author-card {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 16px;
   padding: 0.75rem 1rem;
-  border-radius: 12px;
-  border: 2px solid #eee;
-  font-size: 0.9375rem;
-  outline: none;
-  transition: border-color 0.2s;
-  font-family: inherit;
-  box-sizing: border-box;
+  margin-bottom: 1rem;
 }
 
-.cmd-search:focus {
-  border-color: #81C520;
-}
-
-.cmd-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-
-.cmd-cat {
-  padding: 0.35rem 0.875rem;
-  border-radius: 20px;
-  border: 1.5px solid #eee;
-  background: #fff;
-  font-size: 0.8125rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  color: #888;
-  font-family: inherit;
-}
-
-.cmd-cat.active {
-  border-color: #F98EBF;
-  color: #F98EBF;
-  background: rgba(249, 142, 191, 0.06);
-}
-
-.cmd-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.cmd-card {
-  background: #fff;
-  border: 2px solid #f0f0f0;
+.article-card {
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 14px;
   padding: 1rem 1.125rem;
-  transition: border-color 0.4s, box-shadow 0.4s;
-}
-
-.cmd-card-copied {
-  border-color: #F98EBF;
-  box-shadow: 0 0 12px rgba(249, 142, 191, 0.2);
-}
-
-.cmd-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.cmd-title {
-  font-weight: 600;
-  font-size: 0.9375rem;
-}
-
-.cmd-cat-tag {
-  font-size: 0.75rem;
-  color: #81C520;
-  background: rgba(129, 197, 32, 0.08);
-  padding: 0.15rem 0.5rem;
-  border-radius: 8px;
-}
-
-.cmd-code-row {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: #1a1625;
-  border-radius: 10px;
-  padding: 0.625rem 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.cmd-code {
-  flex: 1;
-  color: #81C520;
-  font-size: 0.8125rem;
-  font-family: "Courier New", monospace;
-  word-break: break-all;
-}
-
-.cmd-copy {
-  padding: 0.2rem 0.6rem;
-  border-radius: 8px;
-  border: 1.5px solid rgba(129, 197, 32, 0.4);
-  background: rgba(129, 197, 32, 0.08);
-  color: #81C520;
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  flex-shrink: 0;
-  font-family: inherit;
-  min-width: 2.75rem;
-  text-align: center;
-}
-
-.cmd-copy.copied {
-  background: rgba(249, 142, 191, 0.15);
-  border-color: rgba(249, 142, 191, 0.5);
-  color: #F98EBF;
-}
-
-.cmd-desc {
-  color: #999;
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  margin: 0;
-}
-
-.cmd-empty {
-  text-align: center;
-  padding: 3rem 0;
-  color: #ccc;
-  font-size: 0.9375rem;
-}
-
-/* ========= 🍓 命令卡片扩展 ========= */
-.tools-back {
-  background: none;
-  border: none;
-  color: #999;
-  font-size: 0.875rem;
-  cursor: pointer;
-  padding: 0;
   margin-bottom: 0.75rem;
-  font-family: inherit;
-  transition: color 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.tools-back:hover {
-  color: #81C520;
+.article-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(206, 255, 116, 0.08);
 }
 
-.cmd-card-expanded {
-  border-color: #81C520;
-}
-
-.cmd-title-clickable {
-  cursor: pointer;
-}
-
-.cmd-title-clickable:hover {
-  color: #81C520;
-}
-
-.cmd-expand-icon {
-  margin-right: 0.375rem;
-  font-size: 0.9375rem;
-  color: #81C520;
-  display: inline-block;
-  transition: transform 0.2s ease;
-  font-weight: 700;
-}
-
-.cmd-card-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cmd-fav {
-  background: none;
-  border: none;
-  font-size: 0.9rem;
-  cursor: pointer;
-  opacity: 0.25;
-  transition: all 0.25s;
-  padding: 0;
-  filter: grayscale(1);
-  line-height: 1;
-}
-
-.cmd-fav:hover {
-  opacity: 0.55;
-}
-
-.cmd-fav-active {
-  opacity: 1 !important;
-  filter: none !important;
-}
-
-.cmd-cat-fav.active {
-  border-color: #ff6b6b;
-  color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.06);
-}
-
-.cmd-inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1.5px dashed rgba(129, 197, 32, 0.25);
-}
-
-.cmd-input-row {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-}
-
-.cmd-input-label {
-  font-size: 0.8125rem;
-  color: #81C520;
-  font-weight: 600;
-  min-width: 4.5rem;
-  flex-shrink: 0;
-}
-
-.cmd-input-field {
-  flex: 1;
-  padding: 0.4rem 0.75rem;
-  border-radius: 8px;
-  border: 1.5px solid #eee;
-  font-size: 0.8125rem;
-  outline: none;
-  transition: border-color 0.2s;
-  font-family: inherit;
-  box-sizing: border-box;
-}
-
-.cmd-input-field:focus {
-  border-color: #81C520;
-}
-
-/* 查找替换 */
-.fr-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.fr-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-}
-
-.fr-field label {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #666;
-}
-
-.fr-field textarea,
-.fr-field input[type="text"] {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  border: 2px solid #eee;
-  font-size: 0.9375rem;
-  outline: none;
-  transition: border-color 0.2s;
-  font-family: inherit;
-  resize: vertical;
-  box-sizing: border-box;
-}
-
-.fr-field textarea:focus,
-.fr-field input[type="text"]:focus {
-  border-color: #81C520;
-}
-
-.fr-row {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.fr-flex1 {
-  flex: 1;
-}
-
-.fr-controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.fr-toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.875rem;
-  color: #666;
-  cursor: pointer;
-}
-
-.fr-toggle input[type="checkbox"] {
-  accent-color: #81C520;
-}
-
-.fr-flags {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-  font-size: 0.8125rem;
-  color: #666;
-}
-
-.fr-flags-input {
-  width: 3.5rem !important;
-  padding: 0.35rem 0.5rem !important;
-  text-align: center;
-  border-radius: 8px !important;
-  font-family: "Courier New", monospace !important;
-}
-
-.fr-flags-hint {
-  color: #bbb;
-  font-size: 0.75rem;
-}
-
-.fr-btn {
-  padding: 0.625rem 1.5rem;
-  border-radius: 12px;
-  border: 2px solid #81C520;
-  background: rgba(129, 197, 32, 0.08);
-  color: #81C520;
-  font-weight: 600;
-  font-size: 0.9375rem;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-family: inherit;
-  margin-left: auto;
-}
-
-.fr-btn:hover {
-  background: rgba(129, 197, 32, 0.15);
-}
-
-.fr-error {
-  color: #e74c3c;
-  background: rgba(231, 76, 60, 0.06);
-  padding: 0.625rem 1rem;
-  border-radius: 10px;
-  font-size: 0.8125rem;
-}
-
-.fr-result {
-  border: 2px solid #eee;
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-.fr-result-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.625rem 1rem;
-  background: #fafafa;
-  border-bottom: 1px solid #eee;
-}
-
-.fr-match-count {
-  font-size: 0.8125rem;
-  color: #81C520;
-  font-weight: 600;
-}
-
-.fr-copy {
-  padding: 0.2rem 0.7rem;
-  border-radius: 8px;
-  border: 1.5px solid rgba(129, 197, 32, 0.4);
-  background: rgba(129, 197, 32, 0.08);
-  color: #81C520;
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-family: inherit;
-}
-
-.fr-copied {
-  background: rgba(249, 142, 191, 0.15) !important;
-  border-color: rgba(249, 142, 191, 0.5) !important;
-  color: #F98EBF !important;
-}
-
-.fr-output {
-  margin: 0;
-  padding: 1rem;
-  font-size: 0.8125rem;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  word-break: break-all;
-  background: #fff;
-  color: #333;
-}
-
-/* 移动端适配 */
-@media (max-width: 480px) {
-  .fr-row {
-    flex-direction: column;
-  }
-
-  .fr-flags-hint {
-    display: none;
-  }
-
-  .fr-controls {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .fr-btn {
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-/* ========= 🩷减少动画 ========= */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;

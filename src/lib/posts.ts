@@ -91,7 +91,8 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString()
-  .replace(/~~(.+?)~~/g, "<del>$1</del>");
+  .replace(/~~(.+?)~~/g, "<del>$1</del>")
+  .replace(/==(.+?)==/g, "<mark>$1</mark>");
 
   const plainText = content.replace(/[#*`>\-\[\]()!]/g, " ").trim();
   const excerpt =
