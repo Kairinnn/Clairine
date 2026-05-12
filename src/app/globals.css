@@ -141,13 +141,14 @@ a {
 
 /* ========= 🩷引用块 ========= */
 .post-content blockquote {
-  margin: 1rem 0;
-  padding: 0.75rem 1rem;
-  border-left: 3px solid var(--color-pink);
-  background: var(--color-pink-light);
-  border-radius: 0 8px 8px 0;
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-left: none;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
   color: var(--color-text-secondary);
-  font-style: italic;
+  font-style: normal;
+  box-shadow: 0 2px 12px rgba(255, 173, 220, 0.1);
 }
 
 /* ========= 🩷行内代码 ========= */
@@ -185,14 +186,19 @@ a {
   right: 8px;
   padding: 3px 10px;
   border-radius: 6px;
-  border: 1.5px solid rgba(129, 197, 32, 0.4);
-  background: rgba(255, 255, 255, 0.25);
-  color: #fff;
+  border: 1.5px solid rgba(255, 173, 220, 0.5);
+  background: rgba(255, 214, 236, 0.6);
+  color: #ff86b8;
   font-size: 0.79rem;
   cursor: pointer;
   transition: opacity 0.2s, background 0.2s;
   min-width: 2.75rem;
   text-align: center;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 173, 220, 0.75);
+  color: #fff;
 }
 
 .copy-btn:hover {
