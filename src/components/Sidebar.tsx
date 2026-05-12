@@ -45,7 +45,7 @@ export default function Sidebar({
           top: 0,
           left: 0,
           width: "min(260px, 65vw)",
-          height: "100%",
+          height: "100dvh",
           zIndex: 200,
           background:
             "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,245,250,0.96) 100%)",
@@ -53,6 +53,7 @@ export default function Sidebar({
           boxShadow: isOpen
             ? "4px 0 24px rgba(251,168,215,0.15)"
             : "none",
+          boxSizing: "border-box"
           padding: "2rem 1.25rem",
           overflowY: "auto",
           transform: isOpen ? "translateX(0)" : "translateX(-100%)",
