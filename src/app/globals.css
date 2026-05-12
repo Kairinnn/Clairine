@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-pink: #ffaddc
+  --color-pink: #ffaddc;
   --color-pink-light: #ffeaf6;
   --color-pink-dark: #ff88c5;
   --color-green: #c7f495;

@@ -25,20 +25,20 @@ export default function PostCard({
       <article
         style={{
           padding: "1.25rem",
-          borderBottom: "1px dashed rgba(179,218,83,0.35)",
+          margin: "0.75rem 1rem 0",
+          background: "rgba(255,255,255,0.8)",
+          borderRadius: "14px",
           cursor: "pointer",
           transition:
-            "background-color 0.3s ease, transform 0.35s cubic-bezier(.34,1.3,.64,1), box-shadow 0.35s ease",
+            "transform 0.35s cubic-bezier(.34,1.3,.64,1), box-shadow 0.35s ease",
           animation: `cardIn 0.45s cubic-bezier(.34,1.3,.64,1) ${index * 0.08}s backwards`,
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = "rgba(255,215,237,0.15)";
           e.currentTarget.style.transform = "translateY(-3px)";
           e.currentTarget.style.boxShadow =
             "0 8px 24px rgba(251,168,215,0.12)";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "transparent";
           e.currentTarget.style.transform = "translateY(0)";
           e.currentTarget.style.boxShadow = "none";
         }}
