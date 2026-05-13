@@ -178,13 +178,16 @@ a {
 
 /* ========= 🩷代码块 ========= */
 .post-content pre {
-  position: relative;
-  margin: 1rem 0;
-  padding: 1rem;
-  background: #A6D668;
-  border-radius: 12px;
-  border: 1.5px solid rgba(129, 197, 32, 0.5);
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  background: rgba(129, 197, 32, 0.12);
+  border: 2px solid rgba(129, 197, 32, 0.35);
+  border-radius: 14px;
   overflow-x: auto;
+  position: relative;
+  box-shadow:
+    0 2px 12px rgba(129, 197, 32, 0.08),
+    inset 0 1px 3px rgba(255, 255, 255, 0.6);
 }
 
 .post-content pre code {
@@ -193,6 +196,20 @@ a {
   padding: 0;
   font-size: 1.1rem;
   border-radius: 0;
+}
+
+.code-line {
+  display: block;
+}
+
+.line-number {
+  display: inline-block;
+  width: 2rem;
+  margin-right: 0.75rem;
+  text-align: right;
+  color: rgba(129, 197, 32, 0.45);
+  user-select: none;
+  font-size: 0.75em;
 }
 
 /* ========= 🩷复制按钮 ========= */
