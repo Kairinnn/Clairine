@@ -1,11 +1,17 @@
 "use client";
 
+const categoryIcons: Record<string, string> = {
+  "教程": "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png",
+  "闲谈": "https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.png",
+  // 继续加...
+};
+
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
   categories: string[];
   activeCategory: string | null;
-  onCategorySelect: (category: string | null) => void;
+  onCategorySelect: (category: https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.pngstring | null) => void;
 }
 
 export default function Sidebar({
