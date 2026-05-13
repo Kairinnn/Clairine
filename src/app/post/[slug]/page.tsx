@@ -65,8 +65,8 @@ export default async function PostPage({ params }: PageProps) {
             src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
             alt="头像"
             style={{
-              width: "32px",
-              height: "32px",
+              width: "40px",
+              height: "40px",
               borderRadius: "50%",
               objectFit: "cover",
               position: "absolute",
@@ -79,13 +79,13 @@ export default async function PostPage({ params }: PageProps) {
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
             <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>Kairin</span>
-            <span style={{ fontSize: "0.75rem", color: "var(--color-text-secondary)" }}>
+            <span style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>
               {post.date}
             </span>
           </div>
           <div
             style={{
-              fontSize: "1.6rem",
+              fontSize: "1.3rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
               display: "flex",
@@ -103,7 +103,7 @@ export default async function PostPage({ params }: PageProps) {
       {/* 🩷标题 */}
       <h1
         style={{
-          fontSize: "2.2rem",
+          fontSize: "2.0rem",
           fontWeight: 700,
           lineHeight: 1.4,
           marginBottom: "0.5rem",
