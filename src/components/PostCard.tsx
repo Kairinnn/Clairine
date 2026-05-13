@@ -48,8 +48,8 @@ export default function PostCard({
           <div
             style={{
               position: "relative",
-              width: "40px",
-              height: "40px",
+              width: "45px",
+              height: "45px",
               flexShrink: 0,
             }}
           >
@@ -84,7 +84,7 @@ export default function PostCard({
               </span>
               <span
                 style={{
-                  fontSize: "0.75rem",
+                  fontSize: "0.85rem",
                   color: "var(--color-text-secondary)",
                 }}
               >
@@ -94,7 +94,7 @@ export default function PostCard({
 
             <h2
               style={{
-                fontSize: "1rem",
+                fontSize: "1.5rem",
                 fontWeight: 600,
                 marginBottom: "0.375rem",
                 lineHeight: 1.4,
@@ -105,7 +105,7 @@ export default function PostCard({
 
             <p
               style={{
-                fontSize: "0.875rem",
+                fontSize: "1.175rem",
                 color: "var(--color-text-secondary)",
                 lineHeight: 1.6,
                 display: "-webkit-box",
