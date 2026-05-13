@@ -149,7 +149,7 @@ export default function Sidebar({
             opacity: 0.6,
           }}
         >
-          {"☘️ Kairin's Nest"}
+          ☘️ Kairin's Nest
         </div>
       </nav>
     </>
