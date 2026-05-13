@@ -88,43 +88,43 @@ a {
 
 /* ========= 🩷文章内容 ========= */
 .post-content h1 {
-  font-size: 2.2rem;
+  font-size: 2.013rem;
   font-weight: 700;
   margin: 2rem 0 1rem;
 }
 
 .post-content h2 {
-  font-size: 2.342rem;
+  font-size: 1.830rem;
   font-weight: 600;
   margin: 1.80rem 0 0.80rem;
 }
 
 .post-content h3 {
-  font-size: 2.129rem;
+  font-size: 1.663rem;
   font-weight: 600;
   margin: 1.60rem 0 0.70rem;
 }
 
 .post-content h4 {
-  font-size: 1.936rem;
+  font-size: 1.512rem;
   font-weight: 600;
   margin: 1.40rem 0 0.60rem;
 }
 
 .post-content h5 {
-  font-size: 1.76rem;
+  font-size: 1.375rem;
   font-weight: 600;
   margin: 1.20rem 0 0.50rem;
 }
 
 .post-content h6 {
-  font-size: 1.44rem;
+  font-size: 1.15rem;
   font-weight: 600;
   margin: 1.0rem 0 0.40rem;
 }
 
 .post-content {
-  font-size: 1.55rem;
+  font-size: 1.25rem;
   line-height: 1.85;
 }
 
@@ -149,7 +149,7 @@ a {
 /* ========= 🩷高亮 ========= */
 .post-content mark {
   background: linear-gradient(to top, #fff38bf9 40%, transparent 40%);
-  padding: 0.5em 0.2em;
+  padding: 0.1em 0.1em;
   border-radius: 2px;
   color: inherit;
 }
