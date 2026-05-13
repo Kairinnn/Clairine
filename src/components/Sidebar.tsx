@@ -11,7 +11,7 @@ interface SidebarProps {
   onClose: () => void;
   categories: string[];
   activeCategory: string | null;
-  onCategorySelect: (category: https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.pngstring | null) => void;
+  onCategorySelect: (category: string | null) => void;
 }
 
 export default function Sidebar({
