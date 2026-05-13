@@ -167,7 +167,7 @@ https://postimages.org/
 
 * ①上传图片。
 
-![格式任意](/images/04.13-1.jpg)
+![格式任意](/public/images/04.13-1.jpg)
 
 * ②复制【直达链接】。这个链接就是URL地址。
 
