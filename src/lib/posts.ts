@@ -94,6 +94,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   .replace(
   /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
   (_, lang, code) => {
+  .replace(/\+\+(.+?)\+\+/g, "<u>$1</u>")
     const decoded = code.replace(/</g, "<").replace(/>/g, ">").replace(/&/g, "&");
     const lines = decoded.trim().split("\n");
     const numbered = lines
