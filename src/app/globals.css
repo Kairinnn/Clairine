@@ -218,23 +218,28 @@ a {
 /* ========= 🩷代码块 ========= */
 .post-content pre {
   margin: 1.25rem 0;
-  padding: 1rem 1.25rem;
-  background: rgba(129, 197, 32, 0.8);
-  border: 2px solid rgba(129, 197, 32, 0.35);
+  padding: 0;
+  background: rgba(129, 197, 32, 0.55);
+  border: 2.5px solid rgba(129, 197, 32, 0.6);
   border-radius: 14px;
-  overflow-x: auto;
   position: relative;
+  overflow: hidden;
   box-shadow:
     0 2px 12px rgba(129, 197, 32, 0.08),
-    inset 0 1px 3px rgba(255, 255, 255, 0.6);
+    inset 0 1px 3px rgba(255, 255, 255, 0.4);
 }
 
 .post-content pre code {
   display: block;
+  padding: 1rem 1.25rem;
+  padding-right: 4.5rem;
+  overflow-x: auto;
   color: #fff;
   font-size: 0.85rem;
   line-height: 1;
-  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
 }
 
 .code-line {
