@@ -91,18 +91,22 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString()
-  .replace(
-  /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
-  (_, lang, code) => {
+  .replace(/~~(.+?)~~/g, "<del>$1</del>")
+  .replace(/==(.+?)==/g, "<mark>$1</mark>")
   .replace(/\+\+(.+?)\+\+/g, "<u>$1</u>")
-    const decoded = code.replace(/</g, "<").replace(/>/g, ">").replace(/&/g, "&");
-    const lines = decoded.trim().split("\n");
-    const numbered = lines
-      .map((line: string, i: number) => `<span class="code-line"><span class="line-number">${i + 1}</span>${line}</span>`)
-      .join("");
-    return `<pre><code${lang ? ` class="${lang}"` : ""}>${numbered}</code></pre>`;
-  }
-)
+  .replace(
+    /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
+    (_, lang, code) => {
+      const decoded = code.replace(/</g, "<").replace(/>/g, ">").replace(/&/g, "&");
+      const lines = decoded.trim().split("\n");
+      const numbered = lines
+        .map((line: string, i: number) =>
+          `<span class="code-line"><span class="line-number">${i + 1}</span><span class="line-content">${line || " "}</span></span>`
+        )
+        .join("");
+      return `<pre><code${lang ? ` class="${lang}"` : ""}>${numbered}</code></pre>`;
+    }
+  );
   
   const plainText = content.replace(/[#*`>\-\[\]()!]/g, " ").trim();
   const excerpt =
