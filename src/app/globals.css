@@ -91,36 +91,42 @@ a {
   font-size: 2.013rem;
   font-weight: 700;
   margin: 2rem 0 1rem;
+  color: var(--color-text-secondary);
 }
 
 .post-content h2 {
   font-size: 1.830rem;
   font-weight: 600;
   margin: 1.80rem 0 0.80rem;
+  color: var(--color-text);
 }
 
 .post-content h3 {
   font-size: 1.663rem;
   font-weight: 600;
   margin: 1.60rem 0 0.70rem;
+  color: var(--color-text-secondary);
 }
 
 .post-content h4 {
   font-size: 1.512rem;
   font-weight: 600;
   margin: 1.40rem 0 0.60rem;
+  color: var(--color-text);
 }
 
 .post-content h5 {
   font-size: 1.375rem;
   font-weight: 600;
   margin: 1.20rem 0 0.50rem;
+  color: var(--color-text-secondary);
 }
 
 .post-content h6 {
   font-size: 1.15rem;
   font-weight: 600;
   margin: 1.0rem 0 0.40rem;
+  color: var(--color-text);
 }
 
 .post-content {
@@ -137,7 +143,7 @@ a {
 .post-content ul,
 .post-content ol {
   margin: 0.86rem 0;
-  padding-left: 1.5rem;
+  padding-left: 1.6rem;
   color: var(--color-text-secondary);
   line-height: 1.8;
 }
@@ -185,7 +191,7 @@ a {
 .post-content pre {
   margin: 1.25rem 0;
   padding: 1rem 1.25rem;
-  background: rgba(129, 197, 32, 0.18);
+  background: rgba(129, 197, 32, 0.8);
   border: 2px solid rgba(129, 197, 32, 0.35);
   border-radius: 14px;
   overflow-x: auto;
