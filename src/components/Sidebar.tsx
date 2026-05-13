@@ -128,15 +128,14 @@ export default function Sidebar({
             onClick={() => handleCategoryClick(null)}
           />
           {categories.map((cat) => (
-            <SidebarItem
-              key={cat}
-              icon="https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"
-              label={cat}
-              active={activeCategory === cat}
-              onClick={() => handleCategoryClick(cat)}
-            />
+          <SidebarItem
+           key={cat}
+           icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
+           label={cat}
+           active={activeCategory === cat}
+           onClick={() => handleCategoryClick(cat)}
+          />
           ))}
-        </div>
 
         {/* ========= 🩷底部 ========= */}
         <div
