@@ -85,7 +85,7 @@ export default async function PostPage({ params }: PageProps) {
           </div>
           <div
             style={{
-              fontSize: "1.1rem",
+              fontSize: "0.85rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
               display: "flex",
@@ -93,7 +93,7 @@ export default async function PostPage({ params }: PageProps) {
               gap: "0.5rem",
             }}
           >
-            <span>🩷 {post.wordCount} words</span>
+            <span>🩷 About {post.wordCount} words</span>
             <span style={{ opacity: 0.4 }}>·</span>
             <span>约吃 {post.readingTime} 只 🍊</span>
           </div>
