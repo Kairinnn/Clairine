@@ -196,13 +196,16 @@ a {
 }
 
 .post-content pre code {
+  display: block;
   color: #fff;
   font-size: 0.85rem;
-  line-height: 1.7;
+  line-height: 1;
+  padding: 0;
 }
 
 .code-line {
   display: block;
+  padding: 0.25rem 0;
 }
 
 .line-number {
@@ -210,9 +213,13 @@ a {
   width: 2rem;
   margin-right: 0.75rem;
   text-align: right;
-  color: rgba(129, 197, 32, 0.45);
+  color: rgba(255, 255, 255, 0.4);
   user-select: none;
-  font-size: 0.75em;
+  font-size: 0.8em;
+}
+
+.line-content {
+  color: #fff;
 }
 
 /* ========= 🩷复制按钮 ========= */
