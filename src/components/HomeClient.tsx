@@ -72,8 +72,8 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                 src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
                 alt="头像"
                 style={{
-                  width: "58px",
-                  height: "58px",
+                  width: "65px",
+                  height: "65px",
                   borderRadius: "50%",
                   objectFit: "cover",
                   position: "absolute",
@@ -84,12 +84,12 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               />
             </div>
 
-            <h1 style={{ fontSize: "1.375rem", fontWeight: 700 }}>
+            <h1 style={{ fontSize: "1.5rem", fontWeight: 700 }}>
               Kairin/小灰
             </h1>
             <p
               style={{
-                fontSize: "1.0rem",
+                fontSize: "1.4rem",
                 color: "var(--color-text-secondary)",
                 marginTop: "0.25rem",
                 lineHeight: 1.6,
@@ -101,7 +101,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             <div
               style={{
                 marginTop: "0.75rem",
-                fontSize: "0.8125rem",
+                fontSize: "1.225rem",
                 color: "var(--color-text-secondary)",
                 display: "flex",
                 justifyContent: "center",
@@ -151,7 +151,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                   />
                   <p
                     style={{
-                      fontSize: "0.75rem",
+                      fontSize: "0.95rem",
                       color: "var(--color-text-secondary)",
                       marginTop: "0.5rem",
                     }}
@@ -172,7 +172,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           <div
             style={{
               padding: "0.75rem 1.25rem",
-              fontSize: "0.875rem",
+              fontSize: "0.975rem",
               color: "var(--color-pink-dark)",
               borderBottom: "1px dashed rgba(179,218,83,0.25)",
               display: "flex",
@@ -221,7 +221,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               padding: "4rem 1.25rem",
               textAlign: "center",
               color: "var(--color-text-secondary)",
-              fontSize: "0.9375rem",
+              fontSize: "1.175rem",
               animation: "pageIn 0.5s ease",
             }}
           >
