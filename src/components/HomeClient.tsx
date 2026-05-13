@@ -89,7 +89,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             </h1>
             <p
               style={{
-                fontSize: "1.4rem",
+                fontSize: "1.2rem",
                 color: "var(--color-text-secondary)",
                 marginTop: "0.25rem",
                 lineHeight: 1.6,
@@ -101,7 +101,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             <div
               style={{
                 marginTop: "0.75rem",
-                fontSize: "1.225rem",
+                fontSize: "1.025rem",
                 color: "var(--color-text-secondary)",
                 display: "flex",
                 justifyContent: "center",
