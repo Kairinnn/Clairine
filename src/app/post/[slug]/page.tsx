@@ -85,7 +85,7 @@ export default async function PostPage({ params }: PageProps) {
           </div>
           <div
             style={{
-              fontSize: "1.3rem",
+              fontSize: "1.1rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
               display: "flex",
