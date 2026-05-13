@@ -144,12 +144,12 @@ export default function Sidebar({
             marginTop: "1.5rem",
             paddingTop: "0.875rem",
             textAlign: "center",
-            fontSize: "0.6875rem",
+            fontSize: "0.8075rem",
             color: "var(--color-text-secondary)",
             opacity: 0.6,
           }}
         >
-          ☘️ Kairin's Nest
+          {"☘️ Kairin's Nest"}
         </div>
       </nav>
     </>
