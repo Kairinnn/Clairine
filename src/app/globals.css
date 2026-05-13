@@ -140,6 +140,13 @@ a {
   color: var(--color-text-secondary);
 }
 
+.post-content u {
+  text-decoration: underline;
+  text-decoration-color: var(--color-pink);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
 .post-content ul {
   list-style: none;
   padding-left: 1.25rem;
