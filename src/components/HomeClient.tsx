@@ -201,7 +201,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                 border: "none",
                 color: "var(--color-text-secondary)",
                 cursor: "pointer",
-                fontSize: "0.75rem",
+                fontSize: "0.85rem",
                 textDecoration: "underline",
               }}
             >
