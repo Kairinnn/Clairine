@@ -101,7 +101,7 @@ export default function Sidebar({
               marginTop: "2px",
             }}
           >
-            Continuation of dreaming.⊹⁺˚
+            Ring Our Love.⊹⁺˚
           </span>
         </div>
 
