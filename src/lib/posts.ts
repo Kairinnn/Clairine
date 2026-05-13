@@ -98,7 +98,7 @@ const contentHtml = processedContent.toString()
     (_, lang, code) => {
       const lines = code.trimEnd().split("\n");
       const numbered = lines
-        .map((line, i) => `<span class="code-line"><span class="line-number">${i + 1}</span>${line}</span>`)
+        .map((line: string, i: number) => `<span class="code-line"><span class="line-number">${i + 1}</span>${line}</span>`)
         .join("\n");
       return `<pre><code${lang ? ` class="${lang}"` : ""}>${numbered}</code></pre>`;
     }
