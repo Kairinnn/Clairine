@@ -53,7 +53,7 @@ export default function Sidebar({
           boxShadow: isOpen
             ? "4px 0 24px rgba(251,168,215,0.15)"
             : "none",
-          boxSizing: "border-box"
+          boxSizing: "border-box",
           padding: "2rem 1.25rem",
           overflowY: "auto",
           transform: isOpen ? "translateX(0)" : "translateX(-100%)",
