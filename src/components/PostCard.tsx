@@ -84,7 +84,7 @@ export default function PostCard({
               </span>
               <span
                 style={{
-                  fontSize: "0.85rem",
+                  fontSize: "0.95rem",
                   color: "var(--color-text-secondary)",
                 }}
               >
@@ -94,7 +94,7 @@ export default function PostCard({
 
             <h2
               style={{
-                fontSize: "1.5rem",
+                fontSize: "1.35rem",
                 fontWeight: 600,
                 marginBottom: "0.375rem",
                 lineHeight: 1.4,
@@ -105,7 +105,7 @@ export default function PostCard({
 
             <p
               style={{
-                fontSize: "1.175rem",
+                fontSize: "1.0rem",
                 color: "var(--color-text-secondary)",
                 lineHeight: 1.6,
                 display: "-webkit-box",
