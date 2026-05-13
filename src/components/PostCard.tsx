@@ -21,7 +21,7 @@ export default function PostCard({
   index = 0,
 }: PostCardProps) {
   return (
-    <span className="article-tag">{tag}</span>
+    <Link href={`/posts/${slug}`} style={{ textDecoration: "none", color: "inherit" }}>
       <article
         style={{
           padding: "1.25rem",
@@ -127,11 +127,19 @@ export default function PostCard({
                 }}
               >
                 {tags.map((tag, i) => (
-                  <Tag
+                  <span
                     key={tag}
-                    label={tag}
-                    color={i % 2 === 0 ? "pink" : "green"}
-                  />
+                    className="article-tag"
+                    style={{
+                      padding: "0.2rem 0.6rem",
+                      borderRadius: "8px",
+                      fontSize: "0.75rem",
+                      background: i % 2 === 0 ? "rgba(255,173,220,0.15)" : "rgba(129,197,32,0.12)",
+                      color: i % 2 === 0 ? "#ff86b8" : "#81C520",
+                    }}
+                  >
+                    {tag}
+                  </span>
                 ))}
               </div>
             )}
