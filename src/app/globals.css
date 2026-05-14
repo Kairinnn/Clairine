@@ -147,7 +147,7 @@ a {
 
 .post-content u {
   text-decoration: underline;
-  text-decoration-color: var(--color-pink);
+  text-decoration-color: var(--color-green);
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
 }
@@ -239,7 +239,7 @@ a {
   padding: 1rem 1.25rem;
   padding-right: 4.5rem;
   overflow-x: auto;
-  color: #fff;
+  color: var(--color-text-secondary);
   font-size: 0.85rem;
   line-height: 1;
   background: none;
@@ -249,7 +249,7 @@ a {
 
 .code-line {
   display: block;
-  padding: 0.25rem 0;
+  padding: 0.3rem 0;
 }
 
 .line-number {
@@ -257,9 +257,9 @@ a {
   width: 2rem;
   margin-right: 0.75rem;
   text-align: right;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.75);
   user-select: none;
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 .line-content {
@@ -292,7 +292,7 @@ a {
 /* ========= 🩷图片 ========= */
 .post-content img {
   max-width: 100%;
-  border-radius: 12px;
+  border-radius: 14px;
   margin: 1rem 0;
 }
 
@@ -302,7 +302,7 @@ a {
   height: 3px;
   background-image: radial-gradient(circle, #81C520 1px, transparent 1px),
                     radial-gradient(circle, #ffaddc 1px, transparent 1px);
-  background-size: 12px 3px;
+  background-size: 12px 4px;
   background-position: 0 0, 6px 0;
   margin: 1.75rem 0;
 }
@@ -567,7 +567,7 @@ a {
   border-radius: 6px;
   font-size: 0.75rem;
   background: rgba(129, 197, 32, 0.1);
-  color: var(--color-green-dark);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
@@ -597,7 +597,7 @@ a {
   border-radius: 8px;
   border: 1.5px solid rgba(255, 173, 220, 0.5);
   background: rgba(255, 214, 236, 0.6);
-  color: #ff86b8;
+  color: var(--color-text);
   font-size: 0.75rem;
   cursor: pointer;
   transition: all 0.2s;
