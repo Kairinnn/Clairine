@@ -218,6 +218,11 @@ a {
 }
 
 /* ========= 🩷行内代码 ========= */
+.post-content code,
+.post-content pre code {
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace !important;
+}
+
 .post-content code {
   background: var(--color-green-light);
   padding: 0.15rem 0.4rem;
