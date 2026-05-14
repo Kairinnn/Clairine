@@ -3,7 +3,7 @@
 :root {
   --color-pink: #ffaddc;
   --color-pink-light: #ffeaf6;
-  --color-pink-dark: #ff88c5;
+  --color-pink-dark: #ff94cb;
   --color-green: #c7f495;
   --color-green-light: #e1ffd5;
   --color-green-dark: #90bf33;
@@ -22,10 +22,16 @@
 
 body {
   color: var(--color-text);
-  font-family: var(--font-custom), sans-serif;
+  font-family: var(--font-custom), sans-serif !important;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   background-color: var(--color-bg);
+}
+
+*,
+*::before,
+*::after {
+  font-family: inherit !important;
 }
 
 /* ========= 🩷背景图层 ========= */

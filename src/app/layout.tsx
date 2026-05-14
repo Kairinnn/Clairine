@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
-      <body className="min-h-screen">
+    <html lang="zh-CN" className={myFont.variable}>
+        <body className="min-h-screen">
         <div className="bg-pattern" />
         <div className="bg-overlay" />
         {children}
