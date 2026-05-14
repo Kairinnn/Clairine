@@ -79,14 +79,14 @@ export default async function PostPage({ params }: PageProps) {
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
-            <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>Kairin</span>
+            <span style={{ fontWeight: 600, fontSize: "1.1375rem" }}>Kairin</span>
             <span style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>
               {post.date}
             </span>
           </div>
           <div
             style={{
-              fontSize: "0.85rem",
+              fontSize: "0.90rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
               display: "flex",
