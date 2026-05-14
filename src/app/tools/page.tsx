@@ -105,7 +105,7 @@ export default function ToolsPage() {
     <main className="tools-page">
       <div className="tools-header">
         <button className="tools-back" onClick={() => router.push("/")}>
-          ← 返回
+          ← ☘️返回
         </button>
         <h1>🛠 工具箱</h1>
         <p className="tools-subtitle">命令速查 & 查找替换</p>
@@ -153,7 +153,7 @@ export default function ToolsPage() {
                 setActiveCategory(null);
               }}
             >
-              🍓 收藏
+              🍏 收藏
             </button>
             {categories.map((cat) => (
               <button
@@ -202,7 +202,7 @@ export default function ToolsPage() {
                         onClick={() => toggleFav(c.title)}
                         title="收藏"
                       >
-                        🍓
+                        🍏
                       </button>
                       {getCats(c).map((cat) => (
   <span key={cat} className="cmd-cat-tag">{cat}</span>
@@ -244,8 +244,8 @@ export default function ToolsPage() {
             {filtered.length === 0 && (
               <div className="cmd-empty">
                 {showFavOnly
-                  ? "还没有收藏的命令…🍓"
-                  : "没找到…换个关键词试试？"}
+                  ? "还没有收藏的命令欸…🍏"
+                  : "没找到…换个说法？:3"}
               </div>
             )}
           </div>
