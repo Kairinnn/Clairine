@@ -127,15 +127,16 @@ export default function Sidebar({
             active={activeCategory === null}
             onClick={() => handleCategoryClick(null)}
           />
-          {categories.map((cat) => (
+            {categories.map((cat) => (
           <SidebarItem
-           key={cat}
-           icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
-           label={cat}
-           active={activeCategory === cat}
-           onClick={() => handleCategoryClick(cat)}
+            key={cat}
+            icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
+            label={cat}
+            active={activeCategory === cat}
+            onClick={() => handleCategoryClick(cat)}
           />
-          ))}
+        ))}
+        </div>
 
         {/* ========= 🩷底部 ========= */}
         <div
@@ -149,7 +150,7 @@ export default function Sidebar({
             opacity: 0.6,
           }}
         >
-          ☘️ Kairin's Nest
+          {"☘️ Kairin's Nest"}
         </div>
       </nav>
     </>
