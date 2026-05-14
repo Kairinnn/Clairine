@@ -102,7 +102,7 @@ export default function Sidebar({
           <span style={{ fontSize: "1rem", fontWeight: 700 }}>小灰</span>
           <span
             style={{
-              fontSize: "0.75rem",
+              fontSize: "0.85rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
             }}
@@ -114,7 +114,7 @@ export default function Sidebar({
         {/* ========= 🩷虚线分隔 ========= */}
         <div
           style={{
-            borderTop: "2px dashed rgba(179,218,83,0.4)",
+            borderTop: "2.5px dashed rgba(179,218,83,0.4)",
             margin: "0.5rem 0 0.75rem",
           }}
         />
@@ -145,8 +145,8 @@ export default function Sidebar({
             marginTop: "1.5rem",
             paddingTop: "0.875rem",
             textAlign: "center",
-            fontSize: "0.8075rem",
-            color: "var(--color-text-secondary)",
+            fontSize: "0.8575rem",
+            color: "var(--color-text)",
             opacity: 0.6,
           }}
         >
