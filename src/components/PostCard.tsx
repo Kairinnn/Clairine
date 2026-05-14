@@ -48,8 +48,8 @@ export default function PostCard({
           <div
             style={{
               position: "relative",
-              width: "45px",
-              height: "45px",
+              width: "42px",
+              height: "42px",
               flexShrink: 0,
             }}
           >
@@ -79,12 +79,12 @@ export default function PostCard({
                 marginBottom: "0.25rem",
               }}
             >
-              <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>
+              <span style={{ fontWeight: 600, fontSize: "1.1rem" }}>
                 Kairin
               </span>
               <span
                 style={{
-                  fontSize: "0.95rem",
+                  fontSize: "0.90rem",
                   color: "var(--color-text-secondary)",
                 }}
               >
@@ -94,7 +94,7 @@ export default function PostCard({
 
             <h2
               style={{
-                fontSize: "1.35rem",
+                fontSize: "1.0rem",
                 fontWeight: 600,
                 marginBottom: "0.375rem",
                 lineHeight: 1.4,
@@ -105,7 +105,7 @@ export default function PostCard({
 
             <p
               style={{
-                fontSize: "1.0rem",
+                fontSize: "0.873rem",
                 color: "var(--color-text-secondary)",
                 lineHeight: 1.6,
                 display: "-webkit-box",
@@ -134,8 +134,8 @@ export default function PostCard({
                       padding: "0.2rem 0.6rem",
                       borderRadius: "8px",
                       fontSize: "0.75rem",
-                      background: i % 2 === 0 ? "rgba(255,173,220,0.15)" : "rgba(129,197,32,0.12)",
-                      color: i % 2 === 0 ? "#ff86b8" : "#81C520",
+                      background: i % 3 === 0 ? "rgba(255,173,220,0.15)" : "rgba(129,197,32,0.12)" : "rgba(255,248,173,0.12)",
+                      color: i % 3 === 0 ? "#81C520" : "#ff86b8" : "#FF99C3",
                     }}
                   >
                     {tag}
