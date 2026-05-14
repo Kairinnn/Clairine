@@ -26,16 +26,16 @@ export default function BottomNav({ prevPost, nextPost }: BottomNavProps) {
             borderRadius: "20px",
             background: "#fff",
             border: "1.5px solid rgba(199,244,149,0.6)",
-            color: "var(--color-text)",
-            fontSize: "0.8125rem",
+            color: "var(--color-text-secondary)",
+            fontSize: "0.8525rem",
             fontWeight: 500,
             textAlign: "center",
             textDecoration: "none",
-            boxShadow: "0 2px 8px rgba(199,244,149,0.15)",
+            boxShadow: "0 2px 8px rgba(199,244,149,0.20)",
             transition: "all 0.2s ease",
           }}
         >
-          ← 上一篇
+          ← 🌸 上一篇
         </a>
       ) : (
         <div style={{ flex: 1 }} />
@@ -50,12 +50,12 @@ export default function BottomNav({ prevPost, nextPost }: BottomNavProps) {
           borderRadius: "20px",
           background: "#fff",
           border: "1.5px solid rgba(255,171,215,0.5)",
-          color: "var(--color-pink)",
-          fontSize: "0.8125rem",
+          color: "var(--color-text)",
+          fontSize: "0.8525rem",
           fontWeight: 500,
           textAlign: "center",
           textDecoration: "none",
-          boxShadow: "0 2px 8px rgba(255,171,215,0.12)",
+          boxShadow: "0 2px 8px rgba(255,171,215,0.20)",
           transition: "all 0.2s ease",
         }}
       >
@@ -72,12 +72,12 @@ export default function BottomNav({ prevPost, nextPost }: BottomNavProps) {
             borderRadius: "20px",
             background: "#fff",
             border: "1.5px solid rgba(199,244,149,0.6)",
-            color: "var(--color-text)",
-            fontSize: "0.8125rem",
+            color: "var(--color-text-secondary)",
+            fontSize: "0.8525rem",
             fontWeight: 500,
             textAlign: "center",
             textDecoration: "none",
-            boxShadow: "0 2px 8px rgba(199,244,149,0.15)",
+            boxShadow: "0 2px 8px rgba(199,244,149,0.20)",
             transition: "all 0.2s ease",
           }}
         >
