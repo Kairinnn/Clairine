@@ -104,7 +104,7 @@ export default async function PostPage({ params }: PageProps) {
       {/* 🩷标题 */}
       <h1
         style={{
-          fontSize: "2.0rem",
+          fontSize: "1.1rem",
           fontWeight: 700,
           lineHeight: 1.4,
           marginBottom: "0.5rem",
