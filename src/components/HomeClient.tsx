@@ -72,8 +72,8 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                 src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
                 alt="头像"
                 style={{
-                  width: "65px",
-                  height: "65px",
+                  width: "60px",
+                  height: "60px",
                   borderRadius: "50%",
                   objectFit: "cover",
                   position: "absolute",
@@ -89,7 +89,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             </h1>
             <p
               style={{
-                fontSize: "1.2rem",
+                fontSize: "1.1rem",
                 color: "var(--color-text-secondary)",
                 marginTop: "0.25rem",
                 lineHeight: 1.6,
@@ -101,7 +101,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             <div
               style={{
                 marginTop: "0.75rem",
-                fontSize: "1.025rem",
+                fontSize: "0.925rem",
                 color: "var(--color-text-secondary)",
                 display: "flex",
                 justifyContent: "center",
@@ -151,7 +151,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                   />
                   <p
                     style={{
-                      fontSize: "0.95rem",
+                      fontSize: "0.85rem",
                       color: "var(--color-text-secondary)",
                       marginTop: "0.5rem",
                     }}
@@ -172,8 +172,8 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
           <div
             style={{
               padding: "0.75rem 1.25rem",
-              fontSize: "0.975rem",
-              color: "var(--color-pink-dark)",
+              fontSize: "0.875rem",
+              color: "var(--color-text-secondary)",
               borderBottom: "1px dashed rgba(179,218,83,0.25)",
               display: "flex",
               alignItems: "center",
@@ -199,7 +199,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                 marginLeft: "auto",
                 background: "none",
                 border: "none",
-                color: "var(--color-text-secondary)",
+                color: "var(--color-text)",
                 cursor: "pointer",
                 fontSize: "0.85rem",
                 textDecoration: "underline",
@@ -221,11 +221,11 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               padding: "4rem 1.25rem",
               textAlign: "center",
               color: "var(--color-text-secondary)",
-              fontSize: "1.175rem",
+              fontSize: "1.15rem",
               animation: "pageIn 0.5s ease",
             }}
           >
-            <p style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🌱</p>
+            <p style={{ fontSize: "1.8rem", marginBottom: "0.5rem" }}>🌱</p>
             <p>
               {activeCategory
                 ? `「${activeCategory}」分类下还没有文章哦～`
