@@ -7,13 +7,13 @@ interface TopTabsProps {
   onTabChange: (tab: string) => void;
 }
 
-const tabs = ["工具", "记录/文章", "合集"];
+const tabs = ["命令匣", "记录/文章", "合集"];
 
 export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
   const router = useRouter();
 
   const handleTab = (tab: string) => {
-    if (tab === "工具") {
+    if (tab === "命令匣") {
       router.push("/tools");
       return;
     }
@@ -41,8 +41,8 @@ export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
               fontSize: "1rem",
               fontWeight: activeTab === tab ? 700 : 400,
               color: activeTab === tab
-                ? "var(--color-pink)"
-                : "var(--color-text-secondary)",
+                ? "var(--color-text-secondary)"
+                : "var(--color-text)",
               cursor: "pointer",
               transition: "all 0.25s ease",
               position: "relative",
