@@ -154,7 +154,7 @@ export default function PostCard({
       {tag}
     </span>
         );
-      )}
+      }
           </div>
         </div>
       </article>
