@@ -8,6 +8,7 @@ const myFont = localFont({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kairin.cc"),
   title: "Kairin's Daydream",
   description: "·˙°ʚElectronic etherɞ°˙·",
   openGraph: {
