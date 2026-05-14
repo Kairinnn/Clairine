@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+const nextConfig = {
+  output: "export",
+};
+
 const nextConfig: NextConfig = {
   async headers() {
     return [
