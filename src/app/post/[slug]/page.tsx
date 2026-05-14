@@ -4,6 +4,7 @@ import PostContent from "@/components/PostContent";
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
 import BottomNav from "@/components/BottomNav";
 
+export const dynamic = "force-static";
 export function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map((slug) => ({ slug }));
