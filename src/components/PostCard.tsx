@@ -155,7 +155,6 @@ export default function PostCard({
     </span>
         );
           }
-        </div>
       </article>
     </Link>
   );
