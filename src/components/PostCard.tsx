@@ -126,21 +126,33 @@ export default function PostCard({
                   flexWrap: "wrap",
                 }}
               >
-                {tags.map((tag, i) => (
-                  <span
-                    key={tag}
-                    className="article-tag"
-                    style={{
-                      padding: "0.2rem 0.6rem",
-                      borderRadius: "8px",
-                      fontSize: "0.75rem",
-                      background: i % 3 === 0 ? "rgba(255,173,220,0.15)" : "rgba(129,197,32,0.12)" : "rgba(255,248,173,0.12)",
-                      color: i % 3 === 0 ? "#81C520" : "#ff86b8" : "#FF99C3",
-                    }}
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {tags.map((tag, i) => {
+  const colorIndex = i % 3;
+  const bg = [
+    "rgba(255,173,220,0.15)",
+    "rgba(129,197,32,0.12)",
+    "rgba(255,248,173,0.25)",
+  ][colorIndex];
+  const fg = [
+    "#81C520",
+    "#ff86b8",
+    "#FF99C3",
+  ][colorIndex];
+
+  return (
+    <span
+      key={tag}
+      className="article-tag"
+      style={{
+        padding: "0.2rem 0.6rem",
+        borderRadius: "8px",
+        fontSize: "0.75rem",
+        background: bg,
+        color: fg,
+      }}
+    >
+      {tag}
+    </span>
               </div>
             )}
           </div>
