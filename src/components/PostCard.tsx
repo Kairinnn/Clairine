@@ -21,7 +21,7 @@ export default function PostCard({
   index = 0,
 }: PostCardProps) {
   return (
-    <Link href={`/posts/${slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+    <Link href={`/post/${slug}`} style={{ textDecoration: "none", color: "inherit" }}>
       <article
         style={{
           padding: "1.25rem",
