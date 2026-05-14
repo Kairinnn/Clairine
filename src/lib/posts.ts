@@ -94,6 +94,9 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   .replace(/~~(.+?)~~/g, "<del>$1</del>")
   .replace(/==(.+?)==/g, "<mark>$1</mark>")
   .replace(/\+\+(.+?)\+\+/g, "<u>$1</u>")
+  .replace(/\u201C([^\u201D]*?)\u201D/g, '<span class="quote-green">\u201C$1\u201D</span>')
+  .replace(/【([^】]*?)】/g, '<span class="quote-green">【$1】</span>')
+  .replace(/\u300E([^\u300F]*?)\u300F/g, '<span class="quote-green">\u300E$1\u300F</span>')
   .replace(
     /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
     (_, lang, code) => {
