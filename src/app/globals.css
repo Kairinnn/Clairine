@@ -329,6 +329,7 @@ a {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
+}
 
   /* ================================================
    🛠 工具页
@@ -679,5 +680,4 @@ a {
 
 .fr-section {
   margin-top: 0.5rem;
-}
 }
