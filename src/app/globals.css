@@ -94,21 +94,21 @@ a {
 
 /* ========= 🩷文章内容 ========= */
 .post-content h1 {
-  font-size: 1.83rem;
+  font-size: 1.63rem;
   font-weight: 700;
   margin: 2rem 0 1rem;
   color: var(--color-text-secondary);
 }
 
 .post-content h2 {
-  font-size: 1.663rem;
+  font-size: 1.563rem;
   font-weight: 600;
   margin: 1.80rem 0 0.80rem;
   color: var(--color-text);
 }
 
 .post-content h3 {
-  font-size: 1.512rem;
+  font-size: 1.412rem;
   font-weight: 600;
   margin: 1.60rem 0 0.70rem;
   color: var(--color-text-secondary);
@@ -250,7 +250,7 @@ a {
   padding: 1rem 1.25rem;
   padding-right: 4.5rem;
   overflow-x: auto;
-  color: var(--color-text-secondary);
+  color: rgba(255,255,83,0.75);
   font-size: 0.85rem;
   line-height: 1;
   background: none;
@@ -268,13 +268,13 @@ a {
   width: 2rem;
   margin-right: 0.75rem;
   text-align: right;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 134, 184, 0.75);
   user-select: none;
   font-size: 0.9em;
 }
 
 .line-content {
-  color: #fff;
+  color: var(--color-text-secondary);
 }
 
 /* ========= 🩷复制按钮 ========= */
