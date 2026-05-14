@@ -129,7 +129,7 @@ export default function PostCard({
                 {tags.map((tag, i) => {
                   const colorIndex = i % 3;
                   const bg = [
-                    "rgba(255,173,220,0.15)",
+                    "rgba(255,147,209,0.15)",
                     "rgba(129,197,32,0.12)",
                     "rgba(255,248,173,0.25)",
                   ][colorIndex];
