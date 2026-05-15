@@ -108,14 +108,14 @@ export async function getPostBySlug(slug: string): Promise<Post> {
           })
           .join("");
         const toolLink = tool
-          ? `<a href="/tools" class="icmd-toollink">🔧 在工具箱中查看</a>`
+          ? `<a href="/tools" class="icmd-toollink">🍮 在命令匣中查看</a>`
           : "";
         return `
           <div class="icmd-block" data-template="${(cmd as string).replace(/"/g, '"')}">
             <pre class="icmd-preview"><code>${cmd}</code></pre>
             ${inputsHtml ? `<div class="icmd-inputs">${inputsHtml}</div>` : ""}
             <div class="icmd-actions">
-              <button class="icmd-copy">📋 复制</button>
+              <button class="icmd-copy">🩷 复制</button>
               ${toolLink}
             </div>
           </div>`;

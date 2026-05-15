@@ -101,7 +101,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             <div
               style={{
                 marginTop: "0.75rem",
-                fontSize: "0.885rem",
+                fontSize: "0.82rem",
                 color: "var(--color-text-secondary)",
                 display: "flex",
                 justifyContent: "center",

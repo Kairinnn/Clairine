@@ -84,11 +84,11 @@ a {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #caef88 20%, #ffcef2 50%, #ffe3f3 100%);
+  background: linear-gradient(180deg, #aed865c7 20%, #ffcef2 50%, #ffe3f3 100%);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #caef88 20%, #ffcef2 50%, #ffe3f3 100%);
+  background: linear-gradient(180deg, #caef88 20%, #ffb7e382 50%, #ffc2e4 100%);
 }
 
 /* ========= 🩷动画 ========= */
@@ -200,7 +200,7 @@ a {
 /* ========= 🩷下划线 ========= */
 .post-content u {
   text-decoration: underline;
-  text-decoration-color: var(--color-green);
+  text-decoration-color: rgb(223, 255, 78);
   text-underline-offset: 3px;
   text-decoration-thickness: 2px;
 }
@@ -246,11 +246,11 @@ a {
   margin: 1.25rem 0;
   padding: 1rem 1.25rem;
   border-left: none;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 14px;
   color: var(--color-text-secondary);
   font-style: normal;
-  box-shadow: 0 2px 12px rgba(255, 173, 220, 0.1);
+  box-shadow: 0 2px 12px rgba(255, 173, 220, 0.15);
 }
 
 /* ========= 🩷行内代码 ========= */
@@ -260,7 +260,7 @@ a {
 }
 
 .post-content code {
-  background: var(--color-green-light);
+  background: rgb(217, 255, 93);
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
   font-size: 0.9rem;
@@ -270,8 +270,8 @@ a {
 .post-content pre {
   margin: 1.25rem 0;
   padding: 0;
-  background: rgba(129, 197, 32, 0.55);
-  border: 2.5px solid rgba(129, 197, 32, 0.6);
+  background: rgba(190, 255, 78, 0.5);
+  border: 2.5px solid rgba(255, 157, 203, 0.6);
   border-radius: 14px;
   position: relative;
   overflow: hidden;
@@ -285,7 +285,7 @@ a {
   padding: 1rem 1.25rem;
   padding-right: 4.5rem;
   overflow-x: auto;
-  color: rgba(255,255,83,0.75);
+  color: rgba(255, 255, 51, 0.88);
   font-size: 0.85rem;
   line-height: 1;
   background: none;
@@ -303,7 +303,7 @@ a {
   width: 2rem;
   margin-right: 0.75rem;
   text-align: right;
-  color: rgba(255, 146, 201, 0.75);
+  color: rgba(255, 146, 201, 0.9);
   user-select: none;
   font-size: 0.9em;
 }
@@ -315,7 +315,7 @@ a {
 .icmd-block {
   margin: 1.25rem 0;
   border-radius: 14px;
-  border: 2px solid rgba(129, 197, 32, 0.35);
+  border: 2px solid rgba(131, 197, 37, 0.35);
   background: rgba(129, 197, 32, 0.06);
   overflow: hidden;
 }
@@ -323,7 +323,7 @@ a {
 .icmd-preview {
   margin: 0;
   padding: 0.875rem 1rem;
-  background: rgba(129, 197, 32, 0.55);
+  background: rgba(131, 197, 37, 0.55);
   border-radius: 0;
   border: none;
   box-shadow: none;
@@ -433,7 +433,7 @@ a {
 /* ========= 🩷图片 ========= */
 .post-content img {
   max-width: 100%;
-  border-radius: 14px;
+  border-radius: 15px;
   margin: 1rem 0;
 }
 
@@ -441,7 +441,7 @@ a {
 .post-content hr {
   border: none;
   height: 3px;
-  background-image: radial-gradient(circle, #81C520 1px, transparent 1px),
+  background-image: radial-gradient(circle, #c6ff09 1px, transparent 1px),
                     radial-gradient(circle, #ffaddc 1px, transparent 1px);
   background-size: 12px 4px;
   background-position: 0 0, 6px 0;
@@ -466,12 +466,12 @@ a {
 
 .download-link:hover {
   transform: translateY(-1px);
-  box-shadow: 0 3px 12px rgba(129, 197, 32, 0.12);
-  background: linear-gradient(135deg, rgba(225,255,197,0.8), rgba(255,215,237,0.5));
+  box-shadow: 0 3px 12px rgba(129, 197, 32, 0.15);
+  background: linear-gradient(135deg, rgba(226, 255, 131, 0.8), rgba(255, 203, 232, 0.5));
 }
 /* ========= 🩷文章头像卡片 ========= */
 .post-author-card {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 16px;
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
@@ -479,7 +479,7 @@ a {
 
 /* ========= 🩷主页文章卡片 ========= */
 .article-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 14px;
   padding: 1rem 1.125rem;
   margin-bottom: 0.75rem;
@@ -488,7 +488,7 @@ a {
 
 .article-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(206, 255, 116, 0.08);
+  box-shadow: 0 4px 12px rgba(206, 255, 116, 0.1);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -551,9 +551,9 @@ a {
 }
 
 .tools-tab {
-  padding: 0.45rem 1.1rem;
+  padding: 0.45rem 3.1rem;
   border-radius: 10px;
-  border: 1.5px solid rgba(129, 197, 32, 0.25);
+  border: 2px solid rgba(129, 197, 32, 0.25);
   background: rgba(255, 255, 255, 0.6);
   color: var(--color-text-secondary);
   font-size: 0.95rem;
@@ -567,16 +567,16 @@ a {
 
 .tools-tab.active {
   background: linear-gradient(135deg, rgba(225, 255, 197, 0.6), rgba(255, 215, 237, 0.4));
-  border-color: rgba(129, 197, 32, 0.5);
-  font-weight: 600;
+  border-color: #ffa6e480;
+  font-weight: 550;
 }
 
 /* ========= 🩷搜索框 ========= */
 .cmd-search {
   width: 100%;
-  padding: 0.6rem 1rem;
+  padding: 1.05rem 1rem;
   border-radius: 12px;
-  border: 1.5px solid rgba(129, 197, 32, 0.3);
+  border: 2.9px solid #ff86b86b;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   font-size: 0.975rem;
@@ -625,7 +625,7 @@ a {
   background: rgba(129, 197, 32, 0.15);
   border-color: rgba(129, 197, 32, 0.5);
   font-weight: 600;
-  color: var(--color-green-dark);
+  color: var(--color-text-secondary);
 }
 
 .cmd-cat-fav.active {
@@ -921,10 +921,10 @@ a {
   cursor: pointer;
 }
 
-.fr-toggle input[type="checkbox"] {
+.fr-toggle input[type="check"] {
   width: 16px;
   height: 16px;
-  accent-color: #81C520;
+  accent-color: #ffc9e9bd;
   cursor: pointer;
 }
 
@@ -952,10 +952,10 @@ a {
 }
 
 .fr-btn {
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 7.78rem;
   border-radius: 10px;
-  border: 2px solid rgba(129, 197, 32, 0.4);
-  background: linear-gradient(135deg, rgba(225, 255, 197, 0.6), rgba(255, 215, 237, 0.3));
+  border: 2.2px solid rgba(129, 197, 32, 0.4);
+  background: linear-gradient(90deg, #cfffa2d1, #ffcae7bd);
   color: var(--color-text-secondary);
   font-weight: 600;
   font-size: 0.85rem;

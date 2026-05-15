@@ -1,6 +1,5 @@
 import InlineCmdScript from "@/components/InlineCmdScript";
 import { notFound } from "next/navigation";
-import Tag from "@/components/Tag";
 import PostContent from "@/components/PostContent";
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
 import BottomNav from "@/components/BottomNav";
@@ -121,9 +120,35 @@ export default async function PostPage({ params }: PageProps) {
             marginBottom: "1.5rem",
           }}
         >
-          {post.tags.map((tag, i) => (
-            <Tag key={tag} label={tag} color={i % 2 === 0 ? "pink" : "green"} />
-          ))}
+          {post.tags.map((tag, i) => {
+            const colorIndex = i % 3;
+            const bg = [
+              "rgba(255, 147, 208, 0.45)",
+              "rgba(156, 212, 45, 0.45)",
+              "rgba(255, 247, 163, 0.45)",
+            ][colorIndex];
+            const fg = [
+              "#a3e449",
+              "#ff86b8",
+              "#FF99C3",
+            ][colorIndex];
+
+            return (
+              <span
+                key={tag}
+                className="article-tag"
+                style={{
+                  padding: "0.2rem 0.6rem",
+                  borderRadius: "8px",
+                  fontSize: "0.75rem",
+                  background: bg,
+                  color: fg,
+                }}
+              >
+                {tag}
+              </span>
+            );
+          })}
         </div>
       )}
     {/* ========= 🩷正文 ========= */}

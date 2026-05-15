@@ -158,7 +158,11 @@ export default function Sidebar({
             marginTop: "0.5rem",
             }}
          >
-           <span style={{ fontSize: "18px" }}></span>
+           <img
+             src="https://i.postimg.cc/L8qXRQmX/envelope.png"
+             alt=""
+             style={{ width: "18px", height: "18px", imageRendering: "pixelated" }}
+           />
          关于
         </a>
         {/* ========= 🩷底部 ========= */}
