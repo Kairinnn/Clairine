@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-pink: #ffa7d9;
+  --color-pink: rgb(255, 173, 209);
   --color-pink-light: #ffeaf6;
   --color-pink-dark: #ff94cb;
   --color-green: #c7f495;
@@ -676,7 +676,7 @@ a {
 .cmd-title {
   font-size: 1.0rem;
   font-weight: 600;
-  color: var(--color-text-secondary);
+  color: var(--color-green-dark);
   line-height: 1.4;
 }
 
@@ -685,7 +685,7 @@ a {
 }
 
 .cmd-title-clickable:hover {
-  color: var(--color-green-dark);
+  color: var(--color-text-secondary);
 }
 
 .cmd-expand-icon {
