@@ -304,13 +304,13 @@ a {
   width: 2rem;
   margin-right: 0.75rem;
   text-align: right;
-  color: rgba(255, 134, 184, 0.75);
+  color: rgba(255, 255, 83, 0.75);
   user-select: none;
   font-size: 0.9em;
 }
 
 .line-content {
-  color: rgba(166,224,77);
+  color: rgba(255,255,83);
 }
 /* ========= 🩷文章内嵌命令块 ========= */
 .icmd-block {
