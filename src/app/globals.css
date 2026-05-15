@@ -651,7 +651,7 @@ a {
 }
 
 .cmd-card:hover {
-  border-color: rgba(129, 197, 32, 0.4);
+  border-color: rgba(255, 184, 242, 0.4);
   box-shadow: 0 2px 12px rgba(129, 197, 32, 0.06);
 }
 
