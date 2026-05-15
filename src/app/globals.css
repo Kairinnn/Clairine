@@ -317,7 +317,28 @@ a {
   background-position: 0 0, 6px 0;
   margin: 1.75rem 0;
 }
+/* ========= 🩷下载链接 ========= */
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(225,255,197,0.5), rgba(255,215,237,0.3));
+  border: 1.5px solid rgba(129, 197, 32, 0.3);
+  color: var(--color-text) !important;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  transition: all 0.2s;
+}
 
+.download-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(129, 197, 32, 0.12);
+  background: linear-gradient(135deg, rgba(225,255,197,0.8), rgba(255,215,237,0.5));
+}
 /* ========= 🩷文章头像卡片 ========= */
 .post-author-card {
   background: rgba(255, 255, 255, 0.75);
