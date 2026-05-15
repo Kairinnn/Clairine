@@ -135,7 +135,7 @@ export default function Sidebar({
             label={cat}
             active={activeCategory === cat}
             onClick={() => handleCategoryClick(cat)}
-          />
+          
             {categories.map((cat) => (
           <SidebarItem
             key={cat}
