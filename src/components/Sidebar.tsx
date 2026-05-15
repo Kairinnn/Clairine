@@ -121,31 +121,23 @@ export default function Sidebar({
         />
 
         {/* ========= 🩷导航列表 ========= */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-          <SidebarItem
-            icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
-            label="全部"
-            active={activeCategory === null}
-            onClick={() => handleCategoryClick(null)}
-          />
-            {categories.map((cat) => (
-          <SidebarItem
-            key={cat}
-            icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
-            label={cat}
-            active={activeCategory === cat}
-            onClick={() => handleCategoryClick(cat)}
-          
-            {categories.map((cat) => (
-          <SidebarItem
-            key={cat}
-            icon={categoryIcons[cat] || "https://i.postimg.cc/Hk6qsrfc/envelope.png"}
-            label={cat}
-            active={activeCategory === cat}
-            onClick={() => handleCategoryClick(cat)}
-          />
-        ))}
-        </div>
+<div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+  <SidebarItem
+    icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
+    label="全部"
+    active={activeCategory === null}
+    onClick={() => handleCategoryClick(null)}
+  />
+{categories.map((cat) => (
+  <SidebarItem
+    key={cat}
+    icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
+    label={cat}
+    active={activeCategory === cat}
+    onClick={() => handleCategoryClick(cat)}
+ />
+  ))}
+</div>
         {/* ========= 🩷关于页 ========= */}
         <a
          href="/about"
