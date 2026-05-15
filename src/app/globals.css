@@ -727,7 +727,7 @@ a {
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
   font-size: 0.75rem;
-  background: var(--color-pink-light);
+  background: rgb(255, 173, 209);
   color: var(--color-green-dark);
   white-space: nowrap;
 }
@@ -773,7 +773,7 @@ a {
 }
 
 .cmd-copy.copied {
-  background: rgba(255,161.211);
+  background: rgb(255, 161, 211);
   border-color: rgba(219, 255, 173, 0.6);
 }
 
@@ -976,7 +976,7 @@ a {
   border-radius: 10px;
   background: rgba(255, 100, 100, 0.08);
   border: 1.5px solid rgba(255, 100, 100, 0.3);
-  color: #e55;
+  color: rgb(255, 105, 105);
   font-size: 0.8rem;
 }
 
