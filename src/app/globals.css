@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --color-pink: #ffaddc;
+  --color-pink: #ffa7d9;
   --color-pink-light: #ffeaf6;
   --color-pink-dark: #ff94cb;
   --color-green: #c7f495;
   --color-green-light: #e1ffd5;
-  --color-green-dark: #90bf33;
+  --color-green-dark: #a6d547;
   --color-bg: #fff5f9;
   --color-card: #fff5f9;
   --color-text: #83b148;
@@ -727,8 +727,8 @@ a {
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
   font-size: 0.75rem;
-  background: rgba(129, 197, 32, 0.1);
-  color: var(--color-text-secondary);
+  background: var(--color-pink);
+  color: var(--color-green-dark);
   white-space: nowrap;
 }
 
