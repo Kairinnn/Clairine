@@ -3,7 +3,7 @@
 const categoryIcons: Record<string, string> = {
   "教程": "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png",
   "闲谈": "https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.png",
-  "安利": "https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.png",
+  "安利": "https://i.postimg.cc/L8qXRQmX/heart.png",
   // 继续加...
 };
 
@@ -139,7 +139,7 @@ export default function Sidebar({
             {categories.map((cat) => (
           <SidebarItem
             key={cat}
-            icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
+            icon={categoryIcons[cat] || "https://i.postimg.cc/Hk6qsrfc/envelope.png"}
             label={cat}
             active={activeCategory === cat}
             onClick={() => handleCategoryClick(cat)}
@@ -165,7 +165,7 @@ export default function Sidebar({
             marginTop: "0.5rem",
             }}
          >
-           <span style={{ fontSize: "18px" }}>☘️</span>
+           <span style={{ fontSize: "18px" }}>💬</span>
          关于
         </a>
         {/* ========= 🩷底部 ========= */}
