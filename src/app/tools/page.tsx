@@ -108,7 +108,7 @@ export default function ToolsPage() {
           ← ☘️返回
         </button>
         <h1>🍮 命令匣</h1>
-        <p className="tools-subtitle">（ps：部分卡片左上角有个'▼'，
+        <p className="tools-subtitle">Ps：部分卡片左上角有个'▼'，
           点它有惊喜(´▽`ʃƪ)ෆ！）</p>
       </div>
 
