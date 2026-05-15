@@ -98,7 +98,33 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   .replace(/【([^】]*?)】/g, '<span class="quote-green">【$1】</span>')
   .replace(/\u300E([^\u300F]*?)\u300F/g, '<span class="quote-green">\u300E$1\u300F</span>')
   .replace(
-    /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
+    /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g
+    .replace(/<div class="inline-cmd" data-cmd="([^"]*)"(?:\s+data-tool="([^"]*)")?><\/div>/g,
+  (_, cmd, tool) => {
+    const vars = cmd.match(/\{(.+?)\}/g) || [];
+    const inputsHtml = vars
+      .map((v: string) => {
+        const name = v.slice(1, -1);
+        return `<label class="icmd-label">${name}<input type="text" class="icmd-input" data-var="${name}" placeholder="${name}" /></label>`;
+      })
+      .join("");
+
+    const toolLink = tool
+      ? `<a href="/tools" class="icmd-toollink">🔧 在工具箱中查看</a>`
+      : "";
+
+    return `
+      <div class="icmd-block" data-template="${cmd.replace(/"/g, '"')}">
+        <pre class="icmd-preview"><code>${cmd}</code></pre>
+        ${inputsHtml ? `<div class="icmd-inputs">${inputsHtml}</div>` : ""}
+        <div class="icmd-actions">
+          <button class="icmd-copy">📋 复制</button>
+          ${toolLink}
+        </div>
+      </div>`;
+  }
+)
+,
     (_, lang, code) => {
       const decoded = code.replace(/</g, "<").replace(/>/g, ">").replace(/&/g, "&");
       const lines = decoded.trim().split("\n");
