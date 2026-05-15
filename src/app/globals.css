@@ -768,8 +768,8 @@ a {
 }
 
 .cmd-copy:hover {
-  background: rgba(234, 255, 173, 0.75);
-  color: #fff;
+  background: rgba(230, 255, 156, 0.75);
+  color: rgb(255, 173, 209);
 }
 
 .cmd-copy.copied {
