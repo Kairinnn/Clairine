@@ -1,3 +1,4 @@
+import InlineCmdScript from "@/components/InlineCmdScript";
 import { notFound } from "next/navigation";
 import Tag from "@/components/Tag";
 import PostContent from "@/components/PostContent";
@@ -127,9 +128,10 @@ export default async function PostPage({ params }: PageProps) {
       )}
     {/* ========= 🩷正文 ========= */}
       <PostContent html={post.contentHtml} />
+      <InlineCmdScript />
 
     {/* ========= 🩷底部导航 ========= */}
       <BottomNav prevPost={prevPost} nextPost={nextPost} />
-    </main>
-  );
-}
+        </main>
+       );
+     }
