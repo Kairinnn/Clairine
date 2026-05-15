@@ -727,7 +727,7 @@ a {
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
   font-size: 0.75rem;
-  background: var(--color-pink);
+  background: var(--color-pink-light);
   color: var(--color-green-dark);
   white-space: nowrap;
 }
