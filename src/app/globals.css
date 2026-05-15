@@ -197,7 +197,7 @@ a {
   color: inherit;
 }
 
-{/* ========= 🩷下划线 ========= */}
+/* ========= 🩷下划线 ========= */
 .post-content u {
   text-decoration: underline;
   text-decoration-color: var(--color-green);
@@ -205,7 +205,7 @@ a {
   text-decoration-thickness: 2px;
 }
 
-{/* ========= 🩷引号内高亮 ========= */}
+/* ========= 🩷引号内高亮 ========= */
 .post-content .quote-green {
   color: var(--color-text);
   font-weight: 500;
@@ -217,7 +217,7 @@ a {
   color: #C9DD96;
 }
 
-{/* ========= 🩷链接高亮 ========= */}
+/* ========= 🩷链接高亮 ========= */
 .post-content a {
   color: var(--color-text);
   text-decoration: none;
@@ -541,7 +541,7 @@ a {
   margin: 0;
 }
 
-{/* ========= 🩷tabs ========= */}
+/* ========= 🩷tabs ========= */
 
 .tools-tabs {
   display: flex;
@@ -571,7 +571,7 @@ a {
   font-weight: 600;
 }
 
-{/* ========= 🩷搜索框 ========= */}
+/* ========= 🩷搜索框 ========= */
 .cmd-search {
   width: 100%;
   padding: 0.6rem 1rem;
@@ -597,7 +597,7 @@ a {
   box-shadow: 0 0 0 3px rgba(129, 197, 32, 0.1);
 }
 
-{/* ========= 🩷分类按钮 ========= */}
+/* ========= 🩷分类按钮 ========= */
 
 .cmd-categories {
   display: flex;
@@ -634,7 +634,7 @@ a {
   color: var(--color-pink-dark);
 }
 
-{/* ========= 🩷命令行卡片 ========= */}
+/* ========= 🩷命令行卡片 ========= */
 
 .cmd-list {
   display: flex;
@@ -732,7 +732,7 @@ a {
   white-space: nowrap;
 }
 
-{/* ========= 🩷命令行本体 ========= */}
+/* ========= 🩷命令行本体 ========= */
 
 .cmd-code-row {
   display: flex;
@@ -752,7 +752,7 @@ a {
   padding: 0.35rem 0.5rem;
   border-radius: 8px;
 }
-{/* ========= 🩷复制 ========= */}
+/* ========= 🩷复制 ========= */
 .cmd-copy {
   padding: 0.2rem 0.6rem;
   border-radius: 8px;
@@ -785,7 +785,7 @@ a {
   margin: 0;
 }
 
-{/* ========= 🩷展开输入框 ========= */}
+/* ========= 🩷展开输入框 ========= */
 
 .cmd-inputs {
   margin-top: 0.625rem;
@@ -832,7 +832,7 @@ a {
   border-color: rgba(129, 197, 32, 0.5);
 }
 
-{/* ========= 🩷空输入 ========= */}
+/* ========= 🩷空输入 ========= */
 
 .cmd-empty {
   text-align: center;
@@ -1035,7 +1035,7 @@ a {
   margin: 0;
   font-family: inherit;
 }
-{/* ========= 🩷移动端 f-row ========= */}
+/* ========= 🩷移动端 f-row ========= */
 @media (max-width: 500px) {
   .fr-row {
     flex-direction: column;
