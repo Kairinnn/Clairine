@@ -3,7 +3,8 @@
 const categoryIcons: Record<string, string> = {
   "教程": "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png",
   "闲谈": "https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.png",
-  "安利": "https://i.postimg.cc/L8qXRQmX/heart.png",
+  "安利": "https://i.postimg.cc/L8qXRQmX/heart.png"
+  "关于": "https://i.postimg.cc/L8qXRQmX/envelope.png",
   // 继续加...
 };
 
@@ -157,7 +158,7 @@ export default function Sidebar({
             marginTop: "0.5rem",
             }}
          >
-           <span style={{ fontSize: "18px" }}>💬</span>
+           <span style={{ fontSize: "18px" }}></span>
          关于
         </a>
         {/* ========= 🩷底部 ========= */}
