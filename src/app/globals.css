@@ -150,22 +150,10 @@ a {
   line-height: 1.85;
 }
 
-.post-content .quote-green {
-  color: var(--color-text);
-  font-weight: 500;
-}
-
 .post-content p {
   margin: 1rem 0;
   line-height: 1.8;
   color: var(--color-text-secondary);
-}
-
-.post-content u {
-  text-decoration: underline;
-  text-decoration-color: var(--color-green);
-  text-underline-offset: 3px;
-  text-decoration-thickness: 2px;
 }
 
 .post-content ul {
@@ -201,21 +189,6 @@ a {
   color: #D8F984;
 }
 
-.post-content a {
-  color: var(--color-text);
-  text-decoration: none;
-  border-bottom: 1.5px solid rgba(255, 136, 197, 0.3);
-  padding-bottom: 1px;
-  transition: all 0.2s;
-}
-
-.post-content a:hover {
-  color: var(--color-text-secondary);
-  border-bottom-color: var(--color-pink);
-  background: rgba(255, 173, 220, 0.08);
-  border-radius: 2px;
-}
-
 /* ========= 🩷高亮 ========= */
 .post-content mark {
   background: linear-gradient(to top, #fff38bf9 40%, transparent 40%);
@@ -224,10 +197,48 @@ a {
   color: inherit;
 }
 
+{/* ========= 🩷下划线 ========= */}
+.post-content u {
+  text-decoration: underline;
+  text-decoration-color: var(--color-green);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+
+{/* ========= 🩷引号内高亮 ========= */}
+.post-content .quote-green {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
 /* ========= 🩷删除线 ========= */
 .post-content del {
   text-decoration: line-through;
   color: #C9DD96;
+}
+
+{/* ========= 🩷链接高亮 ========= */}
+.post-content a {
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1.5px solid rgba(255, 136, 197, 0.3);
+  padding-bottom: 1px;
+  transition: all 0.2s;
+}
+
+.post-content pre a,
+.post-content pre code a {
+  color: inherit !important;
+  border-bottom: none !important;
+  background: none !important;
+  pointer-events: none;
+}
+
+.post-content a:hover {
+  color: var(--color-text-secondary);
+  border-bottom-color: var(--color-pink);
+  background: rgba(255, 173, 220, 0.08);
+  border-radius: 2px;
 }
 
 /* ========= 🩷引用块 ========= */
