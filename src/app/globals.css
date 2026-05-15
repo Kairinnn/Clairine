@@ -541,7 +541,7 @@ a {
   margin: 0;
 }
 
-/* ========= tabs ========= */
+{/* ========= 🩷tabs ========= */}
 
 .tools-tabs {
   display: flex;
@@ -571,8 +571,7 @@ a {
   font-weight: 600;
 }
 
-/* ========= 搜索框 ========= */
-
+{/* ========= 🩷搜索框 ========= */}
 .cmd-search {
   width: 100%;
   padding: 0.6rem 1rem;
@@ -598,7 +597,7 @@ a {
   box-shadow: 0 0 0 3px rgba(129, 197, 32, 0.1);
 }
 
-/* ========= 分类按钮行 ========= */
+{/* ========= 🩷分类按钮 ========= */}
 
 .cmd-categories {
   display: flex;
@@ -635,7 +634,7 @@ a {
   color: var(--color-pink-dark);
 }
 
-/* ========= 命令卡片 ========= */
+{/* ========= 🩷命令行卡片 ========= */}
 
 .cmd-list {
   display: flex;
@@ -733,7 +732,7 @@ a {
   white-space: nowrap;
 }
 
-/* ========= 命令代码行 ========= */
+{/* ========= 🩷命令行本体 ========= */}
 
 .cmd-code-row {
   display: flex;
@@ -753,12 +752,12 @@ a {
   padding: 0.35rem 0.5rem;
   border-radius: 8px;
 }
-
+{/* ========= 🩷复制 ========= */}
 .cmd-copy {
   padding: 0.2rem 0.6rem;
   border-radius: 8px;
   border: 1.5px solid rgba(255, 173, 220, 0.5);
-  background: var(--color-text);
+  background: rgba(255,235,117);
   color: var(--color-text-secondary);
   font-size: 0.75rem;
   cursor: pointer;
@@ -769,12 +768,12 @@ a {
 }
 
 .cmd-copy:hover {
-  background: rgba(219, 255, 173, 0.75);
+  background: rgba(234, 255, 173, 0.75);
   color: #fff;
 }
 
 .cmd-copy.copied {
-  background: var(--color-text-secondary);
+  background: rgba(255,161.211);
   border-color: rgba(219, 255, 173, 0.6);
 }
 
@@ -786,7 +785,7 @@ a {
   margin: 0;
 }
 
-/* ========= 输入框展开区 ========= */
+{/* ========= 🩷展开输入框 ========= */}
 
 .cmd-inputs {
   margin-top: 0.625rem;
@@ -833,7 +832,7 @@ a {
   border-color: rgba(129, 197, 32, 0.5);
 }
 
-/* ========= 空状态 ========= */
+{/* ========= 🩷空输入 ========= */}
 
 .cmd-empty {
   text-align: center;
@@ -1036,8 +1035,7 @@ a {
   margin: 0;
   font-family: inherit;
 }
-
-/* 手机端 fr-row 竖排 */
+{/* ========= 🩷移动端 f-row ========= */}
 @media (max-width: 500px) {
   .fr-row {
     flex-direction: column;
