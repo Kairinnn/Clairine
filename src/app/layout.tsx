@@ -46,6 +46,11 @@ export default function RootLayout({
         <div className="bg-pattern" />
         <div className="bg-overlay" />
         {children}
+import ScrollTop from "@/components/ScrollTop";
+
+      // ...
+        {children}
+        <ScrollTop />
       </body>
     </html>
   );
