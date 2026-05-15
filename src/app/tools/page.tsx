@@ -107,7 +107,7 @@ export default function ToolsPage() {
         <button className="tools-back" onClick={() => router.push("/")}>
           ← ☘️返回
         </button>
-        <h1>🛠 工具箱</h1>
+        <h1>🍮 命令匣</h1>
         <p className="tools-subtitle">命令速查 & 查找替换</p>
       </div>
 
@@ -245,7 +245,7 @@ export default function ToolsPage() {
               <div className="cmd-empty">
                 {showFavOnly
                   ? "还没有收藏的命令欸…🍏"
-                  : "没找到…换个说法？:3"}
+                  : "没找到…换个说法嘛？"}
               </div>
             )}
           </div>
