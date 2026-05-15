@@ -23,8 +23,7 @@ export default async function PostPage({ params }: PageProps) {
   } catch {
     notFound();
   }
-
-  // 获取前后文章
+{/* ========= 🩷获取前后文章 ========= */}
   const allPosts = getAllPosts();
   const currentIndex = allPosts.findIndex((p) => p.slug === slug);
   const prevPost =
@@ -45,7 +44,7 @@ export default async function PostPage({ params }: PageProps) {
         animation: "pageIn 0.5s ease",
       }}
     >
-      {/* 🩷文章头 */}
+  {/* ========= 🩷文章头 ========= */}
       <div
         className="post-author-card"
         style={{
@@ -100,8 +99,7 @@ export default async function PostPage({ params }: PageProps) {
           </div>
         </div>
       </div>
-
-      {/* 🩷标题 */}
+  {/* ========= 🩷标题 ========= */}
       <h1
         style={{
           fontSize: "1.1rem",
@@ -112,8 +110,7 @@ export default async function PostPage({ params }: PageProps) {
       >
         {post.title}
       </h1>
-
-      {/* 🩷标签 */}
+  {/* ========= 🩷标签 ========= */}
       {post.tags.length > 0 && (
         <div
           style={{
@@ -128,11 +125,10 @@ export default async function PostPage({ params }: PageProps) {
           ))}
         </div>
       )}
-
-      {/* 🩷正文 */}
+    {/* ========= 🩷正文 ========= */}
       <PostContent html={post.contentHtml} />
 
-      {/* 🩷底部导航 */}
+    {/* ========= 🩷底部导航 ========= */}
       <BottomNav prevPost={prevPost} nextPost={nextPost} />
     </main>
   );
