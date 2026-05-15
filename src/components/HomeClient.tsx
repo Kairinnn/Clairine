@@ -101,7 +101,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             <div
               style={{
                 marginTop: "0.75rem",
-                fontSize: "0.925rem",
+                fontSize: "0.885rem",
                 color: "var(--color-text-secondary)",
                 display: "flex",
                 justifyContent: "center",
@@ -110,7 +110,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               }}
             >
               <span>🧡 Claude</span>
-              <span>🩷 08.11</span>
+              <span>🩷 AIGC·CSS·HTML</span>
               <span
                 onClick={() => setShowQR(!showQR)}
                 style={{
@@ -156,7 +156,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
                       marginTop: "0.5rem",
                     }}
                   >
-                    哇可以扫码欸!! (ᗒ𖥦ᗕ)՞⊹
+                    彩蛋！！哇可以扫码欸(ᗒ𖥦ᗕ)՞⊹
                   </p>
                 </div>
               </div>
