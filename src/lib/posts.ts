@@ -94,11 +94,9 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   .replace(/~~(.+?)~~/g, "<del>$1</del>")
   .replace(/==(.+?)==/g, "<mark>$1</mark>")
   .replace(/\+\+(.+?)\+\+/g, "<u>$1</u>")
-   .replace(/\u201C([^\u201D]*?)\u201D/g, '<span class="quote-green">\u201C$1\u201D</span>')
+  .replace(/\u201C([^\u201D]*?)\u201D/g, '<span class="quote-green">\u201C$1\u201D</span>')
   .replace(/【([^】]*?)】/g, '<span class="quote-green">【$1】</span>')
   .replace(/\u300E([^\u300F]*?)\u300F/g, '<span class="quote-green">\u300E$1\u300F</span>')
-  .replace(
-    /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g
   .replace(
     /<div class="inline-cmd" data-cmd="([^"]*)"(?:\s+data-tool="([^"]*)")?><\/div>/g,
     (_, cmd, tool) => {
@@ -109,6 +107,33 @@ export async function getPostBySlug(slug: string): Promise<Post> {
           return `<label class="icmd-label">${name}<input type="text" class="icmd-input" data-var="${name}" placeholder="${name}" /></label>`;
         })
         .join("");
+      const toolLink = tool
+        ? `<a href="/tools" class="icmd-toollink">🔧 在工具箱中查看</a>`
+        : "";
+      return `
+        <div class="icmd-block" data-template="${cmd.replace(/"/g, '"')}">
+          <pre class="icmd-preview"><code>${cmd}</code></pre>
+          ${inputsHtml ? `<div class="icmd-inputs">${inputsHtml}</div>` : ""}
+          <div class="icmd-actions">
+            <button class="icmd-copy">📋 复制</button>
+            ${toolLink}
+          </div>
+        </div>`;
+    }
+  )
+  .replace(
+    /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
+    (_, lang, code) => {
+      const decoded = code.replace(/</g, "<").replace(/>/g, ">").replace(/&/g, "&");
+      const lines = decoded.trim().split("\n");
+      const numbered = lines
+        .map((line: string, i: number) =>
+          `<span class="code-line"><span class="line-number">${i + 1}</span><span class="line-content">${line || " "}</span></span>`
+        )
+        .join("");
+      return `<pre><code${lang ? ` class="${lang}"` : ""}>${numbered}</code></pre>`;
+    }
+  );
       const toolLink = tool
         ? `<a href="/tools" class="icmd-toollink">🔧 在工具箱中查看</a>`
         : "";
