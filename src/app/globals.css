@@ -301,7 +301,102 @@ a {
 .line-content {
   color: rgba(166,224,77);
 }
+/* ========= 🩷文章内嵌命令块 ========= */
+.icmd-block {
+  margin: 1.25rem 0;
+  border-radius: 14px;
+  border: 2px solid rgba(129, 197, 32, 0.35);
+  background: rgba(129, 197, 32, 0.06);
+  overflow: hidden;
+}
 
+.icmd-preview {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  background: rgba(129, 197, 32, 0.55);
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.icmd-preview code {
+  color: #fff;
+  font-size: 0.825rem;
+  background: none !important;
+  padding: 0 !important;
+}
+
+.icmd-inputs {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.icmd-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  flex: 1;
+  min-width: 120px;
+}
+
+.icmd-input {
+  padding: 0.4rem 0.625rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(129, 197, 32, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.icmd-input:focus {
+  border-color: var(--color-text-secondary);
+}
+
+.icmd-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-top: 1px dashed rgba(129, 197, 32, 0.2);
+}
+
+.icmd-copy {
+  padding: 0.3rem 0.75rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 173, 220, 0.4);
+  background: rgba(255, 214, 236, 0.5);
+  color: #ff86b8;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.icmd-copy:hover {
+  background: rgba(255, 173, 220, 0.65);
+  color: #fff;
+}
+
+.icmd-toollink {
+  font-size: 0.725rem;
+  color: var(--color-text) !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.icmd-toollink:hover {
+  opacity: 1;
+}
 /* ========= 🩷复制按钮 ========= */
 .copy-btn {
   position: absolute;
