@@ -8,9 +8,15 @@ export default function InlineCmdScript() {
 
     blocks.forEach((block) => {
       const template = block.dataset.template || "";
-      const preview = block.querySelector(".icmd-preview code");
-      const inputs = block.querySelectorAll<HTMLInputElement>(".icmd-input");
-      const copyBtn = block.querySelector<HTMLButtonElement>(".icmd-copy");
+      const name = block.dataset.name || "";
+       if (name && !block.querySelector(".icmd-title")) {
+        const titleEl = document.createElement("div");
+         titleEl.className = "icmd-title";
+        titleEl.textContent = name;
+       block.insertBefore(titleEl, block.firstChild);
+     const preview = block.querySelector(".icmd-preview code");
+    const inputs = block.querySelectorAll<HTMLInputElement>(".icmd-input");
+   const copyBtn = block.querySelector<HTMLButtonElement>(".icmd-copy");
 
       const update = () => {
         let result = template;
