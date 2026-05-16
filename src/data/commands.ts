@@ -11,7 +11,7 @@ export const commands: Command[] = [
   // ===== 🎨 ComfyUI =====
   {
     title: "SSH远程连接+端口转发",
-    cmd: "ssh -L {本地端口}:127.0.0.1:{远程端口} -p {SSH端口} {用户名}@{服务器地址}",
+    cmd: "ssh -L {本地端口}:127.0.0.1:{远程端口} -p {SSH端口} {用户名}@{服务器ip}",
     desc: "连上服务器同时把远程端口映射到本地，连完浏览器访问 localhost:{本地端口}",
     category: ["Autodl", "ComfyUI"],
     system: "Linux",
@@ -19,16 +19,16 @@ export const commands: Command[] = [
   },
   {
     title: "启动ComfyUI",
-    cmd: "cd /root/ComfyUI/ && python main.py --listen 0.0.0.0 --port {端口}",
-    desc: "进入ComfyUI目录并启动，--listen 0.0.0.0 允许外部访问",
+    cmd: "cd {ComfyUI目录路径} && python main.py --listen 0.0.0.0 --port {端口}",
+    desc: "进入ComfyUI目录并启动，--listen 0.0.0.0：允许外部访问",
     category: "ComfyUI",
     system: "Linux",
     chain: "comfyui-setup",
   },
   {
-    title: "Civitai模型下载（Autodl加速）",
-    cmd: "cd {下载目标路径} && source /etc/network_turbo && wget -c \"{下载链接}\" -O {模型文件名}",
-    desc: "先切目录开加速再断点续传，链接从Civitai复制，文件名记得带后缀（如'.safetensors'）",
+    title: "Civitai下载资源（Autodl加速）",
+    cmd: "cd {下载目标路径} && source /etc/network_turbo && wget -c \"{下载直链}\" -O {带后缀的文件名}",
+    desc: "切目录开加速，断点续传。从Civitai复制直链，资源文件名记得带上后缀（如'.safetensors'）",
     category: "ComfyUI",
     system: "Linux",
     chain: "comfyui-setup",
@@ -77,7 +77,46 @@ export const commands: Command[] = [
     category: "文件操作",
     system: "Linux",
   },
-
+{
+    title: "安装unzip",
+    cmd: "apt install unzip -y",
+    desc: "unzip是一个解压缩文件和文件夹的命令行工具",
+    category: "文件操作",
+    system: "通用",
+    chain: "unzip",
+  },
+{
+    title: "安装zip",
+    cmd: "apt install zip -y",
+    desc: "zip是一个用于压缩文件和文件夹的命令行工具",
+    category: "文件操作",
+    system: "通用",
+    chain: "zip",
+  },
+{
+    title: "使用zip压缩文件",
+    cmd: "cd {路径} && zip {压缩包命名}.zip *.{文件类型}",
+    desc: "要压缩所有文件就在类型处填'all'~",
+    category: "文件操作",
+    system: "通用",
+    chain: "zip",
+  },
+{
+    title: "使用unzip解压文件到对应路径",
+    cmd: "unzip {文件名}.zip -d {要解压到的路径}",
+    desc: "解压文件到指定路径，只在文件所在目录解压则无需添加' -d {要解压到的路径}'",
+    category: "文件操作",
+    system: "通用",
+    chain: "unzip",
+  },
+{
+    title: "列出zip文件内容",
+    cmd: "unzip -l {文件名}.zip",
+    desc: "不需要解压就能看喔！",
+    category: "文件操作",
+    system: "通用",
+    chain: "unzip",
+  },
   // ===== 📦 文件传输 =====
   {
     title: "从服务器下载单个文件",
@@ -93,7 +132,13 @@ export const commands: Command[] = [
     category: "文件传输",
     system: "Linux",
   },
-
+  {
+    title: "从URL下载文件",
+    cmd: "wget {URL}",
+    desc: "从链接下载文件到当前目录",
+    category: "文件传输",
+    system: "Linux",
+  },
   // ===== 💀 进程管理 =====
   {
     title: "按进程名暴力杀",
@@ -119,20 +164,26 @@ export const commands: Command[] = [
     system: "通用",
   },
   {
-    title: "从URL下载文件",
-    cmd: "wget {URL}",
-    desc: "从链接下载文件到当前目录",
-    category: "文件传输",
-    system: "Linux",
-  },
-  {
     title: "查看端口占用",
     cmd: "lsof -i:{端口号}",
     desc: "看看某个端口被哪个进程占着",
     category: "进程管理",
     system: "Linux",
   },
-
+ {
+    title: "查看进程",
+    cmd: "ps aux | grep {关键词}",
+    desc: "找到正在跑的某个进程",
+    category: "系统",
+    system: "Linux",
+  },
+  {
+    title: "按PID杀进程",
+    cmd: "kill -9 {PID}",
+    desc: "-9 强制杀，温柔点请用 kill {PID}~",
+    category: "系统",
+    system: "Linux",
+  },
   // ===== 🐳 Docker =====
   {
     title: "查看运行中的容器",
@@ -170,42 +221,8 @@ export const commands: Command[] = [
     system: "通用",
   },
 
-  // ===== 🧠 Swap管理 =====
-  {
-    title: "创建并启用Swap",
-    cmd: "sudo fallocate -l {大小G}G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile",
-    desc: "一条龙：创建→权限→格式化→启用，比如填 4 就是4GB。可以用 free -h 验证结果",
-    category: "Swap管理",
-    system: "Linux",
-    chain: "swap-setup",
-  },
-  {
-    title: "Swap开机自动挂载",
-    cmd: "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab",
-    desc: "写进fstab，重启后不用再手动开swap",
-    category: "Swap管理",
-    system: "Linux",
-    chain: "swap-setup",
-  },
-  {
-    title: "设置Swappiness（临时）",
-    cmd: "sudo sysctl vm.swappiness={值}",
-    desc: "值越小则越少用swap，推荐10。重启后失效~",
-    category: "Swap管理",
-    system: "Linux",
-    chain: "swap-config",
-  },
-  {
-    title: "设置Swappiness（永久）",
-    cmd: "echo 'vm.swappiness={值}' | sudo tee -a /etc/sysctl.conf",
-    desc: "写进配置文件，重启也会生效",
-    category: "Swap管理",
-    system: "Linux",
-    chain: "swap-config",
-  },
-
-  // ===== 📊 系统 =====
-  {
+  // ===== 🧠 内存管理 =====
+ {
     title: "查看磁盘空间",
     cmd: "df -h",
     desc: "以人类可读格式来显示磁盘占用",
@@ -220,18 +237,36 @@ export const commands: Command[] = [
     system: "Linux",
   },
   {
-    title: "查看进程",
-    cmd: "ps aux | grep {关键词}",
-    desc: "找到正在跑的某个进程",
-    category: "系统",
+    title: "创建并启用Swap",
+    cmd: "sudo fallocate -l {大小G}G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile",
+    desc: "一条龙：创建→权限→格式化→启用，比如填 4 就是4GB。可以用 free -h 验证结果",
+    category: "内存管理",
     system: "Linux",
+    chain: "swap-setup",
   },
   {
-    title: "按PID杀进程",
-    cmd: "kill -9 {PID}",
-    desc: "-9 强制杀，温柔点请用 kill {PID}~",
-    category: "系统",
+    title: "Swap开机自动挂载",
+    cmd: "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab",
+    desc: "写进fstab，重启后不用再手动开swap",
+    category: "内存管理",
     system: "Linux",
+    chain: "swap-setup",
+  },
+  {
+    title: "设置Swappiness（临时）",
+    cmd: "sudo sysctl vm.swappiness={值}",
+    desc: "值越小则越少用swap，推荐10。重启后失效~",
+    category: "内存管理",
+    system: "Linux",
+    chain: "swap-config",
+  },
+  {
+    title: "设置Swappiness（永久）",
+    cmd: "echo 'vm.swappiness={值}' | sudo tee -a /etc/sysctl.conf",
+    desc: "写进配置文件，重启也生效",
+    category: "内存管理",
+    system: "Linux",
+    chain: "swap-config",
   },
 
   // ✅ 加新命令？复制这个模板往上贴：
@@ -240,5 +275,6 @@ export const commands: Command[] = [
   //   cmd: "实际命令 {可替换的变量}",
   //   desc: "这条命令干嘛的",
   //   category: "分类名",
+  //   chain: "链接组名",",
   // },
 ];

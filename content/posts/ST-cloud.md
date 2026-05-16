@@ -5,13 +5,14 @@ tags: ["教程","酒馆"]
 category: "教程"
 ---
 
-# ![show](/images/show.gif)你需要准备的：
+# 你需要准备的![show](/images/show.gif)：
 
 >一台服务器，支持SSH连接的方便的终端，一个懂IT的帮手（比如Claude），以在报错和卡住的时候提供24小时救驾服务。和一颗执着的心🩷......
 如果还没有服务器，去搞一台。（嗯。
 Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒服一点w
 
->[🩷Termius汉化版-Android终端（点我！](https://wwauk.lanzouq.com/ix2bJ3ph5rpi)
+>[🩷Termius汉化版-Android终端（点我！）](https://wwauk.lanzouq.com/ix2bJ3ph5rpi)
+🔑：rinn
 
 好啦咱们开始吧！！![start](/images/wave.gif)
 
