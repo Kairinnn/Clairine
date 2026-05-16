@@ -69,7 +69,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
               }}
             >
               <img
-                src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
+                src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
                 alt="头像"
                 style={{
                   width: "60px",
@@ -101,7 +101,7 @@ export default function HomeClient({ posts, categories }: HomeClientProps) {
             <div
               style={{
                 marginTop: "0.75rem",
-                fontSize: "0.82rem",
+                fontSize: "0.72rem",
                 color: "var(--color-text-secondary)",
                 display: "flex",
                 justifyContent: "center",
