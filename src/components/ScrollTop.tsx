@@ -20,13 +20,10 @@ export default function ScrollTop() {
         bottom: "1.5rem",
         right: "1.5rem",
         zIndex: 100,
-        width: "40px",
-        height: "40px",
-        borderRadius: "50%",
-        border: "2px solid rgba(129,197,32,0.35)",
-        background: "rgba(255,255,255,0.85)",
-        color: "#81C520",
-        fontSize: "1.1rem",
+        width: "44px",
+        height: "44px",
+        border: "none",
+        background: "transparent",
         cursor: "pointer",
         display: "flex",
         alignItems: "center",
@@ -35,10 +32,22 @@ export default function ScrollTop() {
         pointerEvents: show ? "auto" : "none",
         transform: show ? "translateY(0)" : "translateY(10px)",
         transition: "all 0.3s ease",
-        boxShadow: "0 2px 12px rgba(129,197,32,0.1)",
+        filter: "drop-shadow(0 2px 6px rgba(255,173,209,0.25)) drop-shadow(0 1px 3px rgba(129,197,32,0.1))",
+        padding: 0,
       }}
     >
-      ↑
+      <img
+        src="https://i.postimg.cc/FHCCfKQd/cake.png"
+        alt="回顶"
+        style={{
+          width: "38px",
+          height: "38px",
+          objectFit: "contain",
+          transition: "transform 0.25s ease",
+        }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.12)"; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; }}
+      />
     </button>
   );
 }

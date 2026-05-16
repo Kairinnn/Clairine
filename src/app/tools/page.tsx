@@ -33,6 +33,8 @@ export default function ToolsPage() {
   const [inputValues, setInputValues] = useState<Record<string, string>>({});
   const [favs, setFavs] = useState<Set<string>>(new Set());
   const [showFavOnly, setShowFavOnly] = useState(false);
+  const [activeSystem, setActiveSystem] = useState<string | null>(null);
+  const [showChain, setShowChain] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -52,14 +54,27 @@ export default function ToolsPage() {
   }, []);
 
   const categories = useMemo(
-  () => [...new Set(commands.flatMap((c) => getCats(c)))],
-  []
-);
+    () => [...new Set(commands.flatMap((c) => getCats(c)))],
+    []
+  );
+
+  const systems = useMemo(
+    () => [...new Set(commands.map((c) => c.system).filter(Boolean))] as string[],
+    []
+  );
+
+  // 根据chain获取关联命令
+  const getChainCommands = (chainId: string, currentTitle: string) => {
+    return commands.filter((c) => c.chain === chainId && c.title !== currentTitle);
+  };
 
   const filtered = useMemo(() => {
     let list = commands;
     if (showFavOnly) {
       list = list.filter((c) => favs.has(c.title));
+    }
+    if (activeSystem) {
+      list = list.filter((c) => c.system === activeSystem);
     }
     if (activeCategory) {
       list = list.filter((c) => getCats(c).includes(activeCategory!));
@@ -74,7 +89,7 @@ export default function ToolsPage() {
       );
     }
     return list;
-  }, [search, activeCategory, showFavOnly, favs]);
+  }, [search, activeCategory, activeSystem, showFavOnly, favs]);
 
   const handleExpand = (title: string) => {
     if (expandedTitle === title) {
@@ -107,7 +122,7 @@ export default function ToolsPage() {
         <button className="tools-back" onClick={() => router.push("/")}>
           ← ☘️返回
         </button>
-        <h1>🍮 命令匣</h1>
+        <h1>🧀 命令匣</h1>
         <p className="tools-subtitle">Ps：部分卡片左上角有个'▼'，
           点它有惊喜(´▽`ʃƪ)ෆ！）</p>
       </div>
@@ -137,6 +152,26 @@ export default function ToolsPage() {
             onChange={(e) => setSearch(e.target.value)}
           />
 
+          {/* 系统大分类 */}
+          <div className="cmd-systems">
+            <button
+              className={`cmd-sys ${!activeSystem ? "active" : ""}`}
+              onClick={() => setActiveSystem(null)}
+            >
+              🌐 全平台
+            </button>
+            {systems.map((sys) => (
+              <button
+                key={sys}
+                className={`cmd-sys ${activeSystem === sys ? "active" : ""}`}
+                onClick={() => setActiveSystem(activeSystem === sys ? null : sys)}
+              >
+                {sys === "Linux" ? "🐧" : sys === "Windows" ? "🪟" : "🔄"} {sys}
+              </button>
+            ))}
+          </div>
+
+          {/* 功能分类 */}
           <div className="cmd-categories">
             <button
               className={`cmd-cat ${!activeCategory && !showFavOnly ? "active" : ""}`}
@@ -221,7 +256,36 @@ export default function ToolsPage() {
                     </button>
                   </div>
 
-                  <p className="cmd-desc">{c.desc}</p>
+                  <div className="cmd-meta-row">
+                    <p className="cmd-desc">{c.desc}</p>
+                    {c.system && (
+                      <span className={`cmd-sys-badge cmd-sys-badge-${c.system === "Linux" ? "linux" : c.system === "Windows" ? "win" : "all"}`}>
+                        {c.system}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* 关联命令 */}
+                  {c.chain && (
+                    <div className="cmd-chain">
+                      <button
+                        className="cmd-chain-toggle"
+                        onClick={() => setShowChain(showChain === c.title ? null : c.title)}
+                      >
+                        🔗 关联命令 ({getChainCommands(c.chain, c.title).length})
+                      </button>
+                      {showChain === c.title && (
+                        <div className="cmd-chain-list">
+                          {getChainCommands(c.chain, c.title).map((rc) => (
+                            <div key={rc.title} className="cmd-chain-item">
+                              <span className="cmd-chain-item-title">{rc.title}</span>
+                              <code className="cmd-chain-item-code">{rc.cmd}</code>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
 
                   {isExpanded && hasPH && (
                     <div className="cmd-inputs">

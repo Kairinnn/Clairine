@@ -89,7 +89,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark().use(html, { sanitize: false }).process(content);
   const contentHtml = processedContent.toString()
     .replace(/~~(.+?)~~/g, "<del>$1</del>")
     .replace(/==(.+?)==/g, "<mark>$1</mark>")
@@ -108,7 +108,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
           })
           .join("");
         const toolLink = tool
-          ? `<a href="/tools" class="icmd-toollink">🍮 在命令匣中查看</a>`
+          ? `<a href="/tools" class="icmd-toollink">🧀 在命令匣中查看</a>`
           : "";
         return `
           <div class="icmd-block" data-template="${(cmd as string).replace(/"/g, '"')}">

@@ -52,12 +52,12 @@ export default function Sidebar({
           position: "fixed",
           top: 0,
           left: 0,
-          width: "min(260px, 65vw)",
-          height: "100dvh",
+          width: "42px",
+          height: "41px",
           zIndex: 200,
           background:
             "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,245,250,0.96) 100%)",
-          borderRight: "2px solid rgba(222,255,163,0.4)",
+          borderRight: "2px solid #d3f49a",
           boxShadow: isOpen
             ? "4px 0 24px rgba(251,168,215,0.15)"
             : "none",

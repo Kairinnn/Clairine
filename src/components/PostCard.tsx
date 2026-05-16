@@ -134,7 +134,7 @@ export default function PostCard({
                     "rgba(255, 247, 163, 0.45)",
                   ][colorIndex];
                   const fg = [
-                    "#a3e449",
+                    "#96b54c",
                     "#ff86b8",
                     "#FF99C3",
                   ][colorIndex];
