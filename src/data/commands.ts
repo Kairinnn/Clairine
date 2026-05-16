@@ -45,21 +45,21 @@ export const commands: Command[] = [
   {
     title: "复制文件/文件夹",
     cmd: "cp -r {源路径} {目标路径}",
-    desc: "递归复制，文件夹也能整个端走",
+    desc: "递归复制，文件夹也整个端走",
     category: "文件操作",
     system: "Linux",
   },
   {
     title: "移动/重命名",
     cmd: "mv {旧路径} {新路径}",
-    desc: "移动文件，也可以用来重命名",
+    desc: "移动文件，可以用来重命名",
     category: "文件操作",
     system: "Linux",
   },
   {
     title: "删除文件",
     cmd: "rm -rf {路径}",
-    desc: "强制递归删除，⚠️ 没有回收站，删了就没了",
+    desc: "强制递归删除，⚠️ 无回收站，删了就没了！!",
     category: "文件操作",
     system: "Linux",
   },
@@ -73,7 +73,7 @@ export const commands: Command[] = [
   {
     title: "写入文件（heredoc）",
     cmd: "cat > {文件路径} << 'EOF'",
-    desc: "回车后粘贴内容，最后单独一行输入 EOF 回车结束。适合远程粘贴整段代码/配置",
+    desc: "回车后粘贴内容，最后单独一行输入 EOF 回车结束。适合远程撰写一大段代码",
     category: "文件操作",
     system: "Linux",
   },
@@ -81,14 +81,14 @@ export const commands: Command[] = [
   // ===== 📦 文件传输 =====
   {
     title: "从服务器下载单个文件",
-    cmd: "scp {用户名}@{服务器地址}:{远程文件路径} {本地路径}",
+    cmd: "scp {用户名}@{服务器ip}:{远程文件路径} {本地路径}",
     desc: "把服务器上的一个文件拉到本地",
     category: "文件传输",
     system: "Linux",
   },
   {
     title: "从服务器下载整个文件夹",
-    cmd: "scp -r {用户名}@{服务器地址}:{远程文件夹路径} {本地路径}",
+    cmd: "scp -r {用户名}@{服务器ip}:{远程文件夹路径} {本地路径}",
     desc: "-r 递归下载，整个文件夹连子目录一起拉下来",
     category: "文件传输",
     system: "Linux",
@@ -96,14 +96,14 @@ export const commands: Command[] = [
 
   // ===== 💀 进程管理 =====
   {
-    title: "按进程名强杀",
+    title: "按进程名暴力杀",
     cmd: "pkill -9 -f {进程名}",
-    desc: "找到所有包含该关键词的进程然后强制杀掉",
+    desc: "找到所有包含该关键词的进程然后强制干掉",
     category: "进程管理",
     system: "Linux",
   },
   {
-    title: "按端口强杀",
+    title: "按端口暴力杀",
     cmd: "fuser -k {端口}/tcp",
     desc: "直接干掉占着某个端口的进程",
     category: "进程管理",
@@ -114,22 +114,22 @@ export const commands: Command[] = [
   {
     title: "测试连通性",
     cmd: "ping {域名或IP}",
-    desc: "看看能不能连上目标地址，Ctrl+C 停",
+    desc: "看看能不能连上目标地址，Ctrl+C 停止",
     category: "网络",
     system: "通用",
   },
   {
-    title: "下载文件",
+    title: "从URL下载文件",
     cmd: "wget {URL}",
     desc: "从链接下载文件到当前目录",
-    category: "网络",
+    category: "文件传输",
     system: "Linux",
   },
   {
     title: "查看端口占用",
     cmd: "lsof -i:{端口号}",
     desc: "看看某个端口被哪个进程占着",
-    category: "网络",
+    category: "进程管理",
     system: "Linux",
   },
 
@@ -151,7 +151,7 @@ export const commands: Command[] = [
   {
     title: "停止容器",
     cmd: "docker stop {容器ID}",
-    desc: "优雅地停掉一个容器",
+    desc: "优雅地停掉一个容器💅",
     category: "Docker",
     system: "通用",
   },
@@ -174,7 +174,7 @@ export const commands: Command[] = [
   {
     title: "创建并启用Swap",
     cmd: "sudo fallocate -l {大小G}G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile",
-    desc: "一条走完创建→权限→格式化→启用，比如填 4 就是4GB。完了用 free -h 验证",
+    desc: "一条龙：创建→权限→格式化→启用，比如填 4 就是4GB。可以用 free -h 验证结果",
     category: "Swap管理",
     system: "Linux",
     chain: "swap-setup",
@@ -182,7 +182,7 @@ export const commands: Command[] = [
   {
     title: "Swap开机自动挂载",
     cmd: "echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab",
-    desc: "写进fstab，重启后swap还在不用再手动开",
+    desc: "写进fstab，重启后不用再手动开swap",
     category: "Swap管理",
     system: "Linux",
     chain: "swap-setup",
@@ -190,7 +190,7 @@ export const commands: Command[] = [
   {
     title: "设置Swappiness（临时）",
     cmd: "sudo sysctl vm.swappiness={值}",
-    desc: "值越小越少用swap，推荐10。重启后失效",
+    desc: "值越小则越少用swap，推荐10。重启后失效~",
     category: "Swap管理",
     system: "Linux",
     chain: "swap-config",
@@ -198,7 +198,7 @@ export const commands: Command[] = [
   {
     title: "设置Swappiness（永久）",
     cmd: "echo 'vm.swappiness={值}' | sudo tee -a /etc/sysctl.conf",
-    desc: "写进配置文件，重启也生效",
+    desc: "写进配置文件，重启也会生效",
     category: "Swap管理",
     system: "Linux",
     chain: "swap-config",
@@ -208,14 +208,14 @@ export const commands: Command[] = [
   {
     title: "查看磁盘空间",
     cmd: "df -h",
-    desc: "人类可读格式显示磁盘占用",
+    desc: "以人类可读格式来显示磁盘占用",
     category: "系统",
     system: "Linux",
   },
   {
     title: "查看内存",
     cmd: "free -h",
-    desc: "你那个2G内存……看了可能会心痛",
+    desc: "哦不我的内存……",
     category: "系统",
     system: "Linux",
   },
@@ -229,7 +229,7 @@ export const commands: Command[] = [
   {
     title: "按PID杀进程",
     cmd: "kill -9 {PID}",
-    desc: "-9 强制杀，温柔点用 kill {PID}",
+    desc: "-9 强制杀，温柔点请用 kill {PID}~",
     category: "系统",
     system: "Linux",
   },
