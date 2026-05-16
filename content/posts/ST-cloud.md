@@ -5,17 +5,15 @@ tags: ["教程","酒馆"]
 category: "教程"
 ---
 
-# # ![show](/images/show.gif)你需要准备的：
+# ![show](/images/show.gif)你需要准备的：
 
 >一台服务器，支持SSH连接的方便的终端，一个懂IT的帮手（比如Claude），以在报错和卡住的时候提供24小时救驾服务。和一颗执着的心🩷......
 如果还没有服务器，去搞一台。（嗯。
 Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒服一点w
 
->[🩷Termius汉化版-Android终端（点我！）
+>[🩷Termius汉化版-Android终端（点我！](https://wwauk.lanzouq.com/ix2bJ3ph5rpi)
 
-🔑：rinn](https://wwauk.lanzouq.com/ix2bJ3ph5rpi)
-
-好啦开始吧！！![start](/images/wave.gif)
+好啦咱们开始吧！！![start](/images/wave.gif)
 
 ---
 
@@ -84,7 +82,7 @@ cd SillyTavern
 
 ☘️npm跟上——`npm install`
 
-ST的基建就搭好啦！！[cheers](/images/cheering.gif)
+ST的基建就搭好啦！！
 
 ☘️现在跑一下测试测试：`node server.js`
 
@@ -98,11 +96,11 @@ ST的基建就搭好啦！！[cheers](/images/cheering.gif)
 在移动端用nano编辑器会异常不方便。。所以最好还是用电脑啊！！）
 
 
-☘️找到<u>listen<u>（监听），把=false=改成=true=：
+☘️找到<u>listen</u>（监听），把=false=改成=true=：
 
 >listen: =true=
 
-* 留意一下host的地址也得是：<u>【host: 0.0.0.0】<u>喔！
+* 留意一下host的地址也得是：<u>【host: 0.0.0.0】</u>喔！
 
 
 
