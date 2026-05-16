@@ -588,12 +588,12 @@ a {
 }
 
 .cmd-search::placeholder {
-  color: var(--color-text);
+  color: var(--color-text-secondary);
   opacity: 0.5;
 }
 
 .cmd-search:focus {
-  border-color: #acc99899;
+  border-color: rgba(255, 171, 220, 0.808);
   box-shadow: 0 0 0 3px #ffc3e833;
 }
 
