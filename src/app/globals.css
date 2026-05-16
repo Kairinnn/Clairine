@@ -291,7 +291,7 @@ a {
   padding: 1rem 1.25rem;
   padding-right: 4.5rem;
   overflow-x: auto;
-  color: rgba(255, 255, 51, 0.88);
+  color: rgb(255, 255, 51);
   font-size: 0.85rem;
   line-height: 1;
   background: none;
@@ -327,6 +327,16 @@ a {
   padding: 0.875rem 1rem;
   transition: all 0.25s ease;
   position: relative;
+}
+
+.icmd-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding: 0.35rem 0.6rem 0.3rem;
+  border-bottom: 1px solid rgba(129, 197, 32, 0.15);
+  letter-spacing: 0.02em;
+  user-select: none;
 }
 
 .icmd-copy {
@@ -366,7 +376,7 @@ a {
   font-family: var(--font-mono, "SFMono-Regular", "Consolas", monospace) !important;
   font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--color-green-dark);
+  color: rgb(255, 255, 51);
   word-break: break-all;
   background: rgba(129, 197, 32, 0.06) !important;
   padding: 0.35rem 0.5rem !important;
