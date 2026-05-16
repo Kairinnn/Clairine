@@ -52,8 +52,8 @@ export default function Sidebar({
           position: "fixed",
           top: 0,
           left: 0,
-          width: "42px",
-          height: "41px",
+          width: "min(260px, 65vw)",
+          height: "100dvh",
           zIndex: 200,
           background:
             "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,245,250,0.96) 100%)",
