@@ -326,11 +326,30 @@ a {
   overflow: hidden;
   padding: 0.875rem 1rem;
   transition: all 0.25s ease;
+  position: relative;
 }
 
-.icmd-block:hover {
-  border-color: rgba(255, 184, 242, 0.4);
-  box-shadow: 0 2px 12px rgba(129, 197, 32, 0.06);
+.icmd-copy {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.4rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1.5px solid rgba(255, 173, 220, 0.5);
+  background: rgba(255, 214, 236, 0.85);
+  color: #ff86b8;
+  font-size: 0.68rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s;
+  min-width: 2.2rem;
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+}
+
+.icmd-block:hover .icmd-copy {
+  opacity: 1;
 }
 
 .icmd-preview {
