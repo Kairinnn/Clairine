@@ -85,7 +85,7 @@ export default async function PostPage({ params }: PageProps) {
           </div>
           <div
             style={{
-              fontSize: "0.90rem",
+              fontSize: "0.85rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
               display: "flex",
@@ -102,8 +102,8 @@ export default async function PostPage({ params }: PageProps) {
   {/* ========= 🩷标题 ========= */}
       <h1
         style={{
-          fontSize: "1.1rem",
-          fontWeight: 700,
+          fontSize: "1.6rem",
+          fontWeight: 600,
           lineHeight: 1.4,
           marginBottom: "0.5rem",
         }}
