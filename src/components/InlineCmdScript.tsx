@@ -14,22 +14,24 @@ export default function InlineCmdScript() {
       const copyBtn = block.querySelector<HTMLButtonElement>(".icmd-copy");
 
       const update = () => {
-       let result = template;
-        inputs.forEach((input) => {
-         const varName = input.dataset.var || "";
-           const val = input.value.trim();
-          result = result.replaceAll(
-         `{${varName}}`,
-        val || `{${varName}}`
-       );
-      });
-     if (preview) {
-      preview.innerHTML = result.replace(
-       /\{([^}]+)\}/g,
-       '<span class="icmd-var">$&</span>'
-       );
-      }
-     };
+  let result = template;
+  inputs.forEach((input) => {
+    const varName = input.dataset.var || "";
+    const val = input.value.trim();
+    if (val) {
+      result = result.replaceAll(
+        `{${varName}}`,
+        `<span class="icmd-var-filled">${val}</span>`
+      );
+    }
+  });
+  if (preview) {
+    preview.innerHTML = result.replace(
+      /\{([^}]+)\}/g,
+      '<span class="icmd-var">$&</span>'
+    );
+  }
+};
 
       inputs.forEach((input) => input.addEventListener("input", update));
 
@@ -42,6 +44,8 @@ export default function InlineCmdScript() {
             input.value.trim() || `{${varName}}`
           );
         });
+        
+        update();
         navigator.clipboard.writeText(result).then(() => {
           if (copyBtn) {
             copyBtn.textContent = "🩷 已复制";
