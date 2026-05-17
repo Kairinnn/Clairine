@@ -276,6 +276,7 @@ a {
   padding: 0.15rem 0.4rem;
   border-radius: 7.5px;
   font-size: 0.97rem;
+  font-weight: bold;
   color: var(--color-text-secondary);
 }
 /* ========= 🩷代码块 ========= */
@@ -343,7 +344,7 @@ a {
 }
 
 .icmd-title {
-  font-size: 0.92rem;
+  font-size: 1.02rem;
   font-weight: 600;
   color: var(--color-text-secondary);
   padding: 0.35rem 0.6rem 0.3rem;
@@ -397,7 +398,7 @@ a {
   background: rgba(255, 173, 220, 0.1);
   padding: 0.1rem 0.2rem;
   border-radius: 3px;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .icmd-preview code {
@@ -406,7 +407,7 @@ a {
   font-size: 0.9rem;
   font-weight: bold;
   line-height: 1.6;
-  color: rgb(255, 255, 51);
+  color: #87c050;
   word-break: break-all;
   background: rgba(129, 197, 32, 0.06) !important;
   padding: 0.35rem 0.5rem !important;
@@ -428,7 +429,7 @@ a {
   gap: 0.2rem;
   font-size: 0.7rem;
   color: var(--color-text-secondary);
-  font-weight: 600;
+  font-weight: 500;
   flex: 1;
   min-width: 120px;
 }
