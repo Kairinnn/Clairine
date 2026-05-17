@@ -119,27 +119,13 @@ ST的基建就搭好啦！！
 ```
 
 cat >> config.yaml << 'EOF'
-
-
-
 basicAuthMode: true
-
 basicAuthUser:
-
   username: "用户名"
-
   password: "密码"
-
-
-
 enableUserAccounts: true
-
 enableDiscreetLogin: true
-
-
-
 whitelistMode: false
-
 EOF
 
 ```
