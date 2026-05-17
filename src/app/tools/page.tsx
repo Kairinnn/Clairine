@@ -106,15 +106,15 @@ export default function ToolsPage() {
   };
 
   const copyCmd = (c: { title: string; cmd: string }) => {
-    const final =
-      expandedTitle === c.title
-        ? fillCommand(c.cmd, inputValues)
-        : c.cmd;
-    navigator.clipboard.writeText(final).then(() => {
-      setCopiedTitle(c.title);
-      setTimeout(() => setCopiedTitle(null), 2000);
-    });
-  };
+const finalCmd = placeholders.reduce(
+  (str, ph) => {
+    const val = inputValues[ph]?.trim();
+    return val
+      ? str.replaceAll(`{${ph}}`, `<span class="cmd-var-filled">${val}</span>`)
+      : str;
+  },
+  c.cmd
+);
 
   return (
     <main className="tools-page">
