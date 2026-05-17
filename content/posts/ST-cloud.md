@@ -147,7 +147,7 @@ EOF
 
 ## 👑四、搬家！！！
 
-![kira](/images/kirakira.gif)
+![kira](/images/kira.gif)
 
 >请选择你的搬家师傅👏🏻😎
 
