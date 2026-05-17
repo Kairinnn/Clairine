@@ -379,6 +379,14 @@ a {
   font-weight: 600;
 }
 
+.icmd-var-filled {
+  color: #ff86b8;
+  background: rgba(255, 173, 220, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
 .icmd-preview code {
   display: block;
   font-family: var(--font-mono, "SFMono-Regular", "Consolas", monospace) !important;
