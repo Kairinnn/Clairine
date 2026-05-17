@@ -86,7 +86,7 @@ export default function Sidebar({
             }}
           >
             <img
-              src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
+              src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
               alt="头像"
               style={{
                 width: "62px",
