@@ -815,6 +815,11 @@ a {
 
 /* ========= 🩷命令行本体 ========= */
 
+.cmd-code,
+.icmd-preview code {
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace !important;
+}
+
 .cmd-code-row {
   display: flex;
   align-items: flex-start;
