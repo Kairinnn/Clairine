@@ -30,7 +30,7 @@ Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒�
 
 
 
-<div class="icmd-block" data-template="ssh -L {本地端口}:127.0.0.1:{远程端口} -p {SSH端口} {用户名}@{服务器ip}" data-name="SSH远程连接+端口转发"></div>
+<div class="inline-cmd" data-cmd="ssh -L {本地端口}:127.0.0.1:{远程端口} -p {SSH端口} {用户名}@{服务器地址}" data-tool="SSH远程连接+端口转发"></div>
 
 
 
