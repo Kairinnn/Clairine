@@ -14,7 +14,6 @@ export default function InlineCmdScript() {
       const copyBtn = block.querySelector<HTMLButtonElement>(".icmd-copy");
 
       const update = () => {
-      const update = () => {
        let result = template;
         inputs.forEach((input) => {
          const varName = input.dataset.var || "";
