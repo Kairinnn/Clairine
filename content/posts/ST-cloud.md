@@ -16,8 +16,8 @@ Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒�
 
 >[🩷Termius汉化版-Android终端（点我！）](https://wwauk.lanzouq.com/ix2bJ3ph5rpi)
 
-
 ==🔑：rinn==
+[🩷源资源网址（请支持原作者喵！）](https://github.com/alongw/Termius-zh_CN/releases/tag/v1.0.0)
 
 好啦咱们开始吧！！![start](/images/wave.gif)
 
