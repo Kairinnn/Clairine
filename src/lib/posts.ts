@@ -15,6 +15,7 @@ export interface PostMeta {
   category: string;
   wordCount: number;
   readingTime: number;
+  hidden?: boolean;
 }
 
 export interface Post extends PostMeta {
@@ -63,11 +64,13 @@ export function getAllPosts(): PostMeta[] {
       excerpt,
       tags: data.tags || [],
       category: data.category || "未分类",
+      hidden: data.hidden || false,
       ...stats,
     };
   });
 
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return posts
+  .filter((p) => !p.hidden).sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export function getAllCategories(): string[] {
