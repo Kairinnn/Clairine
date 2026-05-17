@@ -14,26 +14,26 @@ export default function InlineCmdScript() {
       const copyBtn = block.querySelector<HTMLButtonElement>(".icmd-copy");
 
       const update = () => {
-  let result = template;
-  inputs.forEach((input) => {
-    const varName = input.dataset.var || "";
-    const val = input.value.trim();
-    if (val) {
-      result = result.replaceAll(
-        `{${varName}}`,
-        `<span class="icmd-var-filled">${val}</span>`
-      );
-    }
-  });
-  if (preview) {
-    preview.innerHTML = result.replace(
-      /\{([^}]+)\}/g,
-      '<span class="icmd-var">$&</span>'
-    );
-  }
-};
+        let result = template;
+        inputs.forEach((input) => {
+          const varName = input.dataset.var || "";
+          const val = input.value.trim();
+          if (val) {
+            result = result.replaceAll(
+              `{${varName}}`,
+              `<span class="cmd-var-filled">${val}</span>`
+            );
+          }
+        });
+        // 未填写的变量加 .cmd-var 高亮
+        result = result.replace(/\{([^}]+)\}/g, '<span class="cmd-var">{$1}</span>');
+        if (preview) preview.innerHTML = result;
+      };
 
       inputs.forEach((input) => input.addEventListener("input", update));
+
+      // 初始化时执行一次，让变量高亮立即生效
+      update();
 
       copyBtn?.addEventListener("click", () => {
         let result = template;

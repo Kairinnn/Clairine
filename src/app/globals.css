@@ -105,9 +105,12 @@ a {
 /* ========= 🩷文章内容 ========= */
 .post-content h1 {
   font-size: 1.85rem;
-  font-weight: 600;
+  font-weight: 500;
   margin: 2rem 0 1rem;
   color: var(--color-text-secondary);
+  background: rgba(226, 255, 170, 0.68);
+  border-radius: 11px;
+  box-shadow: 0 0 12px 2px rgba(255,190,229,0.63);
 }
 
 .post-content h2 {
@@ -115,6 +118,9 @@ a {
   font-weight: 500;
   margin: 1.80rem 0 0.80rem;
   color: var(--color-text);
+  background:rgba(251, 255, 138, 0.75);
+  border-radius: 22px;
+  padding:2.8px;
 }
 
 .post-content h3 {
@@ -171,11 +177,11 @@ a {
   content: "";
   position: absolute;
   left: -0.5rem;
-  top: 0.55em;
+  top: 0.75em;
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #9ae530;
+  background: #ffa4d4e6;
 }
 
 .post-content ol {
@@ -225,9 +231,9 @@ a {
 
 /* ========= 🩷链接高亮 ========= */
 .post-content a {
-  color: var(--color-text);
+  color: #95c755;
   text-decoration: none;
-  border-bottom: 1.5px solid rgba(255, 136, 197, 0.3);
+  border-bottom: 3.2px solid rgba(255, 136, 197, 0.3);
   padding-bottom: 1px;
   transition: all 0.2s;
 }
@@ -266,9 +272,9 @@ a {
 }
 
 .post-content code {
-  background: #deff95;
+  background: #f1ff83;
   padding: 0.15rem 0.4rem;
-  border-radius: 5px;
+  border-radius: 7.5px;
   font-size: 0.97rem;
   color: var(--color-text-secondary);
 }
@@ -276,9 +282,9 @@ a {
 .post-content pre {
   margin: 0.95rem 0;
   padding: 0;
-  background: #c0f2698c;
-  border: 2.5px solid #ffa7d05e;
-  border-radius: 14px;
+  background:rgba(255, 255, 255, 0.95);
+  border: 1.5px solid rgba(129, 197, 32, 0.3);
+  border-radius: 8px;
   position: relative;
   overflow: hidden;
   box-shadow:
@@ -311,16 +317,22 @@ a {
   text-align: right;
   color: rgba(255, 146, 201, 0.9);
   user-select: none;
-  font-size: 0.9em;
+  font-size: 1.2em;
+  font-weight:bold;
+  background: rgba(129, 197, 32, 0.06);
+  border-right: 1px solid rgba(129, 197, 32, 0.15);
 }
 
 .line-content {
   color: #ff94ca;
+  font-weight: bold;
+  font-size: 17px;
 }
 /* ========= 🩷文章内嵌命令块 ========= */
 .icmd-block {
   margin: 1.25rem 0;
   border-radius: 14px;
+  box-shadow: 0px 0px 11px 1px rgba(255,142,192,0.35);
   border: 1.5px solid rgba(129, 197, 32, 0.2);
   background: rgba(255, 255, 255, 0.8);
   overflow: hidden;
@@ -391,6 +403,7 @@ a {
   display: block;
   font-family: var(--font-mono, "SFMono-Regular", "Consolas", monospace) !important;
   font-size: 0.9rem;
+  font-weight: bold;
   line-height: 1.6;
   color: rgb(255, 255, 51);
   word-break: break-all;
@@ -425,8 +438,9 @@ a {
   border: 1.5px solid rgba(129, 197, 32, 0.3);
   background: rgba(255, 255, 255, 0.9);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--color-text);
+  font-weight: bold;
   outline: none;
   transition: border-color 0.2s;
 }
@@ -475,13 +489,31 @@ a {
 .icmd-toollink:hover {
   opacity: 1;
 }
+/* ========= 🩷命令变量高亮 ========= */
+.cmd-var {
+  color: #ff86b8;
+  background: rgba(255, 173, 220, 0.18);
+  padding: 0.1rem 0.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.cmd-var-filled {
+  color: #ff86b8;
+  background: rgba(255, 173, 220, 0.1);
+  padding: 0.1rem 0.2rem;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+}
+
 /* ========= 🩷复制按钮 ========= */
 .copy-btn {
   position: absolute;
-  top: 0.5rem;
+  top: 0.25rem;
   right: 0.5rem;
   z-index: 2;
-  padding: 3px 10px;
+  padding: 3px 5px;
   border-radius: 6px;
   border: 1.5px solid rgba(255, 173, 220, 0.5);
   background: rgba(255, 214, 236, 0.85);

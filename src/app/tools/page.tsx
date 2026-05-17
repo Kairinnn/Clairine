@@ -18,8 +18,12 @@ function parsePlaceholders(cmd: string): string[] {
 function fillCommand(cmd: string, values: Record<string, string>): string {
   let result = cmd;
   for (const [key, val] of Object.entries(values)) {
-    result = result.replaceAll(`{${key}}`, val || `{${key}}`);
+    if (val) {
+      result = result.replaceAll(`{${key}}`, `<span class="cmd-var-filled">${val}</span>`);
+    }
   }
+  // 未填写的变量加 .cmd-var 高亮
+  result = result.replace(/\{([^}]+)\}/g, '<span class="cmd-var">{$1}</span>');
   return result;
 }
 
@@ -106,18 +110,17 @@ export default function ToolsPage() {
   };
 
   const copyCmd = (c: { title: string; cmd: string }) => {
-  const placeholders = parsePlaceholders(c.cmd);
-  const finalCmd = placeholders.reduce(
-    (str, ph) => {
-      const val = inputValues[ph]?.trim();
-      return val ? str.replaceAll(`{${ph}}`, val) : str;
-    },
-    c.cmd
-  );
-  navigator.clipboard.writeText(finalCmd);
-  setCopiedTitle(c.title);
-  setTimeout(() => setCopiedTitle(null), 2000);
-};
+    const finalHtml =
+      expandedTitle === c.title
+        ? fillCommand(c.cmd, inputValues)
+        : c.cmd;
+    // 去掉 HTML 标签，只复制纯文本
+    const final = finalHtml.replace(/<[^>]*>/g, "");
+    navigator.clipboard.writeText(final).then(() => {
+      setCopiedTitle(c.title);
+      setTimeout(() => setCopiedTitle(null), 2000);
+    });
+  };
 
   return (
     <main className="tools-page">
@@ -250,15 +253,7 @@ export default function ToolsPage() {
                   </div>
 
                   <div className="cmd-code-row">
-                    <code
-                      className="cmd-code"
-                       dangerouslySetInnerHTML={{
-                         __html: finalCmd.replace(
-                         /\{([^}]+)\}/g,
-                        '<span class="cmd-var">{$1}</span>'
-                        ),
-                       }}
-                     />
+                    <code className="cmd-code" dangerouslySetInnerHTML={{ __html: finalCmd }} />
                     <button
                       className={`cmd-copy ${isCopied ? "copied" : ""}`}
                       onClick={() => copyCmd(c)}

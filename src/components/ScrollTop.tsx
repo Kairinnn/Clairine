@@ -42,6 +42,8 @@ export default function ScrollTop() {
         style={{
           width: "38px",
           height: "38px",
+          marginTop: "-400px",
+          marginLeft: "27px",
           objectFit: "contain",
           transition: "transform 0.25s ease",
         }}
