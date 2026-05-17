@@ -247,7 +247,15 @@ export default function ToolsPage() {
                   </div>
 
                   <div className="cmd-code-row">
-                    <code className="cmd-code">{finalCmd}</code>
+                    <code
+                      className="cmd-code"
+                       dangerouslySetInnerHTML={{
+                         __html: finalCmd.replace(
+                         /\{([^}]+)\}/g,
+                        '<span class="cmd-var">{$1}</span>'
+                        ),
+                       }}
+                     />
                     <button
                       className={`cmd-copy ${isCopied ? "copied" : ""}`}
                       onClick={() => copyCmd(c)}
