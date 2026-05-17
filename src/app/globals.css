@@ -828,6 +828,14 @@ a {
   font-family: "Cascadia Code", "Fira Code", "Consolas", monospace !important;
 }
 
+.cmd-var {
+  color: #ff86b8;
+  background: rgba(255, 173, 220, 0.15);
+  padding: 0.1rem 0.25rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
 .cmd-code-row {
   display: flex;
   align-items: flex-start;
