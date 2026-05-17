@@ -831,14 +831,9 @@ a {
 
 /* ========= 🩷命令行本体 ========= */
 
-.cmd-code,
-.icmd-preview code {
-  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace !important;
-}
-
 .cmd-var {
   color: #ff86b8;
-  background: rgba(255, 173, 220, 0.15);
+  background: rgba(255, 173, 220, 0.18);
   padding: 0.1rem 0.25rem;
   border-radius: 4px;
   font-weight: 600;
@@ -850,6 +845,11 @@ a {
   padding: 0.1rem 0.2rem;
   border-radius: 3px;
   font-weight: 600;
+}
+
+.cmd-code,
+.icmd-preview code {
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace !important;
 }
 
 .cmd-code-row {
