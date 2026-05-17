@@ -5,8 +5,8 @@ tags: ["教程","酒馆"]
 category: "教程"
 ---
 
-# 你需要准备的![show](/images/show.gif)：
-
+# 你需要准备的!：
+[show](/images/show.gif)
 >- 一台服务器，支持SSH连接的方便的终端
 >- 一个懂IT的帮手（比如Claude），以在报错和卡住的时候提供24小时救驾服务。
 >- 一颗执着的心🩷......
@@ -17,6 +17,7 @@ Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒�
 >[🩷Termius汉化版-Android终端（点我！）](https://kairin.lanzouq.com/ix2bJ3ph5rpi)
 
 ==🔑：rinn==
+
 [🩷源资源网址（请支持原作者喵！）](https://github.com/alongw/Termius-zh_CN/releases/tag/v1.0.0)
 
 好啦咱们开始吧！！![start](/images/wave.gif)
@@ -155,9 +156,9 @@ EOF
 如果可以访问就大功告成啦！！
 
 
-## 👑四、搬家！！！![kira](/images/kirakira.gif)
+## 👑四、搬家！！！
 
-
+![kira](/images/kirakira.gif)
 
 >请选择你的搬家师傅👏🏻😎
 
@@ -322,7 +323,8 @@ pm2 save
 
 
 
-## 记得！要！设！密码啊啊！不然你的酒馆就在公开裸奔![blur](/images/blur.gif)
+## 记得！要！设！密码啊啊！不然你的酒馆就在公开裸奔
+![blur](/images/blur.gif)
 
 
 
