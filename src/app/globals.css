@@ -272,7 +272,7 @@ a {
 }
 
 .post-content code {
-  background: #f1ff83;
+  background: rgb(251,255,138);
   padding: 0.15rem 0.4rem;
   border-radius: 7.5px;
   font-size: 0.97rem;
@@ -283,7 +283,7 @@ a {
   margin: 0.95rem 0;
   padding: 0;
   background:rgba(255, 255, 255, 0.95);
-  border: 1.5px solid rgba(129, 197, 32, 0.3);
+  border: 3px solid rgba(129, 197, 32, 0.3);
   border-radius: 8px;
   position: relative;
   overflow: hidden;
@@ -297,9 +297,10 @@ a {
   padding: 1rem 1.25rem;
   padding-right: 4.5rem;
   overflow-x: auto;
-  color: rgb(255, 255, 51);
-  font-size: 0.85rem;
-  line-height: 1;
+  color: #87c050;
+  font-size: 0.87rem;
+  font-weight: bold;
+  line-height: 2;
   background: none;
   border: none;
   border-radius: 0;
@@ -353,18 +354,18 @@ a {
 
 .icmd-copy {
   position: absolute;
-  top: 0.35rem;
+  top: 0.25rem;
   right: 0.4rem;
-  padding: 2px 8px;
+  padding: 3px 5px;
   border-radius: 6px;
   border: 1.5px solid rgba(255, 173, 220, 0.5);
   background: rgba(255, 214, 236, 0.85);
   color: #ff86b8;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   cursor: pointer;
   font-family: inherit;
   transition: opacity 0.2s;
-  min-width: 2.2rem;
+  min-width: 2.75rem;
   text-align: center;
   z-index: 2;
   opacity: 0;
