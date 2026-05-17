@@ -17,7 +17,7 @@ Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒�
 >[🩷Termius汉化版-Android终端（点我！）](https://wwauk.lanzouq.com/ix2bJ3ph5rpi)
 
 
-=🔑：rinn=
+==🔑：rinn==
 
 好啦咱们开始吧！！![start](/images/wave.gif)
 
@@ -26,7 +26,7 @@ Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒�
 
 ## 一、服务器环境施工🚧
 
-- ☘️首先打开终端，=SSH=连上你的服务器
+- ☘️首先打开终端，==SSH==连上你的服务器
 
 
 
@@ -102,11 +102,11 @@ ST的基建就搭好啦！！
 在移动端用nano编辑器会异常不方便。。所以最好还是用电脑啊！！）
 
 
-- ☘️找到=listen=（监听），把=false=改成=true=：
+- ☘️找到==listen==（监听），把==false==改成==true==：
 
->listen: =true=
+>listen: ==true==
 
-*留意一下host的地址也得是：=【host: 0.0.0.0】=喔！*
+*留意一下host的地址也得是：==【host: 0.0.0.0】==喔！*
 
 
 
@@ -163,7 +163,7 @@ EOF
 
 ### 🔥PC：
 
-- ☘️方法1️⃣ ：SCP
+- ==☘️方法1️⃣ ：SCP==
 
 通过本地文件所在的电脑终端/PowerShell
 
@@ -179,7 +179,7 @@ scp -r "C:\Users\你的用户名\SillyTavern\data" root@服务器ip:/root/SillyT
 
 
 
-- ☘️方法2️⃣ ：SCP - 压缩好再搬（对于数据多的会快一点！）
+- ==☘️方法2️⃣ ：SCP - 压缩好再搬==（对于数据多的会快一点！）
 
 Windows：用7zip或者直接右键压缩成zip然后传上去：
 
@@ -200,7 +200,7 @@ unzip data.zip
 
 ### 🔥Android——Termux专栏！：
 
-- ☘️【推荐】方法1️⃣：SCP - 压缩好再搬
+- ==☘️【推荐】方法1️⃣：SCP - 压缩好再搬==
 
 装tar/zip（Termux一般自带tar）：`cd ~/SillyTavern`
 
@@ -229,7 +229,7 @@ rm data.tar.gz
 
 
 
-- ☘️方法2️⃣：SCP
+- ==☘️方法2️⃣：SCP==
 
 先装openssh！：`pkg install openssh`
 
@@ -253,7 +253,7 @@ scp -P 实际端口号 -r ~/SillyTavern/data root@服务器ip:/root/SillyTavern/
 
 
 
-- ☘️方法3️⃣：rsync（最优雅）
+- ==☘️方法3️⃣：rsync（最优雅）==
 
 想定期同步数据（比如本地改了东西要更新到云上），选=rsync=！
 
