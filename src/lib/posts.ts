@@ -111,14 +111,15 @@ export async function getPostBySlug(slug: string): Promise<Post> {
           ? `<a href="/tools" class="icmd-toollink">🧀 在命令匣中查看</a>`
           : "";
         return `
-          <div class="icmd-block" data-template="${(cmd as string).replace(/"/g, '"')}">
-            <pre class="icmd-preview"><code>${cmd}</code></pre>
-            ${inputsHtml ? `<div class="icmd-inputs">${inputsHtml}</div>` : ""}
-            <div class="icmd-actions">
-              <button class="icmd-copy">🩷 复制</button>
-              ${toolLink}
-            </div>
-          </div>`;
+  <div class="icmd-block" data-template="${(cmd as string).replace(/"/g, '"')}" data-name="${tool || ''}">
+    ${tool ? `<div class="icmd-title">${tool}</div>` : ""}
+    <pre class="icmd-preview"><code>${cmd}</code></pre>
+    ${inputsHtml ? `<div class="icmd-inputs">${inputsHtml}</div>` : ""}
+    <div class="icmd-actions">
+      <button class="icmd-copy">🩷 复制</button>
+      ${tool ? `<a href="/tools" class="icmd-toollink">🧀 在命令匣中查看</a>` : ""}
+    </div>
+  </div>`;
       }
     )
     .replace(
