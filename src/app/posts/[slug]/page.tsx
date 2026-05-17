@@ -5,7 +5,8 @@ import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
 import BottomNav from "@/components/BottomNav";
 
 export const dynamic = "force-static";
-export function generateStaticParams() {
+export function getAllPostsIncludeHidden(): PostMeta[] {
+  ensureDir(); {
   const slugs = getAllPostSlugs();
   return slugs.map((slug) => ({ slug }));
 }
