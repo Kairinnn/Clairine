@@ -62,7 +62,7 @@ export default async function PostPage({ params }: PageProps) {
           }}
         >
           <img
-            src="https://i.postimg.cc/WbP0Vvr5/IMG-20260511-074333.png"
+            src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
             alt="头像"
             style={{
               width: "40px",
@@ -85,7 +85,7 @@ export default async function PostPage({ params }: PageProps) {
           </div>
           <div
             style={{
-              fontSize: "0.85rem",
+              fontSize: "0.75rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
               display: "flex",
