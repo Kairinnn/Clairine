@@ -63,7 +63,7 @@ background-image: url('{{img::meme}}');
 * 首先你需要一张图片的URL。
 个人推荐Postimg，下面示例均使用此网站
 
-[🩷Postimages（点我！）](https:/postimages.org/)
+[🩷Postimages（点我！）](https:/postimages.cc/)
 
 * ①上传图片。
 
