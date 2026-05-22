@@ -5,7 +5,8 @@ tags: ["教程","酒馆"]
 category: "教程"
 ---
 
-# 你需要准备的!：![show](/images/show.gif)
+# 你需要准备的!：
+![show](/images/show.gif)
 >
 >- 一台服务器，支持SSH连接的方便的终端
 >- 一个懂IT的帮手（比如Claude），以在报错和卡住的时候提供24小时救驾服务。
