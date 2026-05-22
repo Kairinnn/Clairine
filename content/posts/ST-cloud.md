@@ -303,11 +303,11 @@ pm2 save
 
 #### 🧀pm2的快捷指令：
 
-* 日志：pm2 logs sillytavern
+* 日志：`pm2 logs sillytavern`
 
-* 重启酒馆：pm2 restart sillytavern
+* 重启酒馆：`pm2 restart sillytavern`
 
-* 停止运行：pm2 stop sillytavern
+* 停止运行：`pm2 stop sillytavern`
 
 
 
