@@ -38,7 +38,7 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <main
       style={{
-        maxWidth: "640px",
+        maxWidth: "580px",
         margin: "0 auto",
         padding: "1.5rem 1.25rem 0",
         animation: "pageIn 0.5s ease",
