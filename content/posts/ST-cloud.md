@@ -15,9 +15,8 @@ category: "教程"
 如果还没有服务器，去搞一台。（嗯。
 Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒服一点w
 
->[🩷Termius汉化版-Android终端（点我！）](https://kairin.lanzouq.com/ix2bJ3ph5rpi)
+>[🩷Termius汉化版-Android终端（点我！）](https://kairin.lanzouq.com/ix2bJ3ph5rpi) ==🔑：rinn==
 
-==🔑：rinn==
 
 [🩷源资源网址（请支持原作者喵！）](https://github.com/alongw/Termius-zh_CN/releases/tag/v1.0.0)
 
@@ -65,11 +64,8 @@ sudo apt install -y git nodejs npm
 ```
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-
 source ~/.bashrc
-
 nvm install 20
-
 nvm use 20
 
 ```
@@ -83,7 +79,6 @@ nvm use 20
 ```
 
 git clone https://github.com/SillyTavern/SillyTavern.git
-
 cd SillyTavern
 
 ```
@@ -179,7 +174,6 @@ scp data.zip root@服务器ip:/root/SillyTavern/
 
 ```
 cd /root/SillyTavern
-
 unzip data.zip
 
 ```
@@ -206,11 +200,8 @@ scp data.tar.gz root@服务器ip:/root/SillyTavern/
 ```
 
 ssh root@服务器ip
-
 cd /root/SillyTavern
-
 tar -xzf data.tar.gz
-
 rm data.tar.gz
 
 ```
@@ -248,9 +239,7 @@ scp -P 实际端口号 -r ~/SillyTavern/data root@服务器ip:/root/SillyTavern/
 ```
 
 pkg install rsync
-
 rsync -avz --progress ~/SillyTavern/data/ root@服务器
-
 ip:/root/SillyTavern/data/
 
 ```
@@ -286,7 +275,6 @@ SSH断开之后酒馆就会停，所以要让它在后台一直跑！！在酒�
 ```
 
 cd /root/SillyTavern
-
 pm2 start server.js --name "sillytavern"
 
 ```
@@ -296,7 +284,6 @@ pm2 start server.js --name "sillytavern"
 ```
 
 pm2 startup
-
 pm2 save
 
 ```
