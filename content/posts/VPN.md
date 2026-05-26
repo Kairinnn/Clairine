@@ -1,3 +1,10 @@
+---
+title: "个人のVPN自用分享"
+date: "2026-05-27"
+tags: ["资源","分享"]
+category: "分享"
+---
+
 ## 移动端
 1.小三VPN（一体化不用加订阅url，开盖即食）
 >[==🩷release下载页👈🏻==](https://github.com/sharmajv/vpn)
