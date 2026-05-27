@@ -17,7 +17,7 @@ hidden: true
 - [酒馆“宏”是什么？](#ST-marco-QA)
 
 个人心得/感想：
-- [Claude到底需不需要破限？](/posts/Claude-jb.md#plugin)
+- [Claude到底需不需要破限？](/posts/Claude-jb#plugin)
 
 操作流程分享：
 - [discord下载更新（Android端）](#discord)
