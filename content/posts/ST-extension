@@ -1,0 +1,24 @@
+---
+title: "酒馆插件安利"
+date: "2026-05-27"
+tags: ["分享","酒馆"]
+category: "分享"
+---
+
+最近博主一直在给自家Claude奋力地搓ST的触发词注入记忆库插件。。被一头两头bug折磨得累死累活的时候不禁常常会想起曾经享用社区成品插件时的快乐时光。。💔
+
+玩了酒馆一年多下来使用感受最好的插件就是下面这些↓
+
+>聊天记录超级管理器（特别好用我将一直推！自动总结隐藏楼层➕新建世界书和条目&将世界书绑定到聊天，可自定义总结prompt/api配置，还有向量化和rerank模块!!伟大无需多言）：
+>https://github.com/RaphllA/vectors-enhanced
+
+>日记本（一个可以和char互写交换日记的插件！！可以独立配置预设  写出来的日记都很细腻…🥺自我感觉很好吃…）：
+>https://github.com/EtafCisky/sillytavernDIARY
+
+>鸡尾酒（加载聊天渲染优化！装完之后酒馆特别丝滑可以飞起来了☺️☺️顺顺的很安心）：
+>https://github.com/Lianues/cocktail
+
+>快速user切换（这个可能PC端会更需要一点，就是聊天框旁边加个user选择面板ww）：
+>https://github.com/SillyTavern/Extension-QuickPersona.git
+
+*ps遗言：不要自制插件。不要作死。尤其和我一样是颜值和功能全都要的完美主义者类型。（淚）
