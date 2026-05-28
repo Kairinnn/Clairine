@@ -15,7 +15,7 @@ category: "教程"
 如果还没有服务器，去搞一台。（嗯。
 Android终端：Termux和Termius都可以！不过个人觉得Termius操作舒服一点w
 
->[🩷Termius汉化版-Android终端（点我！）](https://kairin.lanzouq.com/ix2bJ3ph5rpi) ==🔑：rinn==
+>[🩷Termius汉化版-Android终端（点我！）](https://pan.quark.cn/s/1a06592d8dd0) 
 
 
 [🩷源资源网址（请支持原作者喵！）](https://github.com/alongw/Termius-zh_CN/releases/tag/v1.0.0)
