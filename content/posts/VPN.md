@@ -4,11 +4,12 @@ date: "2026-05-27"
 tags: ["资源","分享"]
 category: "分享"
 ---
-## 仅供学术参考，请勿用于其他用途～
+# 仅供学术参考，请勿用于其他用途～
 
 ## 移动端
 1.小三VPN（一体化不用加订阅url，开盖即食）
 >[==🩷👉🏻release下载页👈🏻==](https://github.com/sharmajv/vpn)
+>
 [🩷Quark☁️|👉🏻小三VPN.apk👈🏻](https://pan.quark.cn/s/9dc3a0eab712)
 
 2.snakem（配合ClashMeta使用）
