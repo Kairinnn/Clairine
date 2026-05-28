@@ -67,7 +67,7 @@ hidden: true
 ### discord下载更新
 
 众所周知discord这软件不仅难用，如果不及时更新还会有各种奇奇怪怪的小bug（，这里推荐用Aptoide（安卓端的一个应用商店），下载后搜索discord就能追踪到更新版本
-（☘️注意：使用Aptoide可能需要梯子，如果你需要：👉🏻[==个人自用のVPN分享==](/posts/VPN.md#plugin)
+（☘️注意：使用Aptoide可能需要梯子，如果你需要：👉🏻[==个人自用の一些梯子==](/posts/VPN.md#plugin)
 
 apk链接在这啦↓
 >[🩷Quark☁️|Aptoide.apk](https://pan.quark.cn/s/536d05a08207)
