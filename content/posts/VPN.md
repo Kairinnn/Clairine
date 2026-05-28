@@ -8,13 +8,13 @@ category: "分享"
 ## 移动端
 1.小三VPN（一体化不用加订阅url，开盖即食）
 >[==🩷release下载页👈🏻==](https://github.com/sharmajv/vpn)
-[🩷蓝奏☁️|apk：👉🏻（请支持原作者谢谢喵！）👈🏻](https://kairin.lanzouq.com/ijFC83ph5t5a)
+[🩷Quark☁️|apk：👉🏻（请支持原作者谢谢喵！）👈🏻](https://pan.quark.cn/s/fcd80f0cfd33)
 
 2.snakem（配合ClashMeta使用）
 >[==🩷订阅release页👈🏻==](https://github.com/snakem982/proxypool)
 ![vpn](/images/vpn.jpg)
 （点进去下拉就能找到订阅链接，为避免以后该url发生变更或失效，建议最好先去网址里看看&复制～）
-[🩷蓝奏☁️|👉🏻ClashMeta.apk👈🏻](https://kairin.lanzouq.com/iNLEP3ph5sxc)
+[🩷Quark☁️|👉🏻ClashMeta.apk👈🏻](https://pan.quark.cn/s/55e03bf1fdb2)
 
 如果进不去网页的话可以试试下面的订阅！**（不保证永久有效）**
 - [🩷👉🏻订阅URL1👈🏻](https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml)
