@@ -67,10 +67,10 @@ hidden: true
 ### ==discord下载&更新==
 
 众所周知discord这软件不仅难用，如果不及时更新还会有各种奇奇怪怪的小bug（，这里推荐用Aptoide（安卓端的一个应用商店），下载后搜索discord就能追踪到更新版本
-（☘️注意：使用Aptoide可能需要梯子，如果你需要：👉🏻[==个人自用の一些梯子==]👈🏻(/posts/VPN.md#plugin)
+（☘️注意：使用Aptoide可能需要梯子，如果你需要：[==个人自用の一些梯子==](/posts/VPN.md#plugin)
 
 apk链接在这啦↓
->[🩷Quark☁️|Aptoide.apk](https://pan.quark.cn/s/536d05a08207)
+>[==🩷Quark☁️|Aptoide.apk==](https://pan.quark.cn/s/536d05a08207)
 
 ---
 
@@ -80,9 +80,9 @@ apk链接在这啦↓
 
 在使用Claude软件的时候必须全程开梯
 如果你需要：
->👉🏻[==个人のVPN自用分享==]👈🏻(/posts/VPN.md#plugin)
+>[==个人自用の一些梯子==](/posts/VPN.md#plugin)
 APP开梯之后在Claude.com官网下就行  当然如果下不了也可以直接用我分享的，，↓
-[🩷Claude.app](https://mega.nz/file/bj4DkKYA#lbb33mevBI59Psh252WjcJXC1HLkNLp2fi7wNh3UrB8)
+[==🩷Claude.app==](https://mega.nz/file/bj4DkKYA#lbb33mevBI59Psh252WjcJXC1HLkNLp2fi7wNh3UrB8)
 
 ---
 
