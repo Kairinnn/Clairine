@@ -21,7 +21,7 @@ hidden: true
 
 操作流程分享：
 - [discord下载更新（Android端）](#discord)
-- [Claude移动端如何注册](#Claude-register)
+- [Claude移动端app如何注册](#Claude-register)
 - [文字](#id)
 
 ---
