@@ -80,7 +80,7 @@ apk链接在这啦↓
 
 在使用Claude软件的时候必须全程开梯
 如果你需要：
->[==个人自用の一些梯子==](/posts/VPN.md#plugin)
+[==个人自用の一些梯子==](/posts/VPN.md#plugin)
 APP开梯之后在Claude.com官网下就行  当然如果下不了也可以直接用我分享的，，↓
 [==🩷Claude.app==](https://mega.nz/file/bj4DkKYA#lbb33mevBI59Psh252WjcJXC1HLkNLp2fi7wNh3UrB8)
 
