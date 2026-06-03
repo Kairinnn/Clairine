@@ -81,6 +81,11 @@ apk链接在这啦↓
 在使用Claude软件的时候必须全程开梯
 如果你需要：
 >👉🏻[==个人のVPN自用分享==]👈🏻(/posts/VPN.md#plugin)
+APP开梯之后在Claude.com官网下就行  当然如果下不了也可以直接用我分享的，，↓
+[🩷Claude.app](https://mega.nz/file/bj4DkKYA#lbb33mevBI59Psh252WjcJXC1HLkNLp2fi7wNh3UrB8)
+
+---
+
 首先博主在尝试的时候曾经连虚拟海外号码都用过了但是完全收不到短信。大陆手机号就更不用说了完全没有给11位手机号留格式。![no](/images/no.gif)
 
 所以博主注册了一个新的谷歌邮箱。（现成的有概率仍要短信验证）
