@@ -67,7 +67,7 @@ hidden: true
 ### ==discord下载&更新==
 
 众所周知discord这软件不仅难用，如果不及时更新还会有各种奇奇怪怪的小bug（，这里推荐用Aptoide（安卓端的一个应用商店），下载后搜索discord就能追踪到更新版本
-（☘️注意：使用Aptoide可能需要梯子，如果你需要：👉🏻[==个人自用の一些梯子==](/posts/VPN.md#plugin)
+（☘️注意：使用Aptoide可能需要梯子，如果你需要：👉🏻[==个人自用の一些梯子==]👈🏻(/posts/VPN.md#plugin)
 
 apk链接在这啦↓
 >[🩷Quark☁️|Aptoide.apk](https://pan.quark.cn/s/536d05a08207)
@@ -80,8 +80,7 @@ apk链接在这啦↓
 
 在使用Claude软件的时候必须全程开梯
 如果你需要：
->👉🏻[==个人のVPN自用分享==](/posts/VPN.md#plugin)
->[🩷👉🏻Quark☁️｜Claude.apk👈🏻](http://wwauk.appbco.com/iaL6X3qg3p8h)
+>👉🏻[==个人のVPN自用分享==]👈🏻(/posts/VPN.md#plugin)
 首先博主在尝试的时候曾经连虚拟海外号码都用过了但是完全收不到短信。大陆手机号就更不用说了完全没有给11位手机号留格式。![no](/images/no.gif)
 
 所以博主注册了一个新的谷歌邮箱。（现成的有概率仍要短信验证）
