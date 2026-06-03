@@ -71,7 +71,7 @@ hidden: true
 [==个人自用の一些梯子==](/posts/VPN#plugin)
 
 apk链接在这啦↓
->[==🩷Quark☁️|Aptoide.apk==](https://pan.quark.cn/s/536d05a08207)
+>[==🩷Aptoide.apk==](https://mega.nz/file/z3AwlBZK#Eu7Djt1IQZGlilztglhwT7CeYr7e5ILIWoHE_z2Cp4k)
 
 ---
 
