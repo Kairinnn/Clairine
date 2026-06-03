@@ -28,7 +28,7 @@ hidden: true
 
 <span id="ST-marco-QA"></span>
 
-### 酒馆“宏”是什么？
+### ==酒馆“宏”是什么？==
 
 #### 宏的定义：==是一种抽象机制，通过预定义规则替换文本的模式。==
 - 指将一系列命令或操作组织在一起，来作为一个独立的命令执行特定的任务
@@ -60,22 +60,23 @@ hidden: true
 用宏的话，`{{user}}` 就永远会变成当前user的名字了，user叫啥它是啥
 #### 所以宏的通用性很高～～
 
---
+---
 
 <span id="discord"></span>
 
-### discord下载更新
+### ==discord下载&更新==
 
 众所周知discord这软件不仅难用，如果不及时更新还会有各种奇奇怪怪的小bug（，这里推荐用Aptoide（安卓端的一个应用商店），下载后搜索discord就能追踪到更新版本
 （☘️注意：使用Aptoide可能需要梯子，如果你需要：👉🏻[==个人自用の一些梯子==](/posts/VPN.md#plugin)
 
 apk链接在这啦↓
 >[🩷Quark☁️|Aptoide.apk](https://pan.quark.cn/s/536d05a08207)
---
+
+---
 
 <span id="Claude-register"></span>
 
-### Claude移动端如何注册
+### ==Claude移动端app如何注册==
 
 在使用Claude软件的时候必须全程开梯
 如果你需要：
@@ -90,4 +91,4 @@ apk链接在这啦↓
 简体中文那个语言设置毛变化没有。
 自定义prompt：设置→Profile里的第三个框框
 
---
+---
