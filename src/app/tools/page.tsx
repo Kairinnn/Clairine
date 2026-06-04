@@ -35,17 +35,18 @@ export default function ToolsPage() {
   const [copiedTitle, setCopiedTitle] = useState<string | null>(null);
   const [expandedTitle, setExpandedTitle] = useState<string | null>(null);
   const [inputValues, setInputValues] = useState<Record<string, string>>({});
-  const [favs, setFavs] = useState<Set<string>>(new Set());
+  const [favs, setFavs] = useState<Set<string>>(() => {
+    // lazy initialization：只在首次渲染时从 localStorage 读取
+    try {
+      const saved = localStorage.getItem("cmd-favs");
+      return saved ? new Set(JSON.parse(saved)) : new Set();
+    } catch {
+      return new Set();
+    }
+  });
   const [showFavOnly, setShowFavOnly] = useState(false);
   const [activeSystem, setActiveSystem] = useState<string | null>(null);
   const [showChain, setShowChain] = useState<string | null>(null);
-
-  useEffect(() => {
-    try {
-      const saved = localStorage.getItem("cmd-favs");
-      if (saved) setFavs(new Set(JSON.parse(saved)));
-    } catch {}
-  }, []);
 
   const toggleFav = useCallback((title: string) => {
     setFavs((prev) => {
