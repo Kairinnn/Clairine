@@ -47,6 +47,25 @@ export default function ToolsPage() {
   const [showFavOnly, setShowFavOnly] = useState(false);
   const [activeSystem, setActiveSystem] = useState<string | null>(null);
   const [showChain, setShowChain] = useState<string | null>(null);
+  // 记住点击关联命令前所在的卡片，方便误触后滚回来
+  const [scrollReturnId, setScrollReturnId] = useState<string | null>(null);
+
+  // 滑动到目标命令卡片：先清掉过滤确保目标渲染出来，再平滑滚过去
+  const scrollToCmd = (targetTitle: string, fromTitle: string) => {
+    setScrollReturnId(fromTitle);
+    // 清掉所有过滤，避免目标命令被 tag/搜索筛掉而不在列表里
+    setSearch("");
+    setActiveCategory(null);
+    setActiveSystem(null);
+    setShowFavOnly(false);
+    // 等下一帧渲染完成后再滚动
+    setTimeout(() => {
+      document
+        .getElementById(`cmd-${targetTitle}`)
+        ?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
+  };
+
 
   const toggleFav = useCallback((title: string) => {
     setFavs((prev) => {
@@ -225,8 +244,10 @@ export default function ToolsPage() {
               return (
                 <div
                   key={c.title}
+                  id={`cmd-${c.title}`}
                   className={`cmd-card ${isCopied ? "cmd-card-copied" : ""} ${isExpanded ? "cmd-card-expanded" : ""}`}
                 >
+
                   <div className="cmd-card-top">
                     <span
                       className={`cmd-title ${hasPH ? "cmd-title-clickable" : ""}`}
@@ -284,11 +305,17 @@ export default function ToolsPage() {
                       {showChain === c.title && (
                         <div className="cmd-chain-list">
                           {getChainCommands(c.chain, c.title).map((rc) => (
-                            <div key={rc.title} className="cmd-chain-item">
-                              <span className="cmd-chain-item-title">{rc.title}</span>
+                            <div
+                              key={rc.title}
+                              className="cmd-chain-item cmd-chain-item-clickable"
+                              onClick={() => scrollToCmd(rc.title, c.title)}
+                              title="点击跳到该命令"
+                            >
+                              <span className="cmd-chain-item-title">🔗 {rc.title}</span>
                               <code className="cmd-chain-item-code">{rc.cmd}</code>
                             </div>
                           ))}
+
                         </div>
                       )}
                     </div>
@@ -329,6 +356,22 @@ export default function ToolsPage() {
           <FindReplace />
         </section>
       )}
+
+      {/* 误触关联命令后，一键滚回原来的卡片 */}
+      {tab === "cmd" && scrollReturnId && (
+        <button
+          className="cmd-return-btn"
+          onClick={() => {
+            document
+              .getElementById(`cmd-${scrollReturnId}`)
+              ?.scrollIntoView({ behavior: "smooth", block: "center" });
+            setScrollReturnId(null);
+          }}
+        >
+          ↩ 返回「{scrollReturnId}」
+        </button>
+      )}
     </main>
+
   );
 }

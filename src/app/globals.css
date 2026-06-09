@@ -1020,6 +1020,54 @@ a {
   padding: 0 !important;
 }
 
+/* ========= 🩷可点击的关联命令 ========= */
+.cmd-chain-item-clickable {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cmd-chain-item-clickable:hover {
+  background: rgba(255, 173, 220, 0.12);
+  border-color: rgba(255, 173, 220, 0.5);
+  transform: translateX(2px);
+}
+
+.cmd-chain-item-clickable:hover .cmd-chain-item-title {
+  color: var(--color-text-secondary);
+}
+
+/* ========= 🩷误触返回按钮 ========= */
+.cmd-return-btn {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 50;
+  padding: 0.55rem 1rem;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 173, 220, 0.5);
+  background: linear-gradient(135deg, rgba(255, 206, 240, 0.92), rgba(225, 255, 197, 0.85));
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 3px 14px rgba(255, 142, 192, 0.28);
+  backdrop-filter: blur(6px);
+  max-width: 60vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+  animation: cardIn 0.25s ease;
+}
+
+.cmd-return-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 18px rgba(255, 142, 192, 0.38);
+  border-color: rgba(255, 173, 220, 0.7);
+}
+
+
 /* ========= 🩷展开输入框 ========= */
 
 .cmd-inputs {
