@@ -156,6 +156,11 @@ EOF
 
 >请选择你的搬家师傅👏🏻😎
 
+> ‼️**下面的命令卡片都能直接填变量再复制！** 但路径千万==别照抄==——每家服务器的用户名和路径都不一样！
+> - 阿里云一般是 `root`，酒馆路径 `/root/SillyTavern/`
+> - 腾讯云轻量等可能是镜像名+`/home/xxx/` 前缀
+> - 不确定的话，连上服务器敲 `whoami` 看用户名、`pwd` 看当前路径就知道啦~
+
 ### 🔥PC：
 
 - ==☘️方法1️⃣ ：SCP==
@@ -164,13 +169,7 @@ EOF
 
 Windows：
 
-```
-
-scp -r "C:\Users\你的用户名\SillyTavern\data" root@服务器ip:/root/SillyTavern/
-
-```
-
-  👆🏻里面的用户名和ip都改成你的喔
+<div class="inline-cmd" data-cmd="scp -r {本地data路径} {用户名}@{服务器地址}:{服务器酒馆路径}" data-tool="上传文件夹到服务器"></div>
 
 
 
@@ -178,17 +177,11 @@ scp -r "C:\Users\你的用户名\SillyTavern\data" root@服务器ip:/root/SillyT
 
 Windows：用7zip或者直接右键压缩成zip然后传上去：
 
-```
-scp data.zip root@服务器ip:/root/SillyTavern/
-```
+<div class="inline-cmd" data-cmd="scp {本地压缩包路径} {用户名}@{服务器地址}:{服务器酒馆路径}" data-tool="上传单个文件到服务器"></div>
 
 在服务器上的终端解压：
 
-```
-cd /root/SillyTavern
-unzip data.zip
-
-```
+<div class="inline-cmd" data-cmd="cd {服务器酒馆路径} && unzip {压缩包文件名}.zip" data-tool="使用unzip解压文件到对应路径"></div>
 
 
 
@@ -202,21 +195,11 @@ unzip data.zip
 
 传压缩包（快得多！）：
 
-```
-
-scp data.tar.gz root@服务器ip:/root/SillyTavern/
-
-```
+<div class="inline-cmd" data-cmd="scp {本地压缩包路径} {用户名}@{服务器地址}:{服务器酒馆路径}" data-tool="上传单个文件到服务器"></div>
 
 终端SSH连服务器解压～
-```
 
-ssh root@服务器ip
-cd /root/SillyTavern
-tar -xzf data.tar.gz
-rm data.tar.gz
-
-```
+<div class="inline-cmd" data-cmd="ssh {用户名}@{服务器地址} && cd {服务器酒馆路径} && tar -xzf {压缩包文件名}.tar.gz && rm {压缩包文件名}.tar.gz" data-tool="用tar解压"></div>
 
 
 
@@ -226,21 +209,13 @@ rm data.tar.gz
 
 然后直接传整个data文件夹！：
 
-```
-
-scp -r ~/SillyTavern/data root@服务器ip:/root/SillyTavern/
-
-```
+<div class="inline-cmd" data-cmd="scp -r {本地data路径} {用户名}@{服务器地址}:{服务器酒馆路径}" data-tool="上传文件夹到服务器"></div>
 
 
 
 *支线：如果你的SSH端口不是默认22（很多云服务器会改端口），就加-P 参数：*
 
-```
-
-scp -P 实际端口号 -r ~/SillyTavern/data root@服务器ip:/root/SillyTavern/
-
-```
+<div class="inline-cmd" data-cmd="scp -P {SSH端口} -r {本地data路径} {用户名}@{服务器地址}:{服务器酒馆路径}" data-tool="指定端口上传到服务器"></div>
 
 
 
@@ -248,13 +223,9 @@ scp -P 实际端口号 -r ~/SillyTavern/data root@服务器ip:/root/SillyTavern/
 
 想定期同步数据（比如本地改了东西要更新到云上），选=rsync=！
 
-```
+先装rsync：`pkg install rsync`
 
-pkg install rsync
-rsync -avz --progress ~/SillyTavern/data/ root@服务器
-ip:/root/SillyTavern/data/
-
-```
+<div class="inline-cmd" data-cmd="rsync -avz --progress {本地data路径}/ {用户名}@{服务器地址}:{服务器酒馆路径}data/" data-tool="rsync增量同步到服务器"></div>
 
 rsync的好处是只传有变化的文件，第一次全量传，之后再跑就只传改过的部分，很快w。
 
@@ -284,12 +255,7 @@ SSH断开之后酒馆就会停，所以要让它在后台一直跑！！在酒�
 
 - ☘️用pm2启动酒馆：
 
-```
-
-cd /root/SillyTavern
-pm2 start server.js --name "sillytavern"
-
-```
+<div class="inline-cmd" data-cmd="cd {服务器酒馆路径} && pm2 start server.js --name sillytavern"></div>
 
 - ☘️设置开机自启：
 

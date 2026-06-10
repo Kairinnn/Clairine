@@ -132,7 +132,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
         const lines = decoded.trim().split("\n");
         const numbered = lines
           .map((line: string, i: number) =>
-            `<span class="code-line"><span class="line-number">${i + 1}</span><span class="line-content">${line || " "}</span></span>`
+            `<span class="code-line" data-line="${i + 1}"><span class="line-content">${line || " "}</span></span>`
           )
           .join("");
         return `<pre><code${lang ? ` class="${lang}"` : ""}>${numbered}</code></pre>`;

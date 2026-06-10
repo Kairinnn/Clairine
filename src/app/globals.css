@@ -312,15 +312,18 @@ a {
   padding: 0.3rem 0;
 }
 
-.line-number {
+/* 行号用伪元素渲染，不进入 DOM 文本流，复制时不会被一起复制进去 */
+.code-line::before {
+  content: attr(data-line);
   display: inline-block;
   width: 2rem;
   margin-right: 0.75rem;
   text-align: right;
   color: rgba(255, 146, 201, 0.9);
   user-select: none;
+  -webkit-user-select: none;
   font-size: 1.2em;
-  font-weight:bold;
+  font-weight: bold;
   background: rgba(129, 197, 32, 0.06);
   border-right: 1px solid rgba(129, 197, 32, 0.15);
 }
