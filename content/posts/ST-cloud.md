@@ -45,6 +45,18 @@ sudo apt update && sudo apt upgrade -y
 
 
 
+*⚠️支线：如果你的服务器运行内存（注意是<u>内存</u>而不是<u>系统盘</u>！）在==2GB或以下==，请先配置swap再继续下一步！！否则后续可能会因内存不足而失败、酒馆启动速度非常缓慢！*
+
+```
+
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+```
+
 - ☘️必要工具打包入住：
 
 ```
@@ -59,7 +71,7 @@ sudo apt install -y git nodejs npm
 
 
 
-*支线：如果node版本低了就拉一下新版！*
+*⚠️支线：如果node版本低了就拉一下新版！*
 
 ```
 
