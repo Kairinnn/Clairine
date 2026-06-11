@@ -83,14 +83,12 @@ sudo apt install -y git nodejs npm
 
 ```
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-source ~/.bashrc
-nvm install 20
-nvm use 20
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 ```
 
-  ↑⭐️注意！`nvm install/use =20=`中的“20”是指定的node版本！要拉其它版本记得自行改版本数字w
+  ↑⭐️注意！“https://deb.nodesource.com/setup_==20==.x”中的“20”是指定的node版本！要拉其它版本记得自行改版本数字w
 
 
 
