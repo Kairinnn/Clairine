@@ -94,10 +94,20 @@ sudo apt-get install -y nodejs
 
 ## 🧀二、部署SillyTavern地基！
 
+- ☘️安装ST
+
 ```
 
 git clone https://github.com/SillyTavern/SillyTavern.git
 cd SillyTavern
+
+```
+
+*支线：如果问你要github的Username和Password的话那就是抽风了，换这个镜像试试↓*
+
+```
+
+git clone https://ghproxy.net/https://github.com/SillyTavern/SillyTavern.git
 
 ```
 
