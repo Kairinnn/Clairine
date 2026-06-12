@@ -21,7 +21,7 @@ export default function Tag({ label, color = "pink" }: TagProps) {
         ...styles,
         padding: "0.15rem 0.5rem",
         borderRadius: "9999px",
-        fontSize: "0.85rem",
+        fontSize: "0.75rem",
         fontWeight: 500,
         whiteSpace: "nowrap",
       }}

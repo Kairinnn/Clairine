@@ -1,13 +1,5 @@
 "use client";
 
-const categoryIcons: Record<string, string> = {
-  "教程": "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png",
-  "闲谈": "https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.png",
-  "安利": "https://i.postimg.cc/L8qXRQmX/heart.png",
-  "关于": "https://i.postimg.cc/L8qXRQmX/envelope.png",
-  // 继续加...
-};
-
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -30,7 +22,7 @@ export default function Sidebar({
 
   return (
     <>
-      {/* ========= 🩷毛玻璃遮罩 ========= */}
+      {/* 毛玻璃遮罩 */}
       <div
         onClick={onClose}
         style={{
@@ -46,29 +38,28 @@ export default function Sidebar({
         }}
       />
 
-      {/* ========= 🩷侧边栏本体 ========= */}
+      {/* 侧边栏本体 */}
       <nav
         style={{
           position: "fixed",
           top: 0,
           left: 0,
           width: "min(260px, 65vw)",
-          height: "100dvh",
+          height: "100%",
           zIndex: 200,
           background:
             "linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,245,250,0.96) 100%)",
-          borderRight: "2px solid #d3f49a",
+          borderRight: "2px solid rgba(222,255,163,0.4)",
           boxShadow: isOpen
             ? "4px 0 24px rgba(251,168,215,0.15)"
             : "none",
-          boxSizing: "border-box",
           padding: "2rem 1.25rem",
           overflowY: "auto",
           transform: isOpen ? "translateX(0)" : "translateX(-100%)",
           transition: "transform 0.4s cubic-bezier(.34,1.3,.64,1), box-shadow 0.3s ease",
         }}
       >
-        {/* ========= 🩷头像区 ========= */}
+        {/* 头像区 */}
         <div
           style={{
             display: "flex",
@@ -86,7 +77,7 @@ export default function Sidebar({
             }}
           >
             <img
-              src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
+              src="https://i.postimg.cc/nhRJSnZ5/Screenshot-2026-04-27-14-13-16-681-com-miui-gallery-edit.jpg"
               alt="头像"
               style={{
                 width: "62px",
@@ -97,94 +88,82 @@ export default function Sidebar({
                 top: "50%",
                 left: "50%",
                 transform: "translate(-50%, -50%)",
-             }}
-           />
+              }}
+            />
+            <img
+              src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
+              alt="头像框"
+              style={{
+                width: "80px",
+                height: "80px",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                pointerEvents: "none",
+              }}
+            />
           </div>
 
           <span style={{ fontSize: "1rem", fontWeight: 700 }}>小灰</span>
           <span
             style={{
-              fontSize: "0.85rem",
+              fontSize: "0.75rem",
               color: "var(--color-text-secondary)",
               marginTop: "2px",
             }}
           >
-            Ring Our Love.⊹⁺˚
+            有你在就会很安心。
           </span>
         </div>
 
-        {/* ========= 🩷虚线分隔 ========= */}
+        {/* 虚线分隔 */}
         <div
           style={{
-            borderTop: "2.5px dashed rgba(179,218,83,0.4)",
+            borderTop: "2px dashed rgba(179,218,83,0.4)",
             margin: "0.5rem 0 0.75rem",
           }}
         />
 
-        {/* ========= 🩷导航列表 ========= */}
-<div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-  <SidebarItem
-    icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
-    label="全部"
-    active={activeCategory === null}
-    onClick={() => handleCategoryClick(null)}
-  />
-{categories.map((cat) => (
-  <SidebarItem
-    key={cat}
-    icon={categoryIcons[cat] || "https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"}
-    label={cat}
-    active={activeCategory === cat}
-    onClick={() => handleCategoryClick(cat)}
- />
-  ))}
-</div>
-        {/* ========= 🩷关于页 ========= */}
-        <a
-         href="/about"
-          onClick={onClose}
-           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.625rem",
-            padding: "0.625rem 0.75rem",
-            borderRadius: "10px",
-            border: "none",
-            background: "transparent",
-            cursor: "pointer",
-            fontSize: "0.875rem",
-            color: "var(--color-text)",
-            textDecoration: "none",
-            marginTop: "0.5rem",
-            }}
-         >
-           <img
-             src="https://i.postimg.cc/L8qXRQmX/envelope.png"
-             alt=""
-             style={{ width: "18px", height: "18px", imageRendering: "pixelated" }}
-           />
-         关于
-        </a>
-        {/* ========= 🩷底部 ========= */}
+        {/* 导航列表 */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+          <SidebarItem
+            icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
+            label="全部"
+            active={activeCategory === null}
+            onClick={() => handleCategoryClick(null)}
+          />
+          {categories.map((cat) => (
+            <SidebarItem
+              key={cat}
+              icon="https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"
+              label={cat}
+              active={activeCategory === cat}
+              onClick={() => handleCategoryClick(cat)}
+            />
+          ))}
+        </div>
+
+        {/* 底部 */}
         <div
           style={{
             borderTop: "2px dashed rgba(179,218,83,0.4)",
             marginTop: "1.5rem",
             paddingTop: "0.875rem",
             textAlign: "center",
-            fontSize: "0.8575rem",
-            color: "var(--color-text)",
+            fontSize: "0.6875rem",
+            color: "var(--color-text-secondary)",
             opacity: 0.6,
           }}
         >
-          {"☘️ Kairin's Nest"}
+          🍓 Kairin's Blog
         </div>
       </nav>
     </>
   );
 }
 
-/* ========= 🩷侧边栏按钮小组件 ========= */
+/* 侧边栏按钮小组件 */
 function SidebarItem({
   icon,
   label,

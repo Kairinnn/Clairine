@@ -21,40 +21,40 @@ export default function PostCard({
   index = 0,
 }: PostCardProps) {
   return (
-    <Link href={`/posts/${slug}`} style={{ textDecoration: "none", color: "inherit" }}>
+    <Link href={`/post/${slug}`} style={{ display: "block" }}>
       <article
         style={{
           padding: "1.25rem",
-          margin: "0.75rem 1rem 0",
-          background: "rgba(255,255,255,0.8)",
-          borderRadius: "14px",
+          borderBottom: "1px dashed rgba(179,218,83,0.35)",
           cursor: "pointer",
           transition:
-            "transform 0.35s cubic-bezier(.34,1.3,.64,1), box-shadow 0.35s ease",
+            "background-color 0.3s ease, transform 0.35s cubic-bezier(.34,1.3,.64,1), box-shadow 0.35s ease",
           animation: `cardIn 0.45s cubic-bezier(.34,1.3,.64,1) ${index * 0.08}s backwards`,
         }}
         onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = "rgba(255,215,237,0.15)";
           e.currentTarget.style.transform = "translateY(-3px)";
           e.currentTarget.style.boxShadow =
             "0 8px 24px rgba(251,168,215,0.12)";
         }}
         onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "transparent";
           e.currentTarget.style.transform = "translateY(0)";
           e.currentTarget.style.boxShadow = "none";
         }}
       >
         <div style={{ display: "flex", gap: "0.75rem" }}>
-          {/* ========= 🩷头像 ========= */}
+          {/* 头像+框 */}
           <div
             style={{
               position: "relative",
-              width: "42px",
-              height: "42px",
+              width: "40px",
+              height: "40px",
               flexShrink: 0,
             }}
           >
             <img
-              src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
+              src="https://i.postimg.cc/nhRJSnZ5/Screenshot-2026-04-27-14-13-16-681-com-miui-gallery-edit.jpg"
               alt="头像"
               style={{
                 width: "34px",
@@ -67,9 +67,22 @@ export default function PostCard({
                 transform: "translate(-50%, -50%)",
               }}
             />
+            <img
+              src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
+              alt=""
+              style={{
+                width: "40px",
+                height: "40px",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                pointerEvents: "none",
+              }}
+            />
           </div>
 
-          {/* ========= 🩷内容 ========= */}
+          {/* 内容 */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
@@ -79,12 +92,12 @@ export default function PostCard({
                 marginBottom: "0.25rem",
               }}
             >
-              <span style={{ fontWeight: 600, fontSize: "1.1rem" }}>
-                Kairin
+              <span style={{ fontWeight: 600, fontSize: "0.9375rem" }}>
+                小灰
               </span>
               <span
                 style={{
-                  fontSize: "0.90rem",
+                  fontSize: "0.75rem",
                   color: "var(--color-text-secondary)",
                 }}
               >
@@ -94,7 +107,7 @@ export default function PostCard({
 
             <h2
               style={{
-                fontSize: "1.0rem",
+                fontSize: "1rem",
                 fontWeight: 600,
                 marginBottom: "0.375rem",
                 lineHeight: 1.4,
@@ -105,7 +118,7 @@ export default function PostCard({
 
             <p
               style={{
-                fontSize: "0.873rem",
+                fontSize: "0.875rem",
                 color: "var(--color-text-secondary)",
                 lineHeight: 1.6,
                 display: "-webkit-box",
@@ -117,7 +130,7 @@ export default function PostCard({
               {excerpt}
             </p>
 
-                        {tags.length > 0 && (
+            {tags.length > 0 && (
               <div
                 style={{
                   display: "flex",
@@ -126,35 +139,13 @@ export default function PostCard({
                   flexWrap: "wrap",
                 }}
               >
-                {tags.map((tag, i) => {
-                  const colorIndex = i % 3;
-                  const bg = [
-                    "rgba(255, 147, 208, 0.45)",
-                    "rgba(156, 212, 45, 0.45)",
-                    "rgba(255, 247, 163, 0.45)",
-                  ][colorIndex];
-                  const fg = [
-                    "#a3e449",
-                    "#ff86b8",
-                    "#FF99C3",
-                  ][colorIndex];
-
-                  return (
-                    <span
-                      key={tag}
-                      className="article-tag"
-                      style={{
-                        padding: "0.2rem 0.6rem",
-                        borderRadius: "8px",
-                        fontSize: "0.75rem",
-                        background: bg,
-                        color: fg,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  );
-                })}
+                {tags.map((tag, i) => (
+                  <Tag
+                    key={tag}
+                    label={tag}
+                    color={i % 2 === 0 ? "pink" : "green"}
+                  />
+                ))}
               </div>
             )}
           </div>
