@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
@@ -15,9 +17,16 @@ export default function Sidebar({
   activeCategory,
   onCategorySelect,
 }: SidebarProps) {
+  const router = useRouter();
+
   const handleCategoryClick = (cat: string | null) => {
     onCategorySelect(cat);
     onClose();
+  };
+
+  const goTo = (path: string) => {
+    onClose();
+    router.push(path);
   };
 
   return (
@@ -125,7 +134,44 @@ export default function Sidebar({
           }}
         />
 
-        {/* 导航列表 */}
+        {/* 页面入口 */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "2px",
+            marginBottom: "0.75rem",
+          }}
+        >
+          <SidebarItem
+            icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
+            label="🍓 首页"
+            active={false}
+            onClick={() => goTo("/")}
+          />
+          <SidebarItem
+            icon="https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"
+            label="🧀 命令匣"
+            active={false}
+            onClick={() => goTo("/tools")}
+          />
+          <SidebarItem
+            icon="https://i.postimg.cc/Dwsg4DCr/mao-zhao.png"
+            label="🧺 合集"
+            active={false}
+            onClick={() => goTo("/collection")}
+          />
+        </div>
+
+        {/* 虚线分隔 */}
+        <div
+          style={{
+            borderTop: "2px dashed rgba(179,218,83,0.4)",
+            margin: "0 0 0.75rem",
+          }}
+        />
+
+        {/* 文章分类 */}
         <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
           <SidebarItem
             icon="https://i.postimg.cc/C1MHtKwQ/cao-mei.png"
