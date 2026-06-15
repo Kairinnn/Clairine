@@ -63,8 +63,7 @@ export default async function PostPage({ params }: PageProps) {
           />
           <img
             src="https://i.postimg.cc/KcMJTcrf/2ed19fc5-45cb-45a7-b5ef-a72344271acd.png"
-            alt=。
-
+            alt=""
             style={{
               width: "40px",
               height: "40px",
