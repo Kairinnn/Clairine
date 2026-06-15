@@ -21,12 +21,12 @@ export const projects: Project[] = [
     tags: ["小工具"],
   },
   {
-    title: "问卷站",
-    desc: "几十道选择题做成的网页问卷，做着玩～",
+    title: "关系人格问卷",
+    desc: "44 道题，测你「怎么爱」的六个维度～",
     emoji: "🗳️",
     accent: "green",
-    url: "",
-    status: "wip", // 施工中：UI 还在构思
+    url: "/quiz", // 站内路由
+    status: "online",
     tags: ["问卷"],
   },
 ];

@@ -34,6 +34,8 @@ export default function ProjectCard({
   const accent = ACCENTS[project.accent];
   // 已上线且填了地址才可点
   const isLive = project.status === "online" && project.url.trim() !== "";
+  // 站内路由（以 / 开头）走同标签页，外链才新开
+  const isInternal = project.url.startsWith("/");
 
   const card = (
     <article
@@ -63,7 +65,7 @@ export default function ProjectCard({
       }}
     >
       {/* 外链角标 */}
-      {isLive && (
+      {isLive && !isInternal && (
         <span
           style={{
             position: "absolute",
@@ -167,8 +169,8 @@ export default function ProjectCard({
     return (
       <a
         href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
+        target={isInternal ? undefined : "_blank"}
+        rel={isInternal ? undefined : "noopener noreferrer"}
         style={{ display: "block" }}
       >
         {card}
