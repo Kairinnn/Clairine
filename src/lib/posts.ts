@@ -46,16 +46,14 @@ export function getAllPosts(): PostMeta[] {
     .filter((f) => f.endsWith(".md"));
 
   const posts: PostMeta[] = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.md$/, 。
-);
+    const slug = fileName.replace(/\.md$/, "");
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, "utf8");
     const { data, content } = matter(fileContents);
 
     const plainText = content.replace(/[#*`>\-\[\]()!]/g, " ").trim();
     const excerpt =
-      data.excerpt || plainText.slice(0, 120) + (plainText.length > 120 ? "..." : 。
-);
+      data.excerpt || plainText.slice(0, 120) + (plainText.length > 120 ? "..." : "");
     const stats = getStats(content);
 
     return {
@@ -83,8 +81,7 @@ export function getAllPostSlugs(): string[] {
   return fs
     .readdirSync(postsDirectory)
     .filter((f) => f.endsWith(".md"))
-    .map((f) => f.replace(/\.md$/, 。
-));
+    .map((f) => f.replace(/\.md$/, ""));
 }
 
 export async function getPostBySlug(slug: string): Promise<Post> {
@@ -97,8 +94,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
 
   const plainText = content.replace(/[#*`>\-\[\]()!]/g, " ").trim();
   const excerpt =
-    data.excerpt || plainText.slice(0, 120) + (plainText.length > 120 ? "..." : 。
-);
+    data.excerpt || plainText.slice(0, 120) + (plainText.length > 120 ? "..." : "");
   const stats = getStats(content);
 
   return {
