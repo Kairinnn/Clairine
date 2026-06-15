@@ -15,6 +15,7 @@ export interface PostMeta {
   category: string;
   wordCount: number;
   readingTime: number;
+  hidden?: boolean;
 }
 
 export interface Post extends PostMeta {
@@ -63,11 +64,13 @@ export function getAllPosts(): PostMeta[] {
       excerpt,
       tags: data.tags || [],
       category: data.category || "未分类",
+      hidden: data.hidden || false,
       ...stats,
     };
   });
 
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return posts
+  .filter((p) => !p.hidden).sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export function getAllCategories(): string[] {
@@ -89,8 +92,52 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(content);
-  const contentHtml = processedContent.toString();
+  const processedContent = await remark().use(html, { sanitize: false }).process(content);
+  const contentHtml = processedContent.toString()
+    .replace(/~~(.+?)~~/g, "<del>$1</del>")
+    .replace(/==(.+?)==/g, "<mark>$1</mark>")
+    .replace(/\+\+(.+?)\+\+/g, "<u>$1</u>")
+    .replace(/\u201C([^\u201D]*?)\u201D/g, '<span class="quote-green">\u201C$1\u201D</span>')
+    .replace(/【([^】]*?)】/g, '<span class="quote-green">【$1】</span>')
+    .replace(/\u300E([^\u300F]*?)\u300F/g, '<span class="quote-green">\u300E$1\u300F</span>')
+    .replace(
+      /<div class="inline-cmd" data-cmd="([^"]*)"(?:\s+data-tool="([^"]*)")?><\/div>/g,
+      (_, cmd, tool) => {
+        const vars = (cmd as string).match(/\{(.+?)\}/g) || [];
+        const inputsHtml = vars
+          .map((v: string) => {
+            const name = v.slice(1, -1);
+            return `<label class="icmd-label">${name}<input type="text" class="icmd-input" data-var="${name}" placeholder="${name}" /></label>`;
+          })
+          .join("");
+        const toolLink = tool
+          ? `<a href="/tools" class="icmd-toollink">🧀 在命令匣中查看</a>`
+          : "";
+        return `
+  <div class="icmd-block" data-template="${(cmd as string).replace(/"/g, '"')}" data-name="${tool || ''}">
+    ${tool ? `<div class="icmd-title">${tool}</div>` : ""}
+    <pre class="icmd-preview"><code>${cmd}</code></pre>
+    ${inputsHtml ? `<div class="icmd-inputs">${inputsHtml}</div>` : ""}
+    <div class="icmd-actions">
+      <button class="icmd-copy">🩷 复制</button>
+      ${tool ? `<a href="/tools" class="icmd-toollink">🧀 在命令匣中查看</a>` : ""}
+    </div>
+  </div>`;
+      }
+    )
+    .replace(
+      /<pre><code(?:\s+class="([^"]*)")?>([\s\S]*?)<\/code><\/pre>/g,
+      (_, lang, code) => {
+        const decoded = (code as string).replace(/</g, "<").replace(/>/g, ">").replace(/&/g, "&");
+        const lines = decoded.trim().split("\n");
+        const numbered = lines
+          .map((line: string, i: number) =>
+            `<span class="code-line" data-line="${i + 1}"><span class="line-content">${line || " "}</span></span>`
+          )
+          .join("");
+        return `<pre><code${lang ? ` class="${lang}"` : ""}>${numbered}</code></pre>`;
+      }
+    );
 
   const plainText = content.replace(/[#*`>\-\[\]()!]/g, " ").trim();
   const excerpt =

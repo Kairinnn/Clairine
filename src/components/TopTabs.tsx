@@ -17,6 +17,10 @@ export default function TopTabs({ activeTab, onTabChange }: TopTabsProps) {
       router.push("/tools");
       return;
     }
+    if (tab === "合集") {
+      router.push("/collection");
+      return;
+    }
     onTabChange(tab);
   };
 
