@@ -23,9 +23,16 @@ export default function Sidebar({
   activeCategory,
   onCategorySelect,
 }: SidebarProps) {
+  const router = useRouter();
+
   const handleCategoryClick = (cat: string | null) => {
     onCategorySelect(cat);
     onClose();
+  };
+
+  const goTo = (path: string) => {
+    onClose();
+    router.push(path);
   };
 
   return (
