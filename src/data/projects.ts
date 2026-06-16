@@ -16,7 +16,7 @@ export const projects: Project[] = [
     desc: "收集各种颜文字，点一下就复制～",
     emoji: "😺",
     accent: "pink",
-    url: "", // TODO: 换成颜文字墙的真实部署地址，换好后这张卡就能点啦
+    url: "http://8.138.151.235:3000/",
     status: "online",
     tags: ["小工具"],
   },
