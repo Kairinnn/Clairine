@@ -49,6 +49,8 @@ export default function ToolsPage() {
   const [showChain, setShowChain] = useState<string | null>(null);
   // 记住点击关联命令前所在的卡片，方便误触后滚回来
   const [scrollReturnId, setScrollReturnId] = useState<string | null>(null);
+  // 跳转后高亮的目标卡片（粉色悬浮），随导航移动
+  const [highlightId, setHighlightId] = useState<string | null>(null);
 
   // 滑动到目标命令卡片：先清掉过滤确保目标渲染出来，再平滑滚过去
   const scrollToCmd = (targetTitle: string, fromTitle: string) => {
@@ -58,11 +60,12 @@ export default function ToolsPage() {
     setActiveCategory(null);
     setActiveSystem(null);
     setShowFavOnly(false);
-    // 等下一帧渲染完成后再滚动
+    // 等下一帧渲染完成后再滚动，并把高亮落到目标卡片
     setTimeout(() => {
       document
         .getElementById(`cmd-${targetTitle}`)
         ?.scrollIntoView({ behavior: "smooth", block: "center" });
+      setHighlightId(targetTitle);
     }, 50);
   };
 
@@ -245,7 +248,7 @@ export default function ToolsPage() {
                 <div
                   key={c.title}
                   id={`cmd-${c.title}`}
-                  className={`cmd-card ${isCopied ? "cmd-card-copied" : ""} ${isExpanded ? "cmd-card-expanded" : ""}`}
+                  className={`cmd-card ${isCopied ? "cmd-card-copied" : ""} ${isExpanded ? "cmd-card-expanded" : ""} ${highlightId === c.title ? "cmd-card-highlight" : ""}`}
                 >
 
                   <div className="cmd-card-top">
@@ -362,9 +365,12 @@ export default function ToolsPage() {
         <button
           className="cmd-return-btn"
           onClick={() => {
+            const back = scrollReturnId;
             document
-              .getElementById(`cmd-${scrollReturnId}`)
+              .getElementById(`cmd-${back}`)
               ?.scrollIntoView({ behavior: "smooth", block: "center" });
+            // 取消目标卡片高亮，把粉色悬浮移回刚刚来时的卡片
+            setHighlightId(back);
             setScrollReturnId(null);
           }}
         >
