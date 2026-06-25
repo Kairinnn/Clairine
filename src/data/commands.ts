@@ -117,6 +117,13 @@ export const commands: Command[] = [
     system: "通用",
     chain: "unzip",
   },
+  {
+    title: "创建软链接（symlink）",
+    cmd: "ln -s {源文件夹完整路径} {链接路径}",
+    desc: "把源文件夹\"映射\"到链接路径，访问链接=访问源文件夹。源路径必须是完整路径，删链接用 rm 不会动源文件",
+    category: "文件操作",
+    system: "Linux",
+  },
   // ===== 📦 文件传输 =====
   {
     title: "从服务器下载单个文件",

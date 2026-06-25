@@ -278,7 +278,13 @@ export default function ToolsPage() {
                   </div>
 
                   <div className="cmd-code-row">
-                    <code className="cmd-code" dangerouslySetInnerHTML={{ __html: finalCmd }} />
+                    {/* 用 div 而非 <code>，避免手机浏览器/扩展把它当成代码块自动加复制按钮 */}
+                    <div
+                      className="cmd-code"
+                      translate="no"
+                      data-nosnippet
+                      dangerouslySetInnerHTML={{ __html: finalCmd }}
+                    />
                     <button
                       className={`cmd-copy ${isCopied ? "copied" : ""}`}
                       onClick={() => copyCmd(c)}
@@ -338,6 +344,18 @@ export default function ToolsPage() {
                           />
                         </div>
                       ))}
+                      {/* 一键清空当前卡片已填的所有变量 */}
+                      <div className="cmd-inputs-actions">
+                        <button
+                          type="button"
+                          className="cmd-inputs-clear"
+                          onClick={() => setInputValues({})}
+                          disabled={Object.values(inputValues).every((v) => !v)}
+                          title="清空所有已填变量"
+                        >
+                          🧹 清空
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
