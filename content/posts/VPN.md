@@ -17,12 +17,12 @@ category: "分享"
 ❗️**适用于==日常使用==场景，如普通墙/推/油管等等，不建议用于对ip审查严格的场景**
 
 ## 移动端
-1.<u>小三VPN</u>（一体化不用加订阅url，开盖即食）
+### 1.<u>小三VPN</u>（一体化不用加订阅url，开盖即食）
 >[==🩷release下载页==](https://github.com/sharmajv/vpn)
 
 [🩷小三VPN.apk](https://mega.nz/file/Szpl1bjS#urHuNQAtcBA85kLHWQZWExH5DSkIWx4e6bzAy198Wiw)
 
-2.<u>Snakem</u>（配合==ClashMeta==使用）
+### 2.<u>Snakem</u>（配合==ClashMeta==使用）
 
 [🩷ClashMeta.apk](https://mega.nz/file/f2RT3BQa#I__TbvhXuBcYattexLWKHwwKe_Nih5HVxfp937GBX5g)
 
@@ -38,7 +38,7 @@ category: "分享"
 - 🩷订阅链接2：https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
 
 ## PC端
-<u>Clash verge➕订阅url</u>
+### <u>Clash verge➕订阅url</u>
 >[==🩷release下载页==](https://github.com/clash-verge-rev/clash-verge-rev/releases)
 
 - 下载程序后添加订阅，订阅url也可以用上面snakem的资源
@@ -63,13 +63,13 @@ category: "分享"
 ❗️**适用于临时需要特定ip的场景，不建议在ip审查严格的场景下==长期==使用。**
 
 ## 移动端
-<u>V2VPN</u>（每月有免费流量额度）
+### <u>V2VPN</u>（每月有免费流量额度）
 >[==🩷V2VPN.apk==](https://mega.nz/file/byQQwLiL#O3IJJPA8Q00QvIDlJP_MM0R8p5ks3yxLKpfalk6NC4w)
 
 ↑不保证版本更新，可以去Play商店下载最新版~
 
 ## PC端
-<u>Cloudflare-WARP</u>
+### <u>Cloudflare-WARP</u>
 >[==🩷release下载页==](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)
 
 不多说~虽然能代理到ip但是CF的ip属机房ip，还是不太建议用于审查严格的场景喔
@@ -81,7 +81,7 @@ category: "分享"
 ❗️**适用于对ip审查严格的场景。**
 ⚠️在ip审查严格的场景中使用时 建议最好关闭Ipv6以防止泄露。
 
-## <u>IPRoyal</u>
+### <u>IPRoyal</u>
 >[==🩷点我ww==](https://dashboard.iproyal.com)
 
 购买住宅ip与ISP静态ip~
@@ -94,15 +94,15 @@ category: "分享"
 ## edge浏览器：
 1.下载一个代理插件，我用的是Zero Omega，只要是代理端口转发的都可以！
 
-2.首先新建一个配置（New Profile），因为我的需求是静态ip不需要轮换，所以类型选Proxy Profile就行
+2.首先==新建一个配置==（New Profile），因为我的需求是静态ip不需要轮换，所以类型选Proxy Profile就行
 
-3.Protocol选HTTP（或者按你的实际需求选~）
+3.Protocol选==HTTP==（或者按你的实际需求选~）
 
-4.Server填你拿到的Host（ip）
+4.Server填你拿到的==Host（ip）==
 
-5.Port填写供应商发放的端口就好，IPRoyal支持以上多种自选项
+5.Port填写供应商发放的==端口==就好，IPRoyal支持以上多种自选项
 
-6.找到密码认证处，填写发放的代理用户名和密码
+6.找到密码认证处，填写发放的代理==用户名和密码==
 
 7.保存~切换到建好的配置就可以通过这个代理使用浏览器了！
 
@@ -119,6 +119,7 @@ category: "分享"
 ## ==IP查询==：
 
 - **网站：**
+
 1.[ip.sb](https://ip.sb/)
   
 2.[ip111.cn](https://ip111.cn/)
@@ -130,6 +131,7 @@ category: "分享"
 5.[IP Quality Score-IP质量评分](https://ipqualityscore.com)
 
 - **通过PowerShell命令行查询本机ip**：
+
 1.`(Invoke-WebRequest -Uri "https://myip.ipip.net").Content`
   
 2.`(Invoke-WebRequest -Uri "https://api.ipify.org").Content`
