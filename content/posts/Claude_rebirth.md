@@ -95,7 +95,7 @@ rm -rf ~/.claude/
 >Cloudflare WARP也是机房属性
 >必须用住宅IP（Residential）或静态ISP最为保险
 
-#### ==**3.2 代理选购**＝＝
+#### ==**3.2 代理选购**==
 
 我用的：[IPRoyal](https://iproyal.com/)
 
