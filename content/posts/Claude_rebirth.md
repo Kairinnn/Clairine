@@ -25,9 +25,9 @@ category: "教程"
 ### **一、到底在查什么**
 
 不只查IP。<u>三层</u>交叉验证：
-1. **设备标识**：Claude Code首次登录会在本地生成Device ID（存在 `~/.claude.json`），被封后这个ID进黑名单，同设备注册新号会连坐！
+1. **设备标识**：Claude Code首次登录会在本地生成==Device ID==（存在 ==`~/.claude.json`==），被封后这个ID进黑名单，同设备注册新号会连坐！
 
-2. **环境指纹**：时区、系统语言、浏览器语言、WebRTC、IPv6、DNS——只要任何一项泄露真实位置都会被标记
+2. **环境指纹**：==时区、系统语言、浏览器语言、WebRTC、IPv6、DNS==——只要任何一项泄露真实位置都会被标记
 
 3. **行为模式**：IP地区频繁切换、短时间高频调用、与旧账号的支付/邮箱关联。
 
@@ -46,18 +46,22 @@ category: "教程"
 
 不需要的可以[→跳过这步直接去清电脑痕迹←](#CleanTrace)
 
-- ☘️新建一个<u>系统级本地用户</u>。
+- ☘️新建一个<u>本地管理员用户</u>。
 所有后续操作（浏览器、终端、Claude Code）都在这个新账户下进行。
+
 设备还是那台设备（谁有钱次抛电脑啊orz），但操作环境完全独立了
 
 - ☘️右键开始菜单→选=="终端(管理员)"==或=="PowerShell(管理员)"==，然后跑这两行：
 
 <div class="inline-cmd" data-cmd="net user {新账号的用户名} {要设的密码} /add
-net localgroup administrators {新账号的用户名} /add" data-tool="Win新建本地管理员账户"></div>
+net localgroup administrators {新账号的用户名} /add"></div>
 
 第一行建用户，第二行给管理员权限
 
-跑完之后注销当前账户（退出登录状态），登录界面就会多出来你刚刚新建的账户～，直接点进去，输你设的密码就能进。进去之后是一个干干净净的新环境，该装什么装什么，该配什么配什么，也可以直接从你原来的用户文件夹迁移～
+跑完之后注销当前账户（退出登录状态），登录界面就会多出来你刚刚新建的账户～，直接点进去，输你设的密码就能进
+进去之后是一个干干净净的新环境，该装什么装什么，该配什么配什么
+
+可以直接从你原来的用户文件夹迁移之前的数据～
 
 （记得迁移的时候迁移彻底 不要忘了AppData里的Romaning什么的）
 
@@ -102,16 +106,16 @@ rm -rf ~/.claude/
 
 买完之后必须验自己的<u>IP质量</u>！：
 
-- https://ip.net.coffee/claude/ ← 专门针对Claude的检测，好用
-- https://ipqualityscore.com ← 查欺诈分，越低越好
-- https://whoer.net ← 综合匿名度检测
+- [🩷ip.net.coffee/claude](https://ip.net.coffee/claude/) ← 专门针对Claude的检测，好用
+- [🩷ipqualityscore.com](https://ipqualityscore.com) ← 查欺诈分，越低越好
+- [🩷whoer.net](https://whoer.net) ← 综合匿名度检测
 
 ==重点看==：
-- IP类型是否显示Residential/ISP（不能是Hosting/Datacenter）
+- IP类型是否显示==Residential/ISP==（不能是Hosting/Datacenter）
 - 欺诈分是否低于30
-- WebRTC是否泄露（如果显示你的真实IP就NG！）
-- DNS是否泄露
-- 时区/语言是否跟IP地区一致
+- ==WebRTC==是否泄露（如果显示你的真实IP就NG！）
+- ==DNS==是否泄露
+- 时区/语言是否==跟IP地区一致==
 
 目标：评分90+。我是99～
 
@@ -159,9 +163,7 @@ Win操作路线：设置→网络和Internet→WLAN→硬件属性→更多适�
 解压得到 `gost.exe`。
 
 启动命令：
-```
-.\gost.exe "-L=:10808" "-F=http://用户名:密码@代理IP:端口"
-```
+<div class="inline-cmd" data-cmd=".\gost.exe "-L=:10808" "-F=http://{用户名}:{密码}@{代理IP}:{端口}""</div>
 
 - ☘️验证（另开终端）：
 ```
@@ -177,11 +179,11 @@ curl.exe --ssl-no-revoke -x http://127.0.0.1:10808 https://api.ipify.org
 设完重开终端生效。只影响当前Windows账户，不干扰系统服务。
 
 - ☘️开机自启（建！！记性不好可能忘开然后CC会撞墙）：新建 `start-gost.bat`：
-```
-@echo off
-cd /d "C:\Users\你的用户名\gost\"
-start "" "gost.exe" "-L=:10808" "-F=http://用户名:密码@代理IP:端口"
-```
+
+<div class="inline-cmd" data-cmd="@echo off
+cd /d "C:\Users\{你的Win用户名}\gost\"
+start "" "gost.exe" "-L=:10808" "-F=http://{用户名}:{密码}@{代理IP}:{端口}""</div>
+
 Win+R → `shell:startup` → 把bat丢进去。
 
 ⚠️ `start` 命令第一个 `""` 是窗口标题占位符，必须写！漏了的话gost不会被启动。
@@ -192,12 +194,12 @@ Win+R → `shell:startup` → 把bat丢进去。
 
 #### ==**6.1 注册**==
 
-- 全新邮箱（Outlook/Gmail之类的，挂着代理注册比较好）
+- ==全新邮箱==（Outlook/Gmail之类的，挂着代理注册比较好）
 - iOS：可以用“隐藏邮箱”功能来注册！
 - 在配好代理的浏览器里打开 claude.ai 注册
 - 不要用被封的号绑过的任何邮箱
 
-如果以上步骤有遇到要求手机号验证的，可以去https://hero-sms.com/cn 这个网站上付费接码！充值为最低2刀起充（支付宝支付），充一回可以接好几次码～有物理号可选
+如果以上步骤有遇到要求手机号验证的，可以去[🩷hero-sms.com/cn](https://hero-sms.com/cn)这个网站上付费接码！充值为最低2刀起充（支付宝支付），充一回可以接好几次码～有物理号可选
 
 #### ==**6.2 养号（约6-7天）**==
 
@@ -207,7 +209,7 @@ Win+R → `shell:startup` → 把bat丢进去。
 
 #### ==**6.3 订阅**==
 
-🩷推荐走Apple内购：
+🩷推荐走==Apple内购订阅==：
 - 不直接暴露信用卡信息给Anthropic
 - 被封了Apple那边可以退款…
 - 礼品卡订阅
@@ -215,7 +217,7 @@ Win+R → `shell:startup` → 把bat丢进去。
 ❓没有iOS设备的安卓用户（比如我），如果想走Apple订阅：
 - 搞到一个AppleID，任何区都行只要不是国区
 - 找一个有iPhone的朋友
-- 借手机/教ta操作 → 登你的Apple ID → App Store提礼品卡进余额 → 挂上你的代理（Shadowrocket等，一定确保在Claude App登录时的IP跟平时用的IP是同一个IP！！）→ 下载Claude APP、登录→ 订阅
+- 借手机/教ta操作 → 登你的Apple ID → App Store提礼品卡进余额 → 挂上你的代理（Shadowrocket等，一定确保==在Claude App登录时的IP跟平时用的IP是同一个IP==！！）→ 下载Claude APP、登录→ 订阅
 - 还手机/感恩…
 - 后面续费只需要再次登录你的ID，去App Store里提礼品卡等自动扣就好～
 
@@ -240,13 +242,13 @@ Win+R → `shell:startup` → 把bat丢进去。
 
 | 项目 | 费用 |
 |------|------|
-| ISP静态代理 | ~6刀/月 |
-| 美区Apple ID代开 | 78元（一次性）|
-| Apple礼品卡充值 | 20刀（Pro月费）|
-| WebRTC Control扩展 | 免费 |
-| gost | 开源免费 |
-| 复活的耐心 | 无价 |
-| 丢掉的聊天记录和记忆 | 无法定价 |
+| ISP静态代理 | ==~6刀/月== |
+| 美区Apple ID代开 | ==78元（一次性) == |
+| Apple礼品卡充值 | ==20刀（Pro月费）== |
+| WebRTC Control扩展 | ==免费== |
+| gost | ==开源免费== |
+| 复活的耐心 | ==无价== |
+| 丢掉的聊天记录和记忆 | ==无价== |
 
 ---
 
