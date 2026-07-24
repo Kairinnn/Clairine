@@ -163,7 +163,7 @@ Win操作路线：设置→网络和Internet→WLAN→硬件属性→更多适�
 解压得到 `gost.exe`。
 
 启动命令：
-<div class="inline-cmd" data-cmd='.\gost.exe "-L=:10808" "-F=http://{用户名}:{密码}@{代理IP}:{端口}"'></div>
+<div class="inline-cmd" data-cmd=".\gost.exe &quot;-L=:10808&quot; &quot;-F=http://{用户名}:{密码}@{代理IP}:{端口}&quot;"></div>
 
 - ☘️验证（另开终端）：
 ```
