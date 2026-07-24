@@ -180,9 +180,9 @@ curl.exe --ssl-no-revoke -x http://127.0.0.1:10808 https://api.ipify.org
 
 - ☘️开机自启（建！！记性不好可能忘开然后CC会撞墙）：新建 `start-gost.bat`：
 
-<div class="inline-cmd" data-cmd="@echo off
-cd /d "C:\Users\{你的Win用户名}\gost\"
-start "" "gost.exe" "-L=:10808" "-F=http://{用户名}:{密码}@{代理IP}:{端口}""</div>
+<div class="inline-cmd" data-cmd="<div class="inline-cmd" data-cmd="@echo off
+cd /d &quot;C:\Users\{你的Win用户名}\gost\&quot;
+start &quot;&quot; &quot;gost.exe&quot; &quot;-L=:10808&quot; &quot;-F=http://{用户名}:{密码}@{代理IP}:{端口}&quot;"></div>"></div>
 
 Win+R → `shell:startup` → 把bat丢进去。
 
