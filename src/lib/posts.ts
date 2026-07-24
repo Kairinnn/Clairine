@@ -102,7 +102,8 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     .replace(/\u300E([^\u300F]*?)\u300F/g, '<span class="quote-green">\u300E$1\u300F</span>')
     .replace(
       /<div\s+class="inline-cmd"\s+data-cmd="([^"]*)"(?:\s+data-tool="([^"]*)")?\s*(?:\/>|><\/div>)/g,
-      (_, cmd, tool) => {
+      (_, cmdRaw, tool) => {
+        const cmd = (cmdRaw as string).replace(/&#10;/g, '\n');
         const vars = (cmd as string).match(/\{(.+?)\}/g) || [];
         const uniqueVars = [...new Set(vars)];
         const inputsHtml = uniqueVars
