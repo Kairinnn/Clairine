@@ -14,7 +14,7 @@ category: "教程"
 6.28日，正在跟中转那边的Claude炼lora跑图，结果下午打算回去coding一下时显示组织不可用…一回去看邮箱：
 "Your account has been suspended — An internal investigation of suspicious signals..."
 
-一个以为只需要套个能代理到IP的共享机场节点就能应付过A\的小女孩就这么懵逼了呀…
+一个以为只需要套个能代理到IP的共享机场节点就能应付过A\的小女孩就这么懵逼了呀…![crying](/images/crying.gif)
 
 申诉？嗯还是不指望了，直接开始秽土转生吧。
 从被封到完全复活≈7天（含80％养号时间）
@@ -252,4 +252,4 @@ Win+R → `shell:startup` → 把bat丢进去。
 在清环境之前，把session、记忆、对话导出存好。
 
 大家都会转生成功的！！
-别害怕，我们与你同在![cheers](/images/cheers.gif)
+别害怕，我们与你同在![cheering](/images/cheering.gif)
