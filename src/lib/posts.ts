@@ -104,10 +104,11 @@ export async function getPostBySlug(slug: string): Promise<Post> {
       /<div class="inline-cmd" data-cmd="([^"]*)"(?:\s+data-tool="([^"]*)")?><\/div>/g,
       (_, cmd, tool) => {
         const vars = (cmd as string).match(/\{(.+?)\}/g) || [];
-        const inputsHtml = vars
+        const uniqueVars = [...new Set(vars)];
+        const inputsHtml = uniqueVars
           .map((v: string) => {
-            const name = v.slice(1, -1);
-            return `<label class="icmd-label">${name}<input type="text" class="icmd-input" data-var="${name}" placeholder="${name}" /></label>`;
+        const name = v.slice(1, -1);
+          return `<label class="icmd-label">${name}<input type="text" class="icmd-input" data-var="${name}" placeholder="${name}" /></label>`;
           })
           .join("");
         const toolLink = tool
