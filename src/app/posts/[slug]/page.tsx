@@ -2,6 +2,7 @@ import InlineCmdScript from "@/components/InlineCmdScript";
 import { notFound } from "next/navigation";
 import PostContent from "@/components/PostContent";
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
+import { getAuthor } from "@/lib/authors";
 import BottomNav from "@/components/BottomNav";
 
 export const dynamic = "force-static";
@@ -35,6 +36,9 @@ export default async function PostPage({ params }: PageProps) {
       ? { title: allPosts[currentIndex - 1].title, slug: allPosts[currentIndex - 1].slug }
       : null;
 
+{/* ========= 🩷作者（frontmatter 的 author，默认 kairin） ========= */}
+  const author = getAuthor(post.author);
+
   return (
     <main
       style={{
@@ -62,7 +66,7 @@ export default async function PostPage({ params }: PageProps) {
           }}
         >
           <img
-            src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
+            src={author.avatar}
             alt="头像"
             style={{
               width: "40px",
@@ -78,7 +82,7 @@ export default async function PostPage({ params }: PageProps) {
         </div>
         <div>
           <div style={{ display: "flex", alignItems: "baseline", gap: "0.5rem" }}>
-            <span style={{ fontWeight: 600, fontSize: "1.1375rem" }}>Kairin</span>
+            <span style={{ fontWeight: 600, fontSize: "1.1375rem" }}>{author.name}</span>
             <span style={{ fontSize: "0.85rem", color: "var(--color-text-secondary)" }}>
               {post.date}
             </span>

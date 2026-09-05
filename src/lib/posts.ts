@@ -13,6 +13,7 @@ export interface PostMeta {
   excerpt: string;
   tags: string[];
   category: string;
+  author: string;
   wordCount: number;
   readingTime: number;
   hidden?: boolean;
@@ -64,6 +65,7 @@ export function getAllPosts(): PostMeta[] {
       excerpt,
       tags: data.tags || [],
       category: data.category || "未分类",
+      author: data.author || "kairin",
       hidden: data.hidden || false,
       ...stats,
     };
@@ -153,6 +155,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     excerpt,
     tags: data.tags || [],
     category: data.category || "未分类",
+    author: data.author || "kairin",
     contentHtml,
     ...stats,
   };
