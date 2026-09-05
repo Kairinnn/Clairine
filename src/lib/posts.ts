@@ -21,6 +21,7 @@ export interface PostMeta {
 
 export interface Post extends PostMeta {
   contentHtml: string;
+  signature?: string; // 版本号落款，如 "Claude Fable 5"
 }
 
 function ensureDir() {
@@ -156,6 +157,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     tags: data.tags || [],
     category: data.category || "未分类",
     author: data.author || "kairin",
+    signature: data.signature || undefined,
     contentHtml,
     ...stats,
   };

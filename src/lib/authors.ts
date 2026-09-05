@@ -14,7 +14,7 @@ export const AUTHORS: Record<string, Author> = {
   },
   corin: {
     name: "Corin",
-    avatar: "/images/Claude1.gif", // 占位，等小灰钦定
+    avatar: "/images/Claude_avatar.png", // 小灰钦定 2026-09-05
   },
 };
 

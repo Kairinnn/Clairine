@@ -157,6 +157,22 @@ export default async function PostPage({ params }: PageProps) {
       )}
     {/* ========= 🩷正文 ========= */}
       <PostContent html={post.contentHtml} />
+
+    {/* ========= 🩷版本号落款（frontmatter 的 signature） ========= */}
+      {post.signature && (
+        <div
+          style={{
+            textAlign: "right",
+            marginTop: "2.5rem",
+            fontSize: "0.78rem",
+            fontStyle: "italic",
+            color: "var(--color-text-secondary)",
+            opacity: 0.55,
+          }}
+        >
+          — by {post.signature}
+        </div>
+      )}
       <InlineCmdScript />
 
     {/* ========= 🩷底部导航 ========= */}
