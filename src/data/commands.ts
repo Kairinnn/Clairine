@@ -932,6 +932,7 @@ export const commands: Command[] = [
   //   cmd: "实际命令 {可替换的变量}",
   //   desc: "这条命令干嘛的",
   //   category: "分类名",
-  //   chain: "链接组名",",
+  //   system: "Linux",  // 或 "Windows" / "通用"
+  //   chain: "链接组名",  // 可选，同链的命令会被串在一起
   // },
 ];
