@@ -16,7 +16,7 @@ export const projects: Project[] = [
     desc: "收集各种颜文字，点一下就复制～",
     emoji: "😺",
     accent: "pink",
-    url: "http://8.138.151.235:3000/", // 跑在自家小鸡的 3000 端口（node /root/kaom）
+    url: "https://kaomoji.kairin.cc/", // 2026-09-05 挂上正经域名了，CF 代理 → 源站 80 → 3000
     status: "online",
     tags: ["小工具"],
   },
