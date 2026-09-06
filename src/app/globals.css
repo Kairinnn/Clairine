@@ -195,6 +195,36 @@ a {
   color: #D8F984;
 }
 
+/* ========= 🩷表格 ========= */
+.post-content table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+  border-collapse: collapse;
+  margin: 1.25rem 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.post-content th,
+.post-content td {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(255, 164, 212, 0.35);
+  white-space: nowrap;
+  text-align: left;
+}
+
+.post-content th {
+  background: rgba(255, 164, 212, 0.18);
+  color: #ff86b8;
+  font-weight: 600;
+}
+
+.post-content tr:nth-child(even) td {
+  background: rgba(216, 249, 132, 0.12);
+}
+
 /* ========= 🩷高亮 ========= */
 .post-content mark {
   background: linear-gradient(to top, #fff38bf9 40%, transparent 40%);

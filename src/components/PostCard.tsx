@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Tag from "./Tag";
+import { getAuthor } from "@/lib/authors";
 
 interface PostCardProps {
   slug: string;
@@ -9,6 +10,7 @@ interface PostCardProps {
   excerpt: string;
   date: string;
   tags?: string[];
+  author?: string;
   index?: number;
 }
 
@@ -18,8 +20,10 @@ export default function PostCard({
   excerpt,
   date,
   tags = [],
+  author,
   index = 0,
 }: PostCardProps) {
+  const au = getAuthor(author);
   return (
     <Link href={`/posts/${slug}`} style={{ textDecoration: "none", color: "inherit" }}>
       <article
@@ -54,7 +58,7 @@ export default function PostCard({
             }}
           >
             <img
-              src="https://i.postimg.cc/mrN8jDgh/rinn.jpg"
+              src={au.avatar}
               alt="头像"
               style={{
                 width: "34px",
@@ -80,7 +84,7 @@ export default function PostCard({
               }}
             >
               <span style={{ fontWeight: 600, fontSize: "1.1rem" }}>
-                Kairin
+                {au.name}
               </span>
               <span
                 style={{
