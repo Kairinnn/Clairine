@@ -1185,6 +1185,161 @@ a {
   cursor: not-allowed;
 }
 
+/* ========= ⚙️ 我的常用变量 ========= */
+.cmd-profile {
+  margin-bottom: 0.75rem;
+  border: 1.5px dashed rgba(255, 173, 220, 0.5);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.55);
+  overflow: hidden;
+}
+
+.cmd-profile-head {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.cmd-profile-count {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.cmd-profile-body {
+  padding: 0.2rem 0.8rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 1.5px dashed rgba(255, 173, 220, 0.3);
+}
+
+.cmd-profile-tip {
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  opacity: 0.75;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.cmd-profile-newname {
+  flex: 0 0 7rem;
+}
+
+.cmd-profile-add {
+  flex-shrink: 0;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(129, 197, 32, 0.35);
+  background: rgba(213, 244, 165, 0.5);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.cmd-profile-add:hover:not(:disabled) {
+  background: rgba(190, 236, 120, 0.55);
+  border-color: rgba(129, 197, 32, 0.6);
+}
+
+.cmd-profile-add:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.cmd-profile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.15rem;
+}
+
+.cmd-profile-chips-label {
+  font-size: 0.7rem;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.cmd-profile-chip {
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 173, 220, 0.45);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cmd-profile-chip:hover {
+  color: #ff6fb0;
+  border-color: rgba(255, 173, 220, 0.8);
+  background: rgba(255, 238, 246, 0.9);
+}
+
+/* ========= 输入行小按钮：✕ 清空 / 📌 存常用 ========= */
+.cmd-input-x,
+.cmd-input-pin {
+  flex-shrink: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255, 173, 220, 0.4);
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-secondary);
+  font-size: 0.72rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+}
+
+.cmd-input-x:hover:not(:disabled) {
+  color: #ff6fb0;
+  border-color: rgba(255, 173, 220, 0.8);
+  background: rgba(255, 238, 246, 0.9);
+}
+
+.cmd-input-pin:hover:not(:disabled) {
+  border-color: rgba(129, 197, 32, 0.5);
+  background: rgba(238, 250, 220, 0.9);
+}
+
+.cmd-input-pin-active {
+  border-color: rgba(129, 197, 32, 0.6);
+  background: rgba(213, 244, 165, 0.6);
+}
+
+.cmd-input-x:disabled,
+.cmd-input-pin:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* 自动预填（来自常用变量）的输入框：淡绿底提示这是存过的值 */
+.cmd-input-prefilled {
+  background: rgba(238, 250, 220, 0.85);
+  border-color: rgba(129, 197, 32, 0.4);
+}
+
 /* ========= 🩷空输入 ========= */
 
 .cmd-empty {

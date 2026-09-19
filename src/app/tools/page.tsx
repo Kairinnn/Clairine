@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect, useCallback } from "react";
-import { commands } from "@/data/commands";
+import { commands, type Command } from "@/data/commands";
 import FindReplace from "@/components/FindReplace";
 import { useRouter } from "next/navigation";
 
@@ -46,6 +46,22 @@ export default function ToolsPage() {
   });
   const [showFavOnly, setShowFavOnly] = useState(false);
   const [activeSystem, setActiveSystem] = useState<string | null>(null);
+  // ⚙️ 个人常用变量：{变量名: 值}，展开命令卡时自动预填同名变量
+  const [profile, setProfileState] = useState<Record<string, string>>(() => {
+    try {
+      const saved = localStorage.getItem("cmd-profile");
+      return saved ? JSON.parse(saved) : {};
+    } catch {
+      return {};
+    }
+  });
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [newVarName, setNewVarName] = useState("");
+  const [newVarValue, setNewVarValue] = useState("");
+  const setProfile = useCallback((next: Record<string, string>) => {
+    setProfileState(next);
+    localStorage.setItem("cmd-profile", JSON.stringify(next));
+  }, []);
   const [showChain, setShowChain] = useState<string | null>(null);
   // 记住点击关联命令前所在的卡片，方便误触后滚回来
   const [scrollReturnId, setScrollReturnId] = useState<string | null>(null);
@@ -118,15 +134,32 @@ export default function ToolsPage() {
     return list;
   }, [search, activeCategory, activeSystem, showFavOnly, favs]);
 
-  const handleExpand = (title: string) => {
-    if (expandedTitle === title) {
+  const handleExpand = (c: Command) => {
+    if (expandedTitle === c.title) {
       setExpandedTitle(null);
       setInputValues({});
     } else {
-      setExpandedTitle(title);
-      setInputValues({});
+      setExpandedTitle(c.title);
+      // 展开时用个人常用变量预填同名项
+      const pre: Record<string, string> = {};
+      parsePlaceholders(c.cmd).forEach((ph) => {
+        if (profile[ph]) pre[ph] = profile[ph];
+      });
+      setInputValues(pre);
     }
   };
+
+  // 全站命令里出现最频繁的变量名，做成快捷 chip 方便一键添加
+  const commonVars = useMemo(() => {
+    const freq = new Map<string, number>();
+    commands.forEach((c) =>
+      parsePlaceholders(c.cmd).forEach((p) => freq.set(p, (freq.get(p) || 0) + 1))
+    );
+    return [...freq.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([k]) => k)
+      .slice(0, 8);
+  }, []);
 
   const updateInput = (key: string, val: string) => {
     setInputValues((prev) => ({ ...prev, [key]: val }));
@@ -173,6 +206,117 @@ export default function ToolsPage() {
 
       {tab === "cmd" && (
         <section className="cmd-section">
+          {/* ⚙️ 个人常用变量配置区 */}
+          <div className="cmd-profile">
+            <button
+              className="cmd-profile-head"
+              onClick={() => setProfileOpen(!profileOpen)}
+            >
+              <span>
+                {profileOpen ? "▾" : "▸"} ⚙️ 我的常用变量
+              </span>
+              <span className="cmd-profile-count">
+                {Object.keys(profile).length
+                  ? `${Object.keys(profile).length} 条`
+                  : "还没存过欸"}
+              </span>
+            </button>
+            {profileOpen && (
+              <div className="cmd-profile-body">
+                <p className="cmd-profile-tip">
+                  存在这里的值（服务器ip、用户名、端口、常用目录…）展开命令卡时会自动填进同名变量。只存在你自己的浏览器里，不上传🔒
+                </p>
+                {Object.entries(profile).map(([k, v]) => (
+                  <div key={k} className="cmd-input-row">
+                    <label className="cmd-input-label">{k}</label>
+                    <input
+                      type="text"
+                      className="cmd-input-field"
+                      value={v}
+                      onChange={(e) =>
+                        setProfile({ ...profile, [k]: e.target.value })
+                      }
+                    />
+                    <button
+                      type="button"
+                      className="cmd-input-x"
+                      title="删除这条常用值"
+                      onClick={() => {
+                        const next = { ...profile };
+                        delete next[k];
+                        setProfile(next);
+                      }}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+                <div className="cmd-input-row">
+                  <input
+                    type="text"
+                    className="cmd-input-field cmd-profile-newname"
+                    placeholder="变量名"
+                    value={newVarName}
+                    onChange={(e) => setNewVarName(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    className="cmd-input-field"
+                    placeholder="值（比如 8.138.xx.xx）"
+                    value={newVarValue}
+                    onChange={(e) => setNewVarValue(e.target.value)}
+                  />
+                  <button
+                    type="button"
+                    className="cmd-profile-add"
+                    disabled={!newVarName.trim() || !newVarValue.trim()}
+                    onClick={() => {
+                      setProfile({
+                        ...profile,
+                        [newVarName.trim()]: newVarValue.trim(),
+                      });
+                      setNewVarName("");
+                      setNewVarValue("");
+                    }}
+                  >
+                    ＋存入
+                  </button>
+                </div>
+                {commonVars.filter((v) => !(v in profile)).length > 0 && (
+                  <div className="cmd-profile-chips">
+                    <span className="cmd-profile-chips-label">常见变量：</span>
+                    {commonVars
+                      .filter((v) => !(v in profile))
+                      .map((v) => (
+                        <button
+                          key={v}
+                          type="button"
+                          className="cmd-profile-chip"
+                          title="点击填入左边的变量名"
+                          onClick={() => setNewVarName(v)}
+                        >
+                          {v}
+                        </button>
+                      ))}
+                  </div>
+                )}
+                {Object.keys(profile).length > 0 && (
+                  <div className="cmd-inputs-actions">
+                    <button
+                      type="button"
+                      className="cmd-inputs-clear"
+                      onClick={() => {
+                        if (confirm("把存的常用变量全部清空吗？")) setProfile({});
+                      }}
+                    >
+                      🧹 全部清空
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
           <input
             type="text"
             className="cmd-search"
@@ -254,7 +398,7 @@ export default function ToolsPage() {
                   <div className="cmd-card-top">
                     <span
                       className={`cmd-title ${hasPH ? "cmd-title-clickable" : ""}`}
-                      onClick={() => hasPH && handleExpand(c.title)}
+                      onClick={() => hasPH && handleExpand(c)}
                     >
                       {hasPH && (
                         <span className="cmd-expand-icon">
@@ -332,18 +476,52 @@ export default function ToolsPage() {
 
                   {isExpanded && hasPH && (
                     <div className="cmd-inputs">
-                      {placeholders.map((ph) => (
-                        <div key={ph} className="cmd-input-row">
-                          <label className="cmd-input-label">{ph}</label>
-                          <input
-                            type="text"
-                            className="cmd-input-field"
-                            placeholder={`填写${ph}…`}
-                            value={inputValues[ph] || ""}
-                            onChange={(e) => updateInput(ph, e.target.value)}
-                          />
-                        </div>
-                      ))}
+                      {placeholders.map((ph) => {
+                        const val = inputValues[ph] || "";
+                        const isPinned = !!val && profile[ph] === val;
+                        return (
+                          <div key={ph} className="cmd-input-row">
+                            <label className="cmd-input-label">{ph}</label>
+                            <input
+                              type="text"
+                              className={`cmd-input-field ${isPinned ? "cmd-input-prefilled" : ""}`}
+                              placeholder={`填写${ph}…`}
+                              value={val}
+                              onChange={(e) => updateInput(ph, e.target.value)}
+                            />
+                            <button
+                              type="button"
+                              className={`cmd-input-pin ${isPinned ? "cmd-input-pin-active" : ""}`}
+                              disabled={!val}
+                              title={
+                                isPinned
+                                  ? "已是常用值，点击取消"
+                                  : "把这个值存为常用"
+                              }
+                              onClick={() => {
+                                if (isPinned) {
+                                  const next = { ...profile };
+                                  delete next[ph];
+                                  setProfile(next);
+                                } else {
+                                  setProfile({ ...profile, [ph]: val });
+                                }
+                              }}
+                            >
+                              📌
+                            </button>
+                            <button
+                              type="button"
+                              className="cmd-input-x"
+                              disabled={!val}
+                              title="清空这一项"
+                              onClick={() => updateInput(ph, "")}
+                            >
+                              ✕
+                            </button>
+                          </div>
+                        );
+                      })}
                       {/* 一键清空当前卡片已填的所有变量 */}
                       <div className="cmd-inputs-actions">
                         <button
