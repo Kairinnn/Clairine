@@ -247,7 +247,7 @@ export default function ToolsPage() {
                         setProfile(next);
                       }}
                     >
-                      ✕
+                      ×
                     </button>
                   </div>
                 ))}
@@ -517,7 +517,7 @@ export default function ToolsPage() {
                               title="清空这一项"
                               onClick={() => updateInput(ph, "")}
                             >
-                              ✕
+                              ×
                             </button>
                           </div>
                         );

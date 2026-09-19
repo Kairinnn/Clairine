@@ -1292,12 +1292,17 @@ a {
   background: rgba(255, 238, 246, 0.9);
 }
 
-/* ========= 输入行小按钮：✕ 清空 / 📌 存常用 ========= */
+/* ========= 输入行小按钮：× 清空 / 📌 存常用 ========= */
+/* flex 子项默认 min-width:auto 不肯缩，会把右侧按钮顶出卡片 */
+.cmd-input-row .cmd-input-field {
+  min-width: 0;
+}
+
 .cmd-input-x,
 .cmd-input-pin {
   flex-shrink: 0;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1306,10 +1311,11 @@ a {
   border: 1.5px solid rgba(255, 173, 220, 0.4);
   background: rgba(255, 255, 255, 0.7);
   color: var(--color-text-secondary);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.2s;
   line-height: 1;
+  overflow: hidden;
 }
 
 .cmd-input-x:hover:not(:disabled) {
