@@ -11,7 +11,8 @@ const codeFont = Nunito({
 });
 
 const myFont = localFont({
-  src: "./fonts/Clairine.woff2",
+  src: "./fonts/Fangyuan.woff2",
+  weight: "500",
   variable: "--font-custom",
 });
 
