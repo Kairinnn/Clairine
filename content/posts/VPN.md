@@ -18,28 +18,26 @@ category: "分享"
 
 ## 移动端
 ### 1.<u>小三VPN</u>（一体化不用加订阅url，开盖即食）
->[==🩷release下载页==](https://github.com/sharmajv/vpn)
+>[==🩷原release页==](https://github.com/sharmajv/vpn)
 
-[🩷小三VPN.apk](https://mega.nz/file/Szpl1bjS#urHuNQAtcBA85kLHWQZWExH5DSkIWx4e6bzAy198Wiw)
+[🩷直下.apk](https://mega.nz/file/Szpl1bjS#urHuNQAtcBA85kLHWQZWExH5DSkIWx4e6bzAy198Wiw)
 
-### 2.<u>Snakem</u>（配合==ClashMeta==使用）
+### 2.<u>Snakem（节点）</u>（配合==ClashMeta==使用）
 
-[🩷ClashMeta.apk](https://mega.nz/file/f2RT3BQa#I__TbvhXuBcYattexLWKHwwKe_Nih5HVxfp937GBX5g)
-
->[==🩷订阅release页==](https://github.com/snakem982/proxypool)
+>[==🩷原release页==](https://github.com/snakem982/proxypool)
 ![vpn](/images/vpn.jpg)
 
 （↑点进去下拉就能找到订阅链接，为避免以后该url发生变更或失效，建议最好先去网址里看看&复制～）
 
+[🩷Clashmeta.apk](https://mega.nz/file/f2RT3BQa#I__TbvhXuBcYattexLWKHwwKe_Nih5HVxfp937GBX5g)
 
-如果进不去网页的话可以试试下面的订阅！**（不保证永久有效）**↓
 
-- 🩷订阅链接1：https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta.yaml
-- 🩷订阅链接2：https://raw.githubusercontent.com/snakem982/proxypool/main/source/clash-meta-2.yaml
+☘️和Claude将Snakem的节点和BestClash的节点池混合了一下，体感应该会更快一点↓
+>[==🩷下载文件后导入Clashmeta，切换配置使用==](  https://ghfast.top/https://github.com/Kairinnn/Clairine/releases/download/v1/Mix.yaml)
 
 ## PC端
 ### <u>Clash verge➕订阅url</u>
->[==🩷release下载页==](https://github.com/clash-verge-rev/clash-verge-rev/releases)
+>[==🩷原release页==](https://github.com/clash-verge-rev/clash-verge-rev/releases)
 
 - 下载程序后添加订阅，订阅url也可以用上面snakem的资源
   
@@ -64,13 +62,14 @@ category: "分享"
 
 ## 移动端
 ### <u>V2VPN</u>（每月有免费流量额度）
->[==🩷V2VPN.apk==](https://mega.nz/file/byQQwLiL#O3IJJPA8Q00QvIDlJP_MM0R8p5ks3yxLKpfalk6NC4w)
 
-↑不保证版本更新，可以去Play商店下载最新版~
+↓以下资源分享不保证更新！！可能无法使用。请最好去谷歌Play商店下载最新版
+
+>[==🩷V2VPN.apk==](https://mega.nz/file/byQQwLiL#O3IJJPA8Q00QvIDlJP_MM0R8p5ks3yxLKpfalk6NC4w)
 
 ## PC端
 ### <u>Cloudflare-WARP</u>
->[==🩷release下载页==](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)
+>[==🩷原release下载页==](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/)
 
 不多说~虽然能代理到ip但是CF的ip属机房ip，还是不太建议用于审查严格的场景喔
 
@@ -82,13 +81,13 @@ category: "分享"
 ⚠️在ip审查严格的场景中使用时 建议最好关闭Ipv6以防止泄露。
 
 ### <u>IPRoyal</u>
->[==🩷点我ww==](https://dashboard.iproyal.com)
+>[==🩷iproyal.com==](https://dashboard.iproyal.com)
 
 购买住宅ip与ISP静态ip~
-- 月付价格大概在4~6刀之间，总价基础加30%可以获取到欺诈分近乎纯净的IP。住宅IP会自然轮换，想要固定的静态IP购买ISP即可。
+- 月付价格大概在4~6刀之间，大概二三十块。总价基础加30%可以获取到欺诈分近乎纯净的IP，不过实测没有加评分也是98分左右。住宅IP会自然轮换，想要固定的静态IP购买ISP即可。
 - 可细分到州（省）/市级定位及服务运营商选择。
 
-*博主亲测，ip的纯净度在各大查询网址均达90分以上。*
+*亲测ip的纯净度在各大查询网址均达90分以上。*
 
 # 使用方法：
 ## edge浏览器：
