@@ -11,7 +11,7 @@ const codeFont = Nunito({
 });
 
 const myFont = localFont({
-  src: "./fonts/Clairine.woff2",
+  src: "./fonts/PingFang.woff2",
   variable: "--font-custom",
 });
 
