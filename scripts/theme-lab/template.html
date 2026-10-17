@@ -1,0 +1,1784 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Clairine 调色盘</title>
+<!-- 由 scripts/theme-lab/build.mjs 生成，别直接改 public/theme-lab.html；改模板后 npm run theme-lab -->
+<style>
+:root{
+  --pk:#ff86b8; --pk-soft:#ffe3f0; --pk-line:#ffd0e6;
+  --gr:#7fae3c; --gr-soft:#eef9df;
+  --ink:#6f9a35; --ink2:#e2779f; --mute:#b49aa6;
+  --bg:#fff6fa; --card:#fff; --shadow:0 2px 14px rgba(255,134,184,.14);
+  --checker:conic-gradient(#e9e3e6 25%,#fff 0 50%,#e9e3e6 0 75%,#fff 0) 0 0/10px 10px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--ink);font:15px/1.45 "Moyuan","PingFang SC","Microsoft YaHei",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+#app{display:grid;height:100dvh;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto}
+
+/* ── 顶栏 ── */
+.bar{display:flex;align-items:center;gap:6px;padding:8px 10px;background:#fff;border-bottom:2px dashed var(--pk-line);overflow-x:auto;scrollbar-width:none}
+.bar::-webkit-scrollbar{display:none}
+.logo{font-weight:700;color:var(--ink2);white-space:nowrap;margin-right:4px}
+.seg{display:flex;background:var(--pk-soft);border-radius:12px;padding:3px;gap:2px;flex-shrink:0}
+.seg button{border:0;background:none;padding:5px 11px;border-radius:9px;color:var(--ink2);white-space:nowrap}
+.seg button.on{background:#fff;color:var(--ink);font-weight:700;box-shadow:0 1px 6px rgba(255,134,184,.25)}
+.chip{border:1.5px solid var(--pk-line);background:#fff;border-radius:10px;padding:4px 10px;color:var(--ink2);white-space:nowrap;flex-shrink:0}
+.chip.on{background:var(--gr-soft);border-color:#c5e79a;color:var(--ink);font-weight:700}
+.only-wide{display:none}
+
+/* ── 预览 ── */
+.stage{position:relative;min-height:0;display:flex;justify-content:center;background:
+  radial-gradient(circle at 1px 1px,rgba(255,134,184,.18) 1px,transparent 0) 0 0/14px 14px}
+.stage iframe{border:0;display:block;width:100%;height:100%;background:#fff}
+.hint{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:rgba(255,255,255,.95);border:1.5px solid var(--pk-line);border-radius:999px;padding:4px 12px;font-size:12px;color:var(--ink2);pointer-events:none;white-space:nowrap;box-shadow:var(--shadow);max-width:92%;overflow:hidden;text-overflow:ellipsis}
+
+/* ── 面板 ── */
+.panel{background:#fff;border-top:2px dashed var(--pk-line);display:flex;flex-direction:column;height:46dvh;min-height:0}
+.panel.big{height:72dvh}
+.panel.mini{height:auto}
+.panel.mini .pbody{display:none}
+.tabs{display:flex;align-items:center;gap:4px;padding:6px 8px;border-bottom:1.5px solid var(--pk-soft)}
+.tabs .t{flex:1;border:0;background:none;padding:7px 4px;border-radius:10px;color:var(--ink2)}
+.tabs .t.on{background:var(--pk-soft);color:var(--ink);font-weight:700}
+.tabs .size{border:0;background:var(--gr-soft);border-radius:10px;width:38px;height:34px;color:var(--ink)}
+.pbody{flex:1;overflow-y:auto;min-height:0;-webkit-overflow-scrolling:touch}
+.pane{padding:10px 12px 40px}
+.sec{margin:14px 0 6px;font-weight:700;color:var(--ink2);font-size:14px;display:flex;align-items:center;gap:6px}
+.sec small{font-weight:400;color:var(--mute);font-size:12px}
+.tip{font-size:12.5px;color:var(--mute);margin:4px 0 8px;line-height:1.6}
+.tip b{color:var(--ink2)}
+.search{display:flex;gap:8px;align-items:center;margin-bottom:4px}
+.search input[type=text]{flex:1;min-width:0;border:1.5px solid var(--pk-line);border-radius:10px;padding:7px 10px;outline:none;background:#fffafd}
+.search input[type=text]:focus{border-color:var(--pk)}
+.search label{font-size:12.5px;white-space:nowrap;color:var(--ink2);display:flex;align-items:center;gap:3px}
+
+/* 颜色行 */
+.row{display:flex;align-items:center;gap:9px;padding:6px 6px;border-radius:10px;cursor:pointer;user-select:none}
+.row:hover{background:#fff7fb}
+.row.cur{background:var(--pk-soft)}
+.sw{width:30px;height:30px;border-radius:9px;flex-shrink:0;background:var(--checker);position:relative;overflow:hidden;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.08)}
+.sw i{position:absolute;inset:0}
+.row .tx{flex:1;min-width:0}
+.row .tt{font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}
+.row .ss{font-size:11.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .vv{font-size:11.5px;color:var(--ink2);font-family:ui-monospace,Consolas,monospace;white-space:nowrap}
+.badge{display:inline-block;font-size:10.5px;background:#ff86b8;color:#fff;border-radius:6px;padding:0 5px;margin-left:4px;vertical-align:1px}
+.cnt{font-size:11px;color:var(--mute);margin-left:4px}
+details.grp{border-radius:10px}
+details.grp>summary{list-style:none}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp[open]{background:#fffafd;box-shadow:inset 0 0 0 1.5px var(--pk-soft)}
+details.grp .mem{padding:0 0 4px 22px}
+.lvl{font-size:11.5px;color:var(--gr);margin:8px 0 2px 4px}
+
+/* 取色器 */
+.ed{position:sticky;top:0;z-index:5;background:#fff;margin:0 -12px 6px;padding:10px 12px;border-bottom:2px dashed var(--pk-line);box-shadow:0 6px 12px -10px rgba(255,134,184,.5)}
+.ed-head{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.ed-pair{display:flex;border-radius:10px;overflow:hidden;background:var(--checker);flex-shrink:0;box-shadow:inset 0 0 0 1.5px rgba(0,0,0,.08)}
+.ed-pair span{width:28px;height:36px;display:block}
+.ed-t{flex:1;min-width:0}
+.ed-t b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ed-t small{display:block;font-size:11.5px;color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x{border:0;background:var(--pk-soft);color:var(--ink2);width:30px;height:30px;border-radius:9px;font-size:17px;line-height:1;flex-shrink:0}
+.sv{position:relative;height:130px;border-radius:12px;touch-action:none;cursor:crosshair}
+.bar2{position:relative;height:20px;border-radius:10px;margin-top:10px;touch-action:none;cursor:ew-resize}
+.hue{background:linear-gradient(90deg,#f00,#ff0,#0f0,#0ff,#00f,#f0f,#f00)}
+.alpha{background:var(--checker)}
+.alpha span{position:absolute;inset:0;border-radius:10px}
+.th{position:absolute;width:20px;height:20px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px rgba(0,0,0,.25),0 2px 6px rgba(0,0,0,.25);transform:translate(-50%,-50%);pointer-events:none}
+.bar2 .th{top:50%}
+.ed-row{display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap}
+.ed-row input{border:1.5px solid var(--pk-line);border-radius:9px;padding:5px 8px;outline:none;background:#fffafd;font-family:ui-monospace,Consolas,monospace}
+.ed-row input:focus{border-color:var(--pk)}
+#edHex{width:92px}
+#edAp{width:58px}
+.ed-row label{font-size:12.5px;color:var(--ink2);display:flex;align-items:center;gap:4px}
+.btn{border:1.5px solid var(--pk-line);background:#fff;border-radius:10px;padding:5px 11px;color:var(--ink2)}
+.btn:hover{background:var(--pk-soft)}
+.btn.main{background:linear-gradient(135deg,#e9fbd3,#ffe1ef);border-color:#ffc4de;color:var(--ink);font-weight:700}
+.btn.danger{color:#e2577f}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+
+/* 贴纸面板 */
+.lib{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+.lib .it{position:relative;width:64px;height:64px;border-radius:12px;background:var(--checker);box-shadow:inset 0 0 0 1.5px var(--pk-line);display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden}
+.lib .it img{max-width:90%;max-height:90%;pointer-events:none}
+.lib .it .del{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:#e2577f;font-size:12px;line-height:18px;padding:0}
+.upl{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.ctl{display:grid;grid-template-columns:62px 1fr 56px;gap:8px;align-items:center;margin:7px 0;font-size:13px}
+.ctl input[type=range]{width:100%;accent-color:#ff86b8}
+.ctl output{font-size:12px;color:var(--ink2);text-align:right;font-family:ui-monospace,Consolas,monospace}
+.ctl select{border:1.5px solid var(--pk-line);border-radius:9px;padding:5px 6px;background:#fffafd;grid-column:2/4;min-width:0}
+.lay{display:flex;gap:4px;grid-column:2/4;flex-wrap:wrap}
+.lay button{flex:1;border:1.5px solid var(--pk-line);background:#fff;border-radius:9px;padding:5px 4px;font-size:12px;color:var(--ink2);min-width:80px}
+.lay button.on{background:var(--gr-soft);border-color:#c5e79a;color:var(--ink);font-weight:700}
+.acts{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.stl .row img{width:30px;height:30px;object-fit:contain;background:var(--checker);border-radius:8px;flex-shrink:0}
+.where{background:var(--gr-soft);border-radius:10px;padding:6px 10px;font-size:13px;margin:6px 0}
+
+/* 导出 */
+textarea.out{width:100%;height:260px;border:1.5px solid var(--pk-line);border-radius:12px;padding:10px;font:12px/1.55 ui-monospace,Consolas,monospace;color:#7a5b68;background:#fffafd;resize:vertical}
+.toast{position:fixed;left:50%;top:60px;transform:translateX(-50%);background:#fff;border:1.5px solid var(--pk-line);color:var(--ink2);padding:7px 16px;border-radius:999px;box-shadow:var(--shadow);z-index:99;font-size:13.5px;transition:opacity .3s;pointer-events:none}
+.drop{position:fixed;inset:0;background:rgba(255,214,234,.6);border:4px dashed var(--pk);z-index:98;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--ink2);pointer-events:none}
+
+@media (min-width:900px){
+  #app{grid-template-columns:minmax(0,1fr) 410px;grid-template-rows:auto minmax(0,1fr)}
+  .bar{grid-column:1/-1}
+  .panel,.panel.big{height:auto;grid-row:2;grid-column:2;border-top:0;border-left:2px dashed var(--pk-line)}
+  .tabs .size{display:none}
+  .only-wide{display:inline-block}
+  .stage.phone iframe{width:390px;box-shadow:0 0 0 1px var(--pk-line),0 8px 30px rgba(255,134,184,.2)}
+  .panel.mini .pbody{display:block}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="bar">
+    <span class="logo">🎨 调色盘</span>
+    <div class="seg" id="pages">
+      <button data-p="home" class="on">主页</button>
+      <button data-p="post">文章页</button>
+      <button data-p="tools">命令匣</button>
+    </div>
+    <button class="chip" id="sideBtn">侧边栏</button>
+    <button class="chip only-wide on" id="phoneBtn">📱 手机宽</button>
+  </div>
+
+  <div class="stage phone" id="stage">
+    <iframe id="pv" title="预览"></iframe>
+    <div class="hint" id="hint">在预览里点任何东西 → 下面列出它用到的颜色</div>
+  </div>
+
+  <div class="panel" id="panel">
+    <div class="tabs">
+      <button class="t on" data-t="color">🎨 配色</button>
+      <button class="t" data-t="sticker">🧸 贴纸</button>
+      <button class="t" data-t="export">📤 导出</button>
+      <button class="size" id="sizeBtn" title="面板大小">▴</button>
+    </div>
+    <div class="pbody" id="pbody">
+
+      <!-- 配色 -->
+      <div class="pane" id="pane-color">
+        <div class="ed" id="ed" hidden>
+          <div class="ed-head">
+            <div class="ed-pair" title="左：原来的 右：现在的"><span id="edOld"></span><span id="edNew"></span></div>
+            <div class="ed-t"><b id="edTitle"></b><small id="edSub"></small></div>
+            <button class="x" id="edClose" title="收起">×</button>
+          </div>
+          <div class="sv" id="edSV"><i class="th" id="edSVth"></i></div>
+          <div class="bar2 hue" id="edHue"><i class="th" id="edHueth"></i></div>
+          <div class="bar2 alpha" id="edA"><span id="edAbg"></span><i class="th" id="edAth"></i></div>
+          <div class="ed-row">
+            <input id="edHex" spellcheck="false" autocomplete="off" placeholder="#ff86b8">
+            <label>不透明度 <input id="edAp" type="number" min="0" max="100" step="1">%</label>
+            <button class="btn" id="edReset">还原</button>
+          </div>
+        </div>
+
+        <p class="tip">👆 <b>在预览里点任何东西</b>，这里就会列出它用到的颜色，点颜色就能调。也可以直接在下面的大表里找。</p>
+        <div class="search">
+          <input type="text" id="q" placeholder="搜：标题 / 卡片 / #ff86b8 …">
+          <label><input type="checkbox" id="onlyPage" checked>只看本页</label>
+        </div>
+
+        <div id="pickBox" hidden>
+          <div class="sec">🎯 刚点的元素 <small id="pickName"></small></div>
+          <div id="pickList"></div>
+        </div>
+
+        <div class="sec">🌈 主题变量 <small>改一个，全站引用它的地方一起变</small></div>
+        <div id="varList"></div>
+
+        <div class="sec">🎨 全部颜色 <small>同一个色值合并成一行，点开能单独改某一处</small></div>
+        <div id="palList"></div>
+      </div>
+
+      <!-- 贴纸 -->
+      <div class="pane" id="pane-sticker" hidden>
+        <div class="upl">
+          <button class="btn main" id="addImg">➕ 添加图片</button>
+          <input type="file" id="fileIn" accept="image/*" multiple hidden>
+          <span class="tip" style="margin:0">PNG 透明底最好；电脑上也能 Ctrl+V 粘贴、直接拖进来</span>
+        </div>
+        <div class="sec">🧺 素材 <small>点一下 = 往当前页面中间放一张</small></div>
+        <div class="lib" id="lib"></div>
+        <p class="tip" id="libEmpty">还没有素材～先加几张蕾丝、贴纸、头像框吧</p>
+
+        <div class="sec">✂️ 选中的贴纸</div>
+        <div id="noSel" class="tip">在预览里<b>点一下贴纸</b>选中它。<br>拖动 = 移动 · 右下角圆点 = 缩放 · 头顶圆点 = 旋转 · 手机上两根手指 = 缩放+旋转。<br>松手时贴纸落在谁身上，就自动挂在谁身上，之后跟着它走。</div>
+        <div id="selBox" hidden>
+          <div class="where" id="selWhere"></div>
+          <div class="ctl"><span>📌 挂在</span><select id="anchorSel"></select></div>
+          <div class="ctl"><span>层级</span><div class="lay" id="layBtns">
+            <button data-l="behind">垫在最后面</button>
+            <button data-l="under">字的下面</button>
+            <button data-l="over">盖在最上面</button>
+          </div></div>
+          <p class="tip" id="layTip"></p>
+          <div class="ctl"><span>大小</span><input type="range" id="stW" min="8" max="700" step="1"><output id="stWo"></output></div>
+          <div class="ctl"><span>旋转</span><input type="range" id="stR" min="-180" max="180" step="1"><output id="stRo"></output></div>
+          <div class="ctl"><span>透明度</span><input type="range" id="stO" min="5" max="100" step="1"><output id="stOo"></output></div>
+          <div class="acts">
+            <button class="btn" id="stFlip">↔ 翻转</button>
+            <button class="btn" id="stDup">⧉ 复制一张</button>
+            <button class="btn" id="stUp">⬆ 往上一层</button>
+            <button class="btn" id="stDown">⬇ 往下一层</button>
+            <button class="btn danger" id="stDel">🗑 删掉</button>
+          </div>
+        </div>
+
+        <div class="sec">🗂 这一页的贴纸 <small id="stCount"></small></div>
+        <div class="stl" id="stList"></div>
+      </div>
+
+      <!-- 导出 -->
+      <div class="pane" id="pane-export" hidden>
+        <p class="tip">改动会<b>自动存在这个浏览器里</b>，关掉再开还在。调满意了：</p>
+        <div class="acts">
+          <button class="btn main" id="copyOut">📋 复制改动清单（贴给 Claude）</button>
+          <button class="btn main" id="saveProj">💾 下载工程文件</button>
+        </div>
+        <p class="tip">有贴纸的话，<b>工程文件也发给 Claude</b>——素材图片都打包在里面，不用一张张另传。</p>
+        <textarea class="out" id="out" readonly></textarea>
+        <div class="sec">🧳 其他</div>
+        <div class="acts">
+          <button class="btn" id="loadProj">📂 导入工程文件</button>
+          <input type="file" id="projIn" accept=".json,application/json" hidden>
+          <button class="btn" id="dlImgs">🖼 单独下载贴纸原图</button>
+          <button class="btn danger" id="resetAll">♻️ 全部重置</button>
+        </div>
+        <p class="tip">换手机/电脑：这边下载工程文件 → 那边导入。生成于 __BUILT_AT__，站点样式以那天的 globals.css 为准。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 站点 globals.css（build 时注入，去掉了 tailwind 的 @import） -->
+<script type="text/plain" id="site-css">/*__SITE_CSS__*/</script>
+<script type="text/plain" id="font-b64">__FONT_B64__</script>
+
+<!-- ============ 预览页面：照着组件里的内联 style 搬过来的 ============
+     data-src    = 这段样式在代码里的位置（导出时用）
+     data-anchor = 能挂贴纸的位置；data-anchor-name 给人看，data-anchor-sel 给 Claude 看
+     data-hover-style / data-open-style = 悬停 / 侧边栏打开时额外叠上去的样式 -->
+
+<template id="page-home">
+  <header data-src="Header.tsx · 菜单按钮外层" style="position: fixed; top: 0; right: 0; z-index: 100; padding: 1rem 1.25rem;">
+    <button data-src="Header.tsx · 菜单按钮" data-anchor="menu-btn" data-anchor-name="右上角菜单按钮" data-anchor-sel="Header.tsx 菜单 <button>（44×44，fixed）"
+      style="width: 44px; height: 44px; border-radius: 12px; border: 2px solid rgba(222,255,163,0.55); background: rgba(255,255,255,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(251,168,215,0.15); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; transition: box-shadow 0.3s ease, transform 0.35s cubic-bezier(.34,1.3,.64,1), background 0.3s ease;"
+      data-hover-style="transform: scale(1.08); box-shadow: 0 6px 20px rgba(251,168,215,0.3);"
+      data-open-style="background: rgba(255,230,243,0.9); box-shadow: 0 6px 20px rgba(251,168,215,0.3); transform: scale(0.9) rotate(-8deg);">
+      <img src="https://i.postimg.cc/Dwsg4DCr/mao-zhao.png" alt="菜单" style="width: 24px; height: 24px; image-rendering: pixelated; pointer-events: none;">
+    </button>
+  </header>
+
+  <div data-src="Sidebar.tsx · 毛玻璃遮罩" style="position: fixed; inset: 0; z-index: 199; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); background-color: rgba(255,240,248,0.4); opacity: 0; pointer-events: none; transition: opacity 0.3s ease;" data-open-style="opacity: 1; pointer-events: auto;"></div>
+  <nav data-src="Sidebar.tsx · 侧边栏本体" data-anchor="sidebar" data-anchor-name="侧边栏" data-anchor-sel="Sidebar.tsx <nav>（fixed 抽屉）"
+    style="position: fixed; top: 0; left: 0; width: min(260px, 65vw); height: 100dvh; z-index: 200; background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(255,245,250,0.96) 100%); border-right: 2px solid #d3f49a; box-sizing: border-box; padding: 2rem 1.25rem; overflow-y: auto; transform: translateX(-100%); transition: transform 0.4s cubic-bezier(.34,1.3,.64,1), box-shadow 0.3s ease;"
+    data-open-style="transform: translateX(0); box-shadow: 4px 0 24px rgba(251,168,215,0.15);">
+    <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 1.25rem;">
+      <div data-anchor="side-avatar" data-anchor-name="侧边栏头像" data-anchor-sel="Sidebar.tsx 头像外框 div（80×80，头像 62px 居中）" style="position: relative; width: 80px; height: 80px; margin-bottom: 0.625rem;">
+        <img src="https://i.postimg.cc/mrN8jDgh/rinn.jpg" alt="头像" style="width: 62px; height: 62px; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      </div>
+      <span style="font-size: 1rem; font-weight: 700;">小灰</span>
+      <span style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 2px;">Ring Our Love.⊹⁺˚</span>
+    </div>
+    <div data-src="Sidebar.tsx · 头像下虚线" style="border-top: 2.5px dashed rgba(179,218,83,0.4); margin: 0.5rem 0 0.75rem;"></div>
+    <div style="display: flex; flex-direction: column; gap: 2px;">
+      <button data-src="Sidebar.tsx · 分类按钮（选中）" style="display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0.75rem; border-radius: 10px; border: none; background: linear-gradient(90deg, rgba(225,255,197,0.5), rgba(255,215,237,0.3)); cursor: pointer; font-size: 0.875rem; font-weight: 600; color: var(--color-text); text-align: left; width: 100%;"><img src="https://i.postimg.cc/C1MHtKwQ/cao-mei.png" alt="" style="width: 18px; height: 18px; image-rendering: pixelated;">全部</button>
+      <button style="display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0.75rem; border-radius: 10px; border: none; background: transparent; cursor: pointer; font-size: 0.875rem; font-weight: 400; color: var(--color-text); text-align: left; width: 100%;"><img src="https://i.postimg.cc/Dwsg4DCr/mao-zhao.png" alt="" style="width: 18px; height: 18px; image-rendering: pixelated;">教程</button>
+      <button style="display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0.75rem; border-radius: 10px; border: none; background: transparent; cursor: pointer; font-size: 0.875rem; font-weight: 400; color: var(--color-text); text-align: left; width: 100%;"><img src="https://i.postimg.cc/L8qXRQmX/IMG-20260513-183519.png" alt="" style="width: 18px; height: 18px; image-rendering: pixelated;">闲谈</button>
+    </div>
+    <a href="#" style="display: flex; align-items: center; gap: 0.625rem; padding: 0.625rem 0.75rem; border-radius: 10px; font-size: 0.875rem; color: var(--color-text); margin-top: 0.5rem;"><img src="https://i.postimg.cc/L8qXRQmX/envelope.png" alt="" style="width: 18px; height: 18px; image-rendering: pixelated;">关于</a>
+    <div data-src="Sidebar.tsx · 底部" style="border-top: 2px dashed rgba(179,218,83,0.4); margin-top: 1.5rem; padding-top: 0.875rem; text-align: center; font-size: 0.8575rem; color: var(--color-text); opacity: 0.6;">☘️ Kairin's Nest</div>
+  </nav>
+
+  <main data-anchor="home-main" data-anchor-name="主页整体" data-anchor-sel="HomeClient.tsx <main>（maxWidth 640 居中）" style="max-width: 640px; margin: 0 auto;">
+    <!-- 原组件这里有 overflow: hidden，预览里去掉了，免得贴纸探出卡片时被裁 -->
+    <div data-src="HomeClient.tsx · 个人简介卡片" data-anchor="home-profile" data-anchor-name="个人简介卡片" data-anchor-sel="HomeClient.tsx 个人简介+Tab 一体卡片 div" style="margin: 0.75rem 1rem 0; background: #fff; border-radius: 20px; box-shadow: 0 2px 20px rgba(249,142,191,0.06);">
+      <section style="padding: 2rem 1.25rem 0; text-align: center;">
+        <div data-anchor="home-avatar" data-anchor-name="主页大头像" data-anchor-sel="HomeClient.tsx 头像外框 div（72×72，头像 60px 居中）" style="position: relative; width: 72px; height: 72px; margin: 0 auto 0.75rem;">
+          <img src="https://i.postimg.cc/mrN8jDgh/rinn.jpg" alt="头像" style="width: 60px; height: 60px; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        </div>
+        <h1 data-anchor="home-name" data-anchor-name="主页名字" data-anchor-sel="HomeClient.tsx 名字 <h1>" style="font-size: 1.5rem; font-weight: 700;">Kairin/小灰</h1>
+        <p style="font-size: 1.1rem; color: var(--color-text-secondary); margin-top: 0.25rem; line-height: 1.6;">·˙°ʚElectronic etherɞ°˙˚·</p>
+        <div style="margin-top: 0.75rem; font-size: 0.72rem; color: var(--color-text-secondary); display: flex; justify-content: center; gap: 1rem; padding-bottom: 0.75rem;">
+          <span>🧡 Claude</span><span>🩷 AIGC·CSS·HTML</span><span style="cursor: pointer;">☘️ QQ:2174156343</span>
+        </div>
+      </section>
+      <div data-src="TopTabs.tsx · Tab 栏" data-anchor="home-tabs" data-anchor-name="主页 Tab 栏" data-anchor-sel="TopTabs.tsx 外层 div" style="display: flex; justify-content: center; align-items: center; padding: 0.75rem 1.25rem; gap: 0;">
+        <div style="display: flex; align-items: center;">
+          <button style="background: none; border: none; padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 400; color: var(--color-text); cursor: pointer; position: relative;">命令匣</button>
+          <div data-src="TopTabs.tsx · Tab 分隔竖线" style="width: 2px; height: 1rem; border-radius: 1px; background: rgba(255,255,255,0.4); flex-shrink: 0;"></div>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <button style="background: none; border: none; padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 700; color: var(--color-text-secondary); cursor: pointer; position: relative;">记录/文章<div data-src="TopTabs.tsx · 选中下划线" style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2.5px; border-radius: 2px; background: var(--color-green-light-xl);"></div></button>
+          <div data-src="TopTabs.tsx · Tab 分隔竖线" style="width: 2px; height: 1rem; border-radius: 1px; background: rgba(255,255,255,0.4); flex-shrink: 0;"></div>
+        </div>
+        <div style="display: flex; align-items: center;">
+          <button style="background: none; border: none; padding: 0.5rem 1.25rem; font-size: 1rem; font-weight: 400; color: var(--color-text); cursor: pointer; position: relative;">合集</button>
+        </div>
+      </div>
+    </div>
+
+    <!--CARDS-->
+
+    <div style="height: 4rem;"></div>
+  </main>
+</template>
+
+<template id="tpl-card">
+  <a href="#" style="text-decoration: none; color: inherit;">
+    <article data-src="PostCard.tsx · 文章卡片" data-anchor="postcard" data-anchor-name="文章卡片" data-anchor-sel="PostCard.tsx <article>（列表里每一张）" style="padding: 1.25rem; margin: 0.75rem 1rem 0; background: rgba(255,255,255,0.8); border-radius: 14px; cursor: pointer; transition: transform 0.35s cubic-bezier(.34,1.3,.64,1), box-shadow 0.35s ease;" data-hover-style="transform: translateY(-3px); box-shadow: 0 8px 24px rgba(251,168,215,0.12);">
+      <div style="display: flex; gap: 0.75rem;">
+        <div data-anchor="postcard-avatar" data-anchor-name="卡片小头像" data-anchor-sel="PostCard.tsx 头像外框 div（42×42，头像 34px 居中）" style="position: relative; width: 42px; height: 42px; flex-shrink: 0;">
+          <img src="{avatar}" alt="头像" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        </div>
+        <div style="flex: 1; min-width: 0;">
+          <div style="display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.25rem;">
+            <span style="font-weight: 600; font-size: 1.1rem;">{name}</span>
+            <span style="font-size: 0.90rem; color: var(--color-text-secondary);">{date}</span>
+          </div>
+          <h2 data-anchor="postcard-title" data-anchor-name="卡片标题" data-anchor-sel="PostCard.tsx 标题 <h2>" style="font-size: 1.0rem; font-weight: 600; margin-bottom: 0.375rem; line-height: 1.4;">{title}</h2>
+          <p style="font-size: 0.873rem; color: var(--color-text-secondary); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{excerpt}</p>
+          <div style="display: flex; gap: 0.375rem; margin-top: 0.625rem; flex-wrap: wrap;">{tags}</div>
+        </div>
+      </div>
+    </article>
+  </a>
+</template>
+
+<template id="page-post">
+  <main data-anchor="post-main" data-anchor-name="文章页整体" data-anchor-sel="posts/[slug]/page.tsx <main>（maxWidth 580 居中）" style="max-width: 580px; margin: 0 auto; padding: 1.5rem 1.25rem 0;">
+    <div class="post-author-card" data-anchor="post-author" data-anchor-name="文章作者卡片" data-anchor-sel=".post-author-card" style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+      <div data-anchor="post-avatar" data-anchor-name="文章页头像" data-anchor-sel="page.tsx 作者头像外框 div（40×40）" style="position: relative; width: 40px; height: 40px; flex-shrink: 0;">
+        <img src="https://kairin.cc/images/Claude_avatar.png" alt="头像" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      </div>
+      <div>
+        <div style="display: flex; align-items: baseline; gap: 0.5rem;">
+          <span style="font-weight: 600; font-size: 1.1375rem;">Corin</span>
+          <span style="font-size: 0.85rem; color: var(--color-text-secondary);">2026-10-17</span>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--color-text-secondary); margin-top: 2px; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🩷 About 2333 words</span><span style="opacity: 0.4;">·</span><span>约吃 6 只 🍊</span>
+        </div>
+      </div>
+    </div>
+    <h1 data-anchor="post-title" data-anchor-name="文章大标题" data-anchor-sel="page.tsx 文章标题 <h1>（不是正文里的 #）" style="font-size: 1.6rem; font-weight: 600; line-height: 1.4; margin-bottom: 0.5rem;">样式全家福：md 能写出来的都在这</h1>
+    <div style="display: flex; gap: 0.375rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+      <span class="article-tag" data-src="posts/[slug]/page.tsx · 标签色①（第1、4、7…个）" style="padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.75rem; background: rgba(255, 147, 208, 0.45); color: #a3e449;">教程</span>
+      <span class="article-tag" data-src="posts/[slug]/page.tsx · 标签色②（第2、5、8…个）" style="padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.75rem; background: rgba(156, 212, 45, 0.45); color: #ff86b8;">Claude</span>
+      <span class="article-tag" data-src="posts/[slug]/page.tsx · 标签色③（第3、6、9…个）" style="padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.75rem; background: rgba(255, 247, 163, 0.45); color: #FF99C3;">样式</span>
+    </div>
+
+    <div class="post-content">
+      <blockquote><p>这是引用块（md 里用 &gt; 开头）。下面把 md 能写出来的东西都摆了一遍，方便一次看全。</p></blockquote>
+      <h1 data-anchor="post-h1" data-anchor-name="正文一级标题 #" data-anchor-sel=".post-content h1（所有文章正文里的 # 标题）">一级标题 · 想放蕾丝的那个</h1>
+      <p>正文段落是次文字色。这里有 <mark>==黄色高光==</mark>，有 <span class="quote-green">“双引号会自动变绿”</span>、<span class="quote-green">【方括号也是】</span>，还有 <em>*斜体*</em>、<del>~~删除线~~</del>、<u>++下划线++</u>、<strong>**粗体**</strong>、<a href="#">一个链接</a> 和 <code>行内代码</code>。</p>
+      <h2 data-anchor="post-h2" data-anchor-name="正文二级标题 ##" data-anchor-sel=".post-content h2（所有 ## 标题）">二级标题 ##</h2>
+      <ul><li>无序列表第一项</li><li>第二项，前面的小圆点也能调色</li></ul>
+      <ol><li>有序列表</li><li>序号的颜色单独一个</li></ol>
+      <h3 data-anchor="post-h3" data-anchor-name="正文三级标题 ###" data-anchor-sel=".post-content h3（所有 ### 标题）">三级标题 ###</h3>
+      <pre data-anchor="post-pre" data-anchor-name="代码块" data-anchor-sel=".post-content pre（所有代码块）"><code class="language-bash"><span class="code-line" data-line="1"><span class="line-content">cd /opt/clairine</span></span><span class="code-line" data-line="2"><span class="line-content">git pull &amp;&amp; npm run build</span></span></code><button class="copy-btn">复制</button></pre>
+      <table><thead><tr><th>表头</th><th>颜色</th><th>说明</th></tr></thead><tbody><tr><td>第一行</td><td>白底</td><td>普通单元格</td></tr><tr><td>第二行</td><td>淡绿</td><td>偶数行有底色</td></tr><tr><td>第三行</td><td>白底</td><td>……</td></tr></tbody></table>
+      <h4>四级标题 ####</h4>
+      <p>四级是主文字色，五级又回到次文字色。</p>
+      <h5>五级标题 #####</h5>
+      <h6>六级标题 ######</h6>
+      <blockquote data-anchor="post-quote" data-anchor-name="引用块" data-anchor-sel=".post-content blockquote（所有引用块）"><p>第二个引用块，单独给它贴个胶带也行。</p></blockquote>
+      <div class="icmd-block" data-anchor="post-icmd" data-anchor-name="文章里的命令块" data-anchor-sel=".icmd-block">
+        <div class="icmd-title">SSH 连服务器</div>
+        <pre class="icmd-preview"><code>ssh <span class="icmd-var">{用户名}</span>@<span class="icmd-var-filled">1.2.3.4</span></code></pre>
+        <div class="icmd-inputs"><label class="icmd-label">用户名<input type="text" class="icmd-input" placeholder="用户名"></label><label class="icmd-label">IP<input type="text" class="icmd-input" value="1.2.3.4"></label></div>
+        <div class="icmd-actions"><button class="icmd-copy">🩷 复制</button><a href="#" class="icmd-toollink">🧀 在命令匣中查看</a></div>
+      </div>
+      <hr data-anchor="post-hr" data-anchor-name="分割线" data-anchor-sel=".post-content hr">
+      <p><a class="download-link" href="#">📦 下载链接按钮</a></p>
+      <p><img src="https://kairin.cc/images/happy.gif" alt="" width="150"></p>
+    </div>
+
+    <div data-src="page.tsx · 落款" style="text-align: right; margin-top: 2.5rem; font-size: 0.78rem; font-style: italic; color: var(--color-text-secondary); opacity: 0.55;">— by Claude Fable 5</div>
+
+    <div data-anchor="bottom-nav" data-anchor-name="底部导航" data-anchor-sel="BottomNav.tsx 外层 div" style="display: flex; justify-content: center; align-items: center; gap: 0.75rem; margin: 2.5rem auto 1.5rem; padding: 0 1rem; max-width: 600px;">
+      <a href="#" data-src="BottomNav.tsx · 上一篇/下一篇" style="flex: 1; padding: 0.625rem 1rem; border-radius: 20px; background: #fff; border: 1.5px solid rgba(199,244,149,0.6); color: var(--color-text-secondary); font-size: 0.8525rem; font-weight: 500; text-align: center; box-shadow: 0 2px 8px rgba(199,244,149,0.20);">← 🌸 上一篇</a>
+      <a href="#" data-src="BottomNav.tsx · 返回主页" style="flex: 1; padding: 0.625rem 1rem; border-radius: 20px; background: #fff; border: 1.5px solid rgba(255,171,215,0.5); color: var(--color-text); font-size: 0.8525rem; font-weight: 500; text-align: center; box-shadow: 0 2px 8px rgba(255,171,215,0.20);">☘️ 返回主页</a>
+      <a href="#" data-src="BottomNav.tsx · 上一篇/下一篇" style="flex: 1; padding: 0.625rem 1rem; border-radius: 20px; background: #fff; border: 1.5px solid rgba(199,244,149,0.6); color: var(--color-text-secondary); font-size: 0.8525rem; font-weight: 500; text-align: center; box-shadow: 0 2px 8px rgba(199,244,149,0.20);">下一篇 →</a>
+    </div>
+  </main>
+</template>
+
+<template id="page-tools">
+  <main class="tools-page" data-anchor="tools-main" data-anchor-name="命令匣整页" data-anchor-sel=".tools-page">
+    <div class="tools-header" data-anchor="tools-header" data-anchor-name="命令匣标题区" data-anchor-sel=".tools-header">
+      <button class="tools-back">← ☘️返回</button>
+      <h1>🧀 命令匣</h1>
+      <p class="tools-subtitle">Ps:部分卡片左上角有个“▼”, 点它有惊喜(´▽`ʃƪ)ෆ！）</p>
+    </div>
+    <div class="tools-tabs">
+      <button class="tools-tab active">📋 命令速查</button>
+      <button class="tools-tab">🔍 查找替换</button>
+    </div>
+    <section class="cmd-section">
+      <div class="cmd-profile">
+        <button class="cmd-profile-head"><span>▾ ⚙️ 我的常用变量</span><span class="cmd-profile-count">2 条</span></button>
+        <div class="cmd-profile-body">
+          <p class="cmd-profile-tip">存在这里的值展开命令卡时会自动填进同名变量。只存在你自己的浏览器里，不上传🔒</p>
+          <div class="cmd-input-row"><label class="cmd-input-label">IP</label><input class="cmd-input-field" value="1.2.3.4"><button class="cmd-input-x">×</button></div>
+          <div class="cmd-profile-chips"><span class="cmd-profile-chips-label">常见变量：</span><button class="cmd-profile-chip">用户名</button><button class="cmd-profile-chip">端口</button></div>
+        </div>
+      </div>
+      <input class="cmd-search" placeholder="🔍 搜命令、描述…">
+      <div class="cmd-systems"><button class="cmd-sys active">全部</button><button class="cmd-sys">🐧 Linux</button><button class="cmd-sys">🪟 Windows</button></div>
+      <div class="cmd-categories"><button class="cmd-cat active">全部</button><button class="cmd-cat cmd-cat-fav">🍏 收藏</button><button class="cmd-cat">git</button><button class="cmd-cat">docker</button><button class="cmd-cat">系统</button></div>
+      <div class="cmd-list">
+        <div class="cmd-card cmd-card-expanded" data-anchor="cmd-card" data-anchor-name="命令卡片" data-anchor-sel=".cmd-card（每张命令卡）">
+          <div class="cmd-card-top">
+            <span class="cmd-title cmd-title-clickable"><span class="cmd-expand-icon">▾</span>克隆仓库（展开状态）</span>
+            <div class="cmd-card-actions"><button class="cmd-fav cmd-fav-active">🍏</button><span class="cmd-cat-tag">git</span></div>
+          </div>
+          <div class="cmd-code-row"><div class="cmd-code">git clone <span class="cmd-var-filled">git@github.com:kairinnn/clairine.git</span> <span class="cmd-var">{目录}</span></div><button class="cmd-copy">复制</button></div>
+          <div class="cmd-meta-row"><p class="cmd-desc">把仓库拉到本地</p><span class="cmd-sys-badge cmd-sys-badge-all">通用</span></div>
+          <div class="cmd-inputs">
+            <div class="cmd-input-row"><label class="cmd-input-label">仓库</label><input class="cmd-input-field cmd-input-prefilled" value="git@github.com:kairinnn/clairine.git"><button class="cmd-input-pin cmd-input-pin-active">📌</button><button class="cmd-input-x">×</button></div>
+            <div class="cmd-input-row"><label class="cmd-input-label">目录</label><input class="cmd-input-field" placeholder="目录"><button class="cmd-input-pin">📌</button><button class="cmd-input-x" disabled>×</button></div>
+            <div class="cmd-inputs-actions"><button class="cmd-inputs-clear">🧹 一键清空</button></div>
+          </div>
+        </div>
+        <div class="cmd-card">
+          <div class="cmd-card-top">
+            <span class="cmd-title">重启 nginx</span>
+            <div class="cmd-card-actions"><button class="cmd-fav">🍏</button><span class="cmd-cat-tag">系统</span></div>
+          </div>
+          <div class="cmd-code-row"><div class="cmd-code">sudo systemctl restart nginx</div><button class="cmd-copy">复制</button></div>
+          <div class="cmd-meta-row"><p class="cmd-desc">改完配置记得重启</p><span class="cmd-sys-badge cmd-sys-badge-linux">Linux</span></div>
+          <div class="cmd-chain">
+            <button class="cmd-chain-toggle">🔗 关联命令 (2)</button>
+            <div class="cmd-chain-list">
+              <div class="cmd-chain-item cmd-chain-item-clickable"><span class="cmd-chain-item-title">🔗 检查配置</span><code class="cmd-chain-item-code">sudo nginx -t</code></div>
+              <div class="cmd-chain-item cmd-chain-item-clickable"><span class="cmd-chain-item-title">🔗 看日志</span><code class="cmd-chain-item-code">journalctl -u nginx -f</code></div>
+            </div>
+          </div>
+        </div>
+        <div class="cmd-card cmd-card-copied">
+          <div class="cmd-card-top">
+            <span class="cmd-title">查看 IP（刚复制过的状态）</span>
+            <div class="cmd-card-actions"><button class="cmd-fav">🍏</button><span class="cmd-cat-tag">网络</span></div>
+          </div>
+          <div class="cmd-code-row"><div class="cmd-code">ipconfig</div><button class="cmd-copy copied">🩷</button></div>
+          <div class="cmd-meta-row"><p class="cmd-desc">Windows 看本机地址</p><span class="cmd-sys-badge cmd-sys-badge-win">Windows</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</template>
+
+<script>
+"use strict";
+/* ================================================================
+   数据
+   ================================================================ */
+const PAGES = { home: "主页", post: "文章页", tools: "命令匣" };
+
+const CARDS = [
+  { avatar: "https://kairin.cc/images/Claude_avatar.png", name: "Corin", date: "2026-10-17", title: "Claude 冷知识：prompt cache 到底在缓存什么", excerpt: "每次对话都要把前面的内容重新喂一遍，cache 省下的到底是什么？这篇从计费单上的四个数字讲起……", tags: ["科普", "Claude", "缓存"] },
+  { avatar: "https://i.postimg.cc/mrN8jDgh/rinn.jpg", name: "Kairin", date: "2026-07-24", title: "Claude单号被封秽土重生全流程", excerpt: "号没了别慌，从申诉到重新注册，一步步来。顺便记一下这次踩到的几个坑。", tags: ["分享", "Claude"] },
+  { avatar: "https://i.postimg.cc/mrN8jDgh/rinn.jpg", name: "Kairin", date: "2026-04-24", title: "云酒馆部署教程", excerpt: "手把手把酒馆搬到云服务器上，手机电脑随时打开就能聊。", tags: ["教程", "酒馆", "服务器", "部署"] },
+];
+const TAG_BG = ["rgba(255, 147, 208, 0.45)", "rgba(156, 212, 45, 0.45)", "rgba(255, 247, 163, 0.45)"];
+const TAG_FG = ["#a3e449", "#ff86b8", "#FF99C3"];
+
+const VAR_NAMES = {
+  "--color-pink": "粉（主色）",
+  "--color-pink-light": "浅粉（Tag 组件底色）",
+  "--color-pink-dark": "深粉（收藏分类选中字色）",
+  "--color-green": "绿（有序列表文字）",
+  "--color-green-light": "浅绿（Tag 组件底色）",
+  "--color-green-dark": "深绿（命令标题/命令文字）",
+  "--color-bg": "页面底色",
+  "--color-card": "卡片色（合集/测验页用）",
+  "--color-text": "主文字色",
+  "--color-text-secondary": "次文字色（正文段落、日期…）",
+  "--color-border": "边框色（目前没用到）",
+  "--color-green-light-xl": "主页 Tab 选中下划线（⚠️代码里引用了但从没定义过，所以现在是透明的）",
+};
+
+const SEL_ZH = [
+  [/^:root$/, "主题变量"],
+  [/scrollbar/, "滚动条"],
+  [/^\.bg-overlay/, "背景渐变遮罩"],
+  [/\.post-content h([1-6])/, (m) => `正文${"一二三四五六"[m[1] - 1]}级标题`],
+  [/\.post-content ul li::before/, "无序列表小圆点"],
+  [/li::marker/, "有序列表序号"],
+  [/\.post-content ol/, "有序列表"],
+  [/\.post-content th/, "表格表头"],
+  [/\.post-content (th|td)|\.post-content tr/, "表格"],
+  [/\.post-content mark/, "==高光=="],
+  [/\.post-content u/, "++下划线++"],
+  [/quote-green/, "引号绿字"],
+  [/\.post-content del/, "删除线"],
+  [/\.post-content em/, "斜体"],
+  [/\.post-content a/, "正文链接"],
+  [/\.post-content blockquote/, "引用块"],
+  [/\.post-content code/, "行内代码"],
+  [/\.post-content pre/, "代码块"],
+  [/code-line/, "代码行号"],
+  [/line-content/, "代码文字"],
+  [/\.post-content hr/, "分割线"],
+  [/^\.icmd-/, "文章内命令块"],
+  [/^\.copy-btn/, "代码块复制按钮"],
+  [/^\.download-link/, "下载按钮"],
+  [/^\.post-author-card/, "文章作者卡片"],
+  [/^\.article-card/, "article-card（旧类，没在用）"],
+  [/^\.tools-/, "命令匣页头"],
+  [/^\.cmd-/, "命令匣"],
+  [/^\.fr-/, "查找替换"],
+];
+const PROP_ZH = {
+  color: "文字", background: "背景", "background-color": "背景", "background-image": "背景花纹",
+  border: "边框", "border-color": "边框", "border-left": "左边框", "border-right": "右边框",
+  "border-top": "上边框", "border-bottom": "下边框", "box-shadow": "阴影",
+  "text-decoration-color": "下划线", "accent-color": "勾选框", outline: "描边",
+};
+
+/* ================================================================
+   颜色小工具
+   ================================================================ */
+const COLOR_RE = /#(?:[0-9a-fA-F]{8}|[0-9a-fA-F]{6}|[0-9a-fA-F]{3,4})(?![\w-])|rgba?\([^()]*\)/g;
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+
+function parseColor(s) {
+  s = String(s).trim().toLowerCase();
+  if (s === "transparent") return { r: 0, g: 0, b: 0, a: 0 };
+  let m = s.match(/^#([0-9a-f]{3,8})$/);
+  if (m) {
+    let h = m[1];
+    if (h.length === 3 || h.length === 4) h = [...h].map((c) => c + c).join("");
+    if (h.length !== 6 && h.length !== 8) return null;
+    const n = (i) => parseInt(h.slice(i, i + 2), 16);
+    return { r: n(0), g: n(2), b: n(4), a: h.length === 8 ? n(6) / 255 : 1 };
+  }
+  m = s.match(/^rgba?\(([^)]*)\)$/);
+  if (m) {
+    const p = m[1].split(/[\s,/]+/).filter(Boolean);
+    if (p.length < 3) return null;
+    const ch = (x) => Math.round(clamp(x.endsWith("%") ? parseFloat(x) * 2.55 : parseFloat(x), 0, 255));
+    const a = p[3] === undefined ? 1 : p[3].endsWith("%") ? parseFloat(p[3]) / 100 : parseFloat(p[3]);
+    const c = { r: ch(p[0]), g: ch(p[1]), b: ch(p[2]), a: clamp(a) };
+    return [c.r, c.g, c.b, c.a].some(Number.isNaN) ? null : c;
+  }
+  return null;
+}
+const hx = (n) => n.toString(16).padStart(2, "0");
+const hex6 = (c) => "#" + hx(c.r) + hx(c.g) + hx(c.b);
+const fmt = (c) => (c.a >= 0.995 ? hex6(c) : `rgba(${c.r}, ${c.g}, ${c.b}, ${+c.a.toFixed(2)})`);
+const norm = (c) => `${c.r},${c.g},${c.b},${c.a.toFixed(2)}`;
+const css = (c) => `rgba(${c.r},${c.g},${c.b},${c.a})`;
+
+function rgb2hsv({ r, g, b }) {
+  r /= 255; g /= 255; b /= 255;
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
+  let h = 0;
+  if (d) {
+    if (mx === r) h = ((g - b) / d) % 6;
+    else if (mx === g) h = (b - r) / d + 2;
+    else h = (r - g) / d + 4;
+    h *= 60;
+    if (h < 0) h += 360;
+  }
+  return { h, s: mx ? d / mx : 0, v: mx };
+}
+function hsv2rgb(h, s, v) {
+  const c = v * s, x = c * (1 - Math.abs(((h / 60) % 2) - 1)), m = v - c;
+  const [r, g, b] = h < 60 ? [c, x, 0] : h < 120 ? [x, c, 0] : h < 180 ? [0, c, x] : h < 240 ? [0, x, c] : h < 300 ? [x, 0, c] : [c, 0, x];
+  return { r: Math.round((r + m) * 255), g: Math.round((g + m) * 255), b: Math.round((b + m) * 255) };
+}
+
+/* ================================================================
+   把样式里的每个颜色换成 var(--tl-N)，记下它在哪
+   ================================================================ */
+const OCC = [];            // 所有颜色出现处
+const BYKEY = new Map();   // key → occ（存档用 key，不用序号，globals.css 改了也不太会错位）
+const VAR_OCC = {};        // --color-xxx → 定义它的那个 occ
+const CSS_VREFS = [];      // { msel, v } 规则里引用了 var(--color-xxx)
+const PAGE_HTML = {};
+
+function addOcc(o) {
+  if (BYKEY.has(o.key)) return BYKEY.get(o.key);
+  const c = parseColor(o.orig);
+  if (!c) return null;
+  o.id = OCC.length;
+  o.rgba = c;
+  OCC.push(o);
+  BYKEY.set(o.key, o);
+  return o;
+}
+
+function zhSel(sel) {
+  for (const [re, name] of SEL_ZH) {
+    const m = sel.match(re);
+    if (m) return typeof name === "function" ? name(m) : name;
+  }
+  return sel;
+}
+
+function stateOf(sel) {
+  if (/:hover/.test(sel)) return "悬停时";
+  if (/:focus/.test(sel)) return "聚焦时";
+  if (/:disabled/.test(sel)) return "禁用时";
+  return "";
+}
+
+// 预览里拿来 matches() 的选择器：去掉伪类伪元素
+function matchSel(sel) {
+  if (!sel || sel.startsWith("@") || sel === ":root") return null;
+  const s = sel
+    .split(",")
+    .map((x) => x.replace(/::?-webkit-[\w-]+/g, "").replace(/::(before|after|marker|placeholder|selection)/g, "")
+      .replace(/:not\(:disabled\)/g, "").replace(/:(hover|focus|focus-visible|focus-within|active|visited|disabled)\b/g, "").trim())
+    .filter(Boolean)
+    .join(", ");
+  if (!s) return null;
+  try { document.querySelector(s); return s; } catch { return null; }
+}
+
+function stripComments(s) { return s.replace(/\/\*[\s\S]*?\*\//g, ""); }
+
+function processCss(text, file) {
+  let out = "", i = 0, start = 0;
+  const stack = [], n = text.length, seen = {};
+  const decl = (seg) => {
+    const colon = seg.indexOf(":");
+    const sel = stack[stack.length - 1];
+    if (colon < 0 || !sel || stack.some((s) => s.startsWith("@keyframes"))) return seg;
+    const prop = stripComments(seg.slice(0, colon)).trim();
+    if (!prop) return seg;
+    const msel = matchSel(sel);
+    const val = seg.slice(colon + 1);
+    for (const m of val.matchAll(/var\((--color-[\w-]+)/g)) CSS_VREFS.push({ msel, sel, v: m[1] });
+    let k = 0;
+    const newVal = val.replace(COLOR_RE, (orig) => {
+      k++;
+      const base = `css|${sel}|${prop}|${k}|${orig}`;
+      seen[base] = (seen[base] || 0) + 1;
+      const zh = zhSel(sel);
+      const o = addOcc({
+        key: base + (seen[base] > 1 ? "|" + seen[base] : ""), orig, kind: "css", file, sel, prop, k, msel,
+        state: stateOf(sel),
+        title: sel === ":root" ? prop : `${zh} · ${PROP_ZH[prop] || prop}${k > 1 ? ` (第${k}个色)` : ""}`,
+        sub: sel === ":root" ? VAR_NAMES[prop] || "" : `${file}  ${sel} { ${prop} }`,
+      });
+      if (!o) return orig;
+      if (sel === ":root" && prop.startsWith("--")) VAR_OCC[prop] = o;
+      return `var(--tl-${o.id})`;
+    });
+    return seg.slice(0, colon + 1) + newVal;
+  };
+  while (i < n) {
+    const ch = text[i];
+    if (ch === "/" && text[i + 1] === "*") { const e = text.indexOf("*/", i + 2); i = e < 0 ? n : e + 2; continue; }
+    if (ch === '"' || ch === "'") { const e = text.indexOf(ch, i + 1); i = e < 0 ? n : e + 1; continue; }
+    if (ch === "{") {
+      out += text.slice(start, i + 1);
+      stack.push(stripComments(text.slice(start, i)).trim().replace(/\s+/g, " "));
+      start = i + 1;
+    } else if (ch === ";" || ch === "}") {
+      const seg = text.slice(start, i);
+      out += stack.length ? decl(seg) : seg;
+      out += ch;
+      if (ch === "}") stack.pop();
+      start = i + 1;
+    }
+    i++;
+  }
+  return out + text.slice(start);
+}
+
+function processStyle(str, label, page, suffix, ids, vrefs) {
+  return str.split(";").map((d) => {
+    const colon = d.indexOf(":");
+    if (colon < 0) return d;
+    const prop = d.slice(0, colon).trim();
+    const val = d.slice(colon + 1);
+    for (const m of val.matchAll(/var\((--color-[\w-]+)/g)) vrefs.add(m[1]);
+    let k = 0;
+    return d.slice(0, colon + 1) + val.replace(COLOR_RE, (orig) => {
+      k++;
+      const where = label + (suffix ? `（${suffix}）` : "");
+      const o = addOcc({
+        key: `inl|${where}|${prop}|${k}|${orig}`, orig, kind: "inline", label: where, prop, k, pages: new Set(),
+        state: suffix || "",
+        title: `${where.replace(/^[^·]*·\s*/, "")} · ${PROP_ZH[prop] || prop}${k > 1 ? ` (第${k}个色)` : ""}`,
+        sub: `${where}  { ${prop} }`,
+      });
+      if (!o) return orig;
+      o.pages.add(page);
+      ids.add(o.id);
+      return `var(--tl-${o.id})`;
+    });
+  }).join(";");
+}
+
+function tagDesc(el) {
+  const cls = el.getAttribute("class");
+  return `<${el.tagName.toLowerCase()}${cls ? "." + cls.split(/\s+/)[0] : ""}>`;
+}
+
+function processPage(page, html) {
+  const tpl = document.createElement("template");
+  tpl.innerHTML = html;
+  for (const el of tpl.content.querySelectorAll("*")) {
+    const own = el.getAttribute("data-src");
+    const host = el.closest("[data-src]");
+    const label = own || (host ? `${host.getAttribute("data-src")} › ${tagDesc(el)}` : `${PAGES[page]} · ${tagDesc(el)}`);
+    const ids = new Set(), vrefs = new Set();
+    for (const [attr, suffix] of [["style", ""], ["data-hover-style", "悬停时"], ["data-open-style", "侧边栏打开时"]]) {
+      const v = el.getAttribute(attr);
+      if (v) el.setAttribute(attr, processStyle(v, label, page, suffix, ids, vrefs));
+    }
+    if (ids.size) el.setAttribute("data-occ", [...ids].join(","));
+    if (vrefs.size) el.setAttribute("data-vref", [...vrefs].join(","));
+  }
+  PAGE_HTML[page] = tpl.innerHTML;
+}
+
+function buildPages() {
+  const card = document.getElementById("tpl-card").innerHTML;
+  const cards = CARDS.map((c) => card
+    .replace("{avatar}", c.avatar).replace("{name}", c.name).replace("{date}", c.date)
+    .replace("{title}", c.title).replace("{excerpt}", c.excerpt)
+    .replace("{tags}", c.tags.map((t, i) =>
+      `<span class="article-tag" data-src="PostCard.tsx · 标签色${"①②③"[i % 3]}（第${[1, 2, 3][i % 3]}、${[4, 5, 6][i % 3]}…个）" style="padding: 0.2rem 0.6rem; border-radius: 8px; font-size: 0.75rem; background: ${TAG_BG[i % 3]}; color: ${TAG_FG[i % 3]};">${t}</span>`).join(""))).join("");
+  processPage("home", document.getElementById("page-home").innerHTML.replace("<!--CARDS-->", cards));
+  processPage("post", document.getElementById("page-post").innerHTML);
+  processPage("tools", document.getElementById("page-tools").innerHTML);
+}
+
+/* ================================================================
+   状态 & 存档
+   ================================================================ */
+const S = {
+  overrides: {},   // occ.key → 新颜色
+  stickers: [],    // { id, img, page, anchor, x, y, w, rot, op, flip, layer, aw, ah, vw, anchorName, anchorSel }
+  images: {},      // id → { name, src, w, h }
+  page: "home", tab: "color", phone: true, sidebar: false,
+  sel: null, target: null, pick: null,
+};
+
+const DB = {
+  db: null,
+  async open() {
+    if (this.db) return this.db;
+    this.db = await new Promise((res, rej) => {
+      const r = indexedDB.open("clairine-theme-lab", 1);
+      r.onupgradeneeded = () => r.result.createObjectStore("kv");
+      r.onsuccess = () => res(r.result);
+      r.onerror = () => rej(r.error);
+    });
+    return this.db;
+  },
+  async get(k) {
+    const db = await this.open();
+    return new Promise((res, rej) => {
+      const r = db.transaction("kv").objectStore("kv").get(k);
+      r.onsuccess = () => res(r.result);
+      r.onerror = () => rej(r.error);
+    });
+  },
+  async set(k, v) {
+    const db = await this.open();
+    return new Promise((res, rej) => {
+      const t = db.transaction("kv", "readwrite");
+      t.objectStore("kv").put(v, k);
+      t.oncomplete = () => res();
+      t.onerror = () => rej(t.error);
+    });
+  },
+};
+const snapshot = () => ({ v: 1, overrides: S.overrides, stickers: S.stickers, images: S.images });
+let saveTimer = 0;
+function save() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { DB.set("state", snapshot()).catch(() => {}); }, 400);
+}
+function loadState(d) {
+  if (!d || typeof d !== "object") return;
+  S.overrides = d.overrides && typeof d.overrides === "object" ? d.overrides : {};
+  S.images = d.images && typeof d.images === "object" ? d.images : {};
+  S.stickers = Array.isArray(d.stickers) ? d.stickers.filter((s) => s && S.images[s.img]) : [];
+}
+
+/* ================================================================
+   预览 iframe
+   ================================================================ */
+const $ = (id) => document.getElementById(id);
+const iframe = $("pv");
+let doc = null, win = null;
+
+const PREFLIGHT = `@layer base{
+*,::after,::before{box-sizing:border-box;margin:0;padding:0;border:0 solid}
+html{line-height:1.5;-webkit-text-size-adjust:100%;tab-size:4}
+body{line-height:inherit}
+hr{height:0;color:inherit;border-top-width:1px}
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}
+a{color:inherit;text-decoration:inherit}
+b,strong{font-weight:bolder}
+code,kbd,samp,pre{font-family:ui-monospace,monospace;font-size:1em}
+table{text-indent:0;border-color:inherit;border-collapse:collapse}
+button,input,select,optgroup,textarea{font:inherit;letter-spacing:inherit;color:inherit;border-radius:0;background-color:transparent;opacity:1}
+ol,ul,menu{list-style:none}
+img,svg,video,canvas{display:block;vertical-align:middle}
+img,video{max-width:100%;height:auto}
+::placeholder{opacity:1}
+[hidden]{display:none!important}
+}
+.min-h-screen{min-height:100vh}`;
+
+const HELPER = `
+*{animation:none!important}
+.tl-rel{position:relative!important}
+.tl-iso{isolation:isolate}
+.tl-st{position:absolute;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;transform-origin:50% 50%}
+.tl-st img{width:100%!important;max-width:none!important;height:auto!important;display:block!important;pointer-events:none;margin:0!important;border-radius:0!important}
+.tl-st.sel{outline:1.5px dashed #ff5fa8;outline-offset:2px}
+.tl-h{display:none;position:absolute;width:24px;height:24px;border-radius:50%;background:#fff;border:2.5px solid #ff5fa8;box-shadow:0 2px 6px rgba(0,0,0,.2);touch-action:none}
+.tl-st.sel .tl-h{display:block}
+.tl-h[data-h=rs]{right:-14px;bottom:-14px;cursor:nwse-resize}
+.tl-h[data-h=rot]{left:50%;top:-38px;margin-left:-12px;cursor:grab}
+.tl-h[data-h=rot]::after{content:"";position:absolute;left:50%;top:22px;width:0;height:14px;border-left:1.5px dashed #ff5fa8}
+.tl-drop{outline:2.5px solid rgba(255,95,168,.75)!important;outline-offset:3px}
+.tl-picked{outline:2.5px dashed #ff5fa8!important;outline-offset:2px}
+`;
+
+function buildFrame() {
+  const font = $("font-b64").textContent.trim();
+  const fontCss = font && !font.startsWith("__")
+    ? `@font-face{font-family:"Moyuan";src:url(data:font/woff2;base64,${font}) format("woff2");font-display:swap}`
+    : "";
+  if (fontCss) { const st = document.createElement("style"); st.textContent = fontCss; document.head.appendChild(st); }
+
+  let site = processCss($("site-css").textContent, "globals.css");
+  // 组件里引用了、但 globals.css 从没定义过的变量：补一个透明的占位，让它也能调
+  const all = $("site-css").textContent + Object.values(PAGE_HTML).join("");
+  const undef = [...new Set([...all.matchAll(/var\((--color-[\w-]+)/g)].map((m) => m[1]))].filter((v) => !VAR_OCC[v]);
+  let extra = "";
+  for (const v of undef) {
+    const o = addOcc({ key: `css|:root|${v}|1|transparent`, orig: "transparent", kind: "css", file: "globals.css", sel: ":root", prop: v, k: 1, msel: null, state: "", isNew: true, title: v, sub: VAR_NAMES[v] || "（代码里引用了，但没定义过）" });
+    VAR_OCC[v] = o;
+    extra += `${v}:var(--tl-${o.id});`;
+  }
+  if (extra) site += `\n:root{${extra}}`;
+  const base = ":root{" + OCC.map((o) => `--tl-${o.id}:${o.orig};`).join("") + "}";
+
+  return new Promise((res) => {
+    iframe.onload = () => { doc = iframe.contentDocument; win = iframe.contentWindow; res(); };
+    iframe.srcdoc = `<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap">
+<style>${fontCss}:root{--font-custom:"Moyuan";--font-code:"Nunito"}</style>
+<style>${PREFLIGHT}</style><style id="tl-base">${base}</style><style id="site">${site}</style><style>${HELPER}</style>
+</head><body class="min-h-screen"><div class="bg-pattern"></div><div class="bg-overlay"></div><div id="tl-root"></div></body></html>`;
+  });
+}
+
+function applyVar(o) {
+  if (!doc) return;
+  const v = S.overrides[o.key];
+  if (v) doc.documentElement.style.setProperty(`--tl-${o.id}`, v);
+  else doc.documentElement.style.removeProperty(`--tl-${o.id}`);
+}
+const applyAll = () => OCC.forEach(applyVar);
+
+function renderPage() {
+  doc.getElementById("tl-root").innerHTML = PAGE_HTML[S.page];
+  win.scrollTo(0, 0);
+  setSidebar(S.page === "home" && S.sidebar);
+  renderStickers();
+  computeVisible();
+  renderLists();
+  renderStickerPanel();
+  $("sideBtn").hidden = S.page !== "home";
+  document.querySelectorAll("#pages button").forEach((b) => b.classList.toggle("on", b.dataset.p === S.page));
+}
+
+function setSidebar(open) {
+  S.sidebar = open;
+  setHover(null);
+  $("sideBtn").classList.toggle("on", open);
+  if (!doc) return;
+  doc.querySelectorAll("[data-open-style]").forEach((el) => {
+    if (el.dataset.baseStyle === undefined) el.dataset.baseStyle = el.getAttribute("style") || "";
+    el.setAttribute("style", el.dataset.baseStyle + (open ? ";" + el.getAttribute("data-open-style") : ""));
+  });
+}
+
+/* ── 预览里的交互：悬停样式、点选取色、拖贴纸 ── */
+let hoverEl = null;
+function setHover(el) {
+  if (el === hoverEl) return;
+  if (hoverEl && hoverEl.dataset.hoverBase !== undefined) {
+    hoverEl.setAttribute("style", hoverEl.dataset.hoverBase);
+    delete hoverEl.dataset.hoverBase;
+  }
+  hoverEl = el;
+  if (el && !(S.sidebar && el.hasAttribute("data-open-style"))) {
+    el.dataset.hoverBase = el.getAttribute("style") || "";
+    el.setAttribute("style", el.dataset.hoverBase + ";" + el.getAttribute("data-hover-style"));
+  }
+}
+
+function bindFrame() {
+  doc.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target.closest(".tl-st")) return;
+    if (S.tab === "sticker") { select(null); return; }
+    pick(e.target);
+  }, true);
+  doc.addEventListener("submit", (e) => e.preventDefault(), true);
+  doc.addEventListener("pointerover", (e) => {
+    if (e.pointerType !== "mouse" || gesture) return;
+    setHover(e.target.closest ? e.target.closest("[data-hover-style]") : null);
+  });
+  doc.documentElement.addEventListener("pointerleave", () => setHover(null));
+  doc.addEventListener("pointerdown", onStickerDown);
+  doc.addEventListener("paste", onPaste);
+  bindDrop(doc);
+}
+
+/* ================================================================
+   配色面板
+   ================================================================ */
+const cur = (o) => (S.overrides[o.key] ? parseColor(S.overrides[o.key]) : o.rgba);
+const changed = (o) => !!S.overrides[o.key];
+let VISIBLE = new Set();
+
+function computeVisible() {
+  VISIBLE = new Set();
+  for (const o of OCC) {
+    if (o.kind === "inline") { if (o.pages.has(S.page)) VISIBLE.add(o.id); continue; }
+    if (!o.msel) { VISIBLE.add(o.id); continue; }
+    try { if (doc.querySelector(o.msel)) VISIBLE.add(o.id); } catch { /* 选择器不认就算了 */ }
+  }
+}
+
+function setOcc(o, c) {
+  if (norm(c) === norm(o.rgba)) delete S.overrides[o.key];
+  else S.overrides[o.key] = fmt(c);
+  applyVar(o);
+}
+
+function swatch(c) {
+  return `<span class="sw"><i style="background:${css(c)}"></i></span>`;
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]); }
+
+function occRow(o, extra = "") {
+  const c = cur(o);
+  return `<div class="row${isTarget("o", o.id) ? " cur" : ""}" data-t="o:${o.id}">
+    <span class="sw"><i data-sw="o:${o.id}" style="background:${css(c)}"></i></span>
+    <div class="tx"><div class="tt">${esc(o.title)}${o.state ? `<span class="cnt">${esc(o.state)}</span>` : ""}${changed(o) ? '<span class="badge">改</span>' : ""}${extra}</div>
+    <div class="ss">${esc(o.sub)}</div></div>
+    <span class="vv" data-vv="o:${o.id}">${fmt(c)}</span></div>`;
+}
+
+let GROUPS = [];
+function buildGroups() {
+  const m = new Map();
+  for (const o of OCC) {
+    if (o.sel === ":root") continue;
+    const k = norm(o.rgba);
+    if (!m.has(k)) m.set(k, { key: k, rgba: o.rgba, members: [] });
+    m.get(k).members.push(o);
+  }
+  GROUPS = [...m.values()].map((g) => ({ ...g, hsv: rgb2hsv(g.rgba) }))
+    .sort((a, b) => {
+      const ga = a.hsv.s < 0.12 || a.hsv.v < 0.12, gb = b.hsv.s < 0.12 || b.hsv.v < 0.12;
+      if (ga !== gb) return ga ? 1 : -1;
+      return ga ? b.hsv.v - a.hsv.v : (a.hsv.h - b.hsv.h) || (b.hsv.v - a.hsv.v);
+    });
+}
+const groupBy = (k) => GROUPS.find((g) => g.key === k);
+function groupCur(g) { return cur(g.members[0]); }
+
+function matchesQ(o, q) {
+  if (!q) return true;
+  return (o.title + " " + o.sub + " " + o.orig + " " + fmt(cur(o))).toLowerCase().includes(q);
+}
+
+const openGroups = new Set();
+function renderLists() {
+  const q = $("q").value.trim().toLowerCase();
+  const only = $("onlyPage").checked;
+  const show = (o) => (!only || VISIBLE.has(o.id)) && matchesQ(o, q);
+
+  $("varList").innerHTML = Object.values(VAR_OCC).filter((o) => matchesQ(o, q)).map((o) => occRow(o)).join("");
+
+  $("palList").innerHTML = GROUPS.map((g) => {
+    const mem = g.members.filter(show);
+    if (!mem.length) return "";
+    const nChanged = g.members.filter(changed).length;
+    const c = groupCur(g);
+    return `<details class="grp" data-g="${g.key}"${openGroups.has(g.key) || q ? " open" : ""}>
+      <summary class="row${isTarget("g", g.key) ? " cur" : ""}" data-t="g:${g.key}">
+        <span class="sw"><i data-sw="g:${g.key}" style="background:${css(c)}"></i></span>
+        <div class="tx"><div class="tt">${fmt(g.rgba)}<span class="cnt">×${g.members.length} 处</span>${nChanged ? `<span class="badge">改了 ${nChanged}</span>` : ""}</div>
+        <div class="ss">${esc([...new Set(mem.map((o) => o.title.split(" · ")[0]))].slice(0, 4).join("、"))}</div></div>
+        <span class="vv" data-vv="g:${g.key}">${fmt(c)}</span>
+      </summary>
+      <div class="mem">${mem.map((o) => occRow(o)).join("")}</div></details>`;
+  }).join("") || '<p class="tip">没有匹配的颜色</p>';
+
+  renderPick();
+}
+
+function renderPick() {
+  const P = S.pick;
+  $("pickBox").hidden = !P;
+  if (!P) return;
+  $("pickName").textContent = P.name;
+  $("pickList").innerHTML = P.levels.map((lv) =>
+    `<div class="lvl">${esc(lv.title)}</div>` +
+    lv.items.map((it) => it.via ? occRow(it.o, `<span class="cnt">← ${esc(it.via)}</span>`) : occRow(it.o)).join("")
+  ).join("") || '<p class="tip">这个元素自己没设颜色（颜色是从外层继承来的）</p>';
+}
+
+function safeMatches(el, s) { try { return el.matches(s); } catch { return false; } }
+function describe(el) {
+  return el.getAttribute("data-anchor-name") || el.getAttribute("data-src") ||
+    (el.className && typeof el.className === "string" ? "." + el.className.split(/\s+/).filter((c) => !c.startsWith("tl-"))[0] : "") ||
+    el.tagName.toLowerCase();
+}
+
+function pick(target) {
+  doc.querySelectorAll(".tl-picked").forEach((e) => e.classList.remove("tl-picked"));
+  const levels = [], seen = new Set();
+  let el = target, depth = 0;
+  while (el && el.nodeType === 1 && el.id !== "tl-root" && depth < 6) {
+    const items = [];
+    const add = (o, via) => { if (o && !seen.has(o.id)) { seen.add(o.id); items.push({ o, via }); } };
+    (el.getAttribute("data-occ") || "").split(",").filter(Boolean).forEach((id) => add(OCC[+id]));
+    for (const o of OCC) if (o.kind === "css" && o.msel && safeMatches(el, o.msel)) add(o);
+    (el.getAttribute("data-vref") || "").split(",").filter(Boolean).forEach((v) => add(VAR_OCC[v], "通过变量引用"));
+    for (const r of CSS_VREFS) if (r.msel && safeMatches(el, r.msel)) add(VAR_OCC[r.v], `${zhSel(r.sel)} 引用`);
+    if (items.length) levels.push({ title: depth === 0 ? "这个元素本身" : `外层：${describe(el)}`, items });
+    el = el.parentElement;
+    depth++;
+  }
+  // 没单独设颜色的字，颜色是从 body 继承来的
+  const inh = ["--color-text", "--color-bg"].map((v) => VAR_OCC[v]).filter((o) => o && !seen.has(o.id));
+  if (inh.length) levels.push({ title: "继承自整个页面（body）", items: inh.map((o) => ({ o, via: "body 默认" })) });
+  S.pick = { name: describe(target), levels };
+  target.classList.add("tl-picked");
+  setTimeout(() => target.classList.remove("tl-picked"), 1200);
+  renderPick();
+  if (S.panelMini) setPanel("half");
+  $("pbody").scrollTop = 0;
+  const first = levels[0] && levels[0].items[0];
+  if (first) setTarget({ type: "o", id: first.o.id });
+}
+
+/* ── 取色器 ── */
+const ED = { h: 0, s: 0, v: 0, a: 1 };
+function isTarget(type, id) { return S.target && S.target.type === type && S.target.id === id; }
+function targetInfo() {
+  const t = S.target;
+  if (!t) return null;
+  if (t.type === "o") { const o = OCC[t.id]; return { title: o.title, sub: o.sub, orig: o.rgba, now: cur(o) }; }
+  const g = groupBy(t.id);
+  return g && { title: `${fmt(g.rgba)} 全部 ${g.members.length} 处一起改`, sub: "想只改其中一处，点开下面的列表单独选", orig: g.rgba, now: groupCur(g) };
+}
+function setTarget(t) {
+  S.target = t;
+  const info = targetInfo();
+  $("ed").hidden = !info;
+  document.querySelectorAll(".row.cur").forEach((r) => r.classList.remove("cur"));
+  if (!info) return;
+  document.querySelectorAll(`[data-t="${t.type}:${t.id}"]`).forEach((r) => r.classList.add("cur"));
+  $("edTitle").textContent = info.title;
+  $("edSub").textContent = info.sub;
+  $("edOld").style.background = css(info.orig);
+  Object.assign(ED, rgb2hsv(info.now), { a: info.now.a });
+  paintEditor(info.now);
+}
+function edColor() { return { ...hsv2rgb(ED.h, ED.s, ED.v), a: Math.round(ED.a * 100) / 100 }; }
+function paintEditor(c, skipInputs) {
+  c = c || edColor();
+  $("edSV").style.background = `linear-gradient(to top,#000,transparent),linear-gradient(to right,#fff,hsl(${ED.h},100%,50%))`;
+  Object.assign($("edSVth").style, { left: ED.s * 100 + "%", top: (1 - ED.v) * 100 + "%", background: hex6(c) });
+  Object.assign($("edHueth").style, { left: (ED.h / 360) * 100 + "%", background: `hsl(${ED.h},100%,50%)` });
+  $("edAbg").style.background = `linear-gradient(to right,transparent,${hex6(c)})`;
+  Object.assign($("edAth").style, { left: ED.a * 100 + "%", background: css(c) });
+  $("edNew").style.background = css(c);
+  if (!skipInputs) {
+    if (document.activeElement !== $("edHex")) $("edHex").value = hex6(c);
+    if (document.activeElement !== $("edAp")) $("edAp").value = Math.round(c.a * 100);
+  }
+}
+function commitEditor(c) {
+  c = c || edColor();
+  const t = S.target;
+  if (!t) return;
+  if (t.type === "o") setOcc(OCC[t.id], c);
+  else groupBy(t.id).members.forEach((o) => setOcc(o, c));
+  paintEditor(c);
+  refreshSwatches();
+  save();
+  queueExport();
+}
+function refreshSwatches() {
+  document.querySelectorAll("[data-sw]").forEach((el) => {
+    const [type, id] = el.dataset.sw.split(/:(.*)/s);
+    const c = type === "o" ? cur(OCC[+id]) : groupCur(groupBy(id));
+    el.style.background = css(c);
+    const vv = el.closest(".row").querySelector(".vv");
+    if (vv) vv.textContent = fmt(c);
+  });
+}
+let relistTimer = 0;
+function relistSoon() { clearTimeout(relistTimer); relistTimer = setTimeout(renderLists, 600); }
+
+function dragArea(el, fn) {
+  el.addEventListener("pointerdown", (e) => {
+    e.preventDefault();
+    el.setPointerCapture(e.pointerId);
+    const mv = (ev) => { const r = el.getBoundingClientRect(); fn(clamp((ev.clientX - r.left) / r.width), clamp((ev.clientY - r.top) / r.height)); commitEditor(); };
+    const up = () => { el.removeEventListener("pointermove", mv); el.removeEventListener("pointerup", up); el.removeEventListener("pointercancel", up); relistSoon(); };
+    el.addEventListener("pointermove", mv);
+    el.addEventListener("pointerup", up);
+    el.addEventListener("pointercancel", up);
+    mv(e);
+  });
+}
+
+function bindEditor() {
+  dragArea($("edSV"), (x, y) => { ED.s = x; ED.v = 1 - y; });
+  dragArea($("edHue"), (x) => { ED.h = Math.min(x * 360, 359.9); });
+  dragArea($("edA"), (x) => { ED.a = x; });
+  $("edHex").addEventListener("input", () => {
+    const raw = $("edHex").value.trim();
+    const c = parseColor(/^[0-9a-f]{3,8}$/i.test(raw) ? "#" + raw : raw);
+    if (!c) return;
+    // 只输 6 位 hex 时不动透明度；8 位 hex / rgba() 才连透明度一起改
+    const keepAlpha = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.test(raw);
+    Object.assign(ED, rgb2hsv(c), { a: keepAlpha ? ED.a : c.a });
+    commitEditor();
+    relistSoon();
+  });
+  $("edAp").addEventListener("input", () => {
+    const v = parseFloat($("edAp").value);
+    if (Number.isNaN(v)) return;
+    ED.a = clamp(v / 100);
+    commitEditor();
+    relistSoon();
+  });
+  $("edReset").addEventListener("click", () => {
+    const info = targetInfo();
+    if (!info) return;
+    const t = S.target;
+    if (t.type === "o") { delete S.overrides[OCC[t.id].key]; applyVar(OCC[t.id]); }
+    else groupBy(t.id).members.forEach((o) => { delete S.overrides[o.key]; applyVar(o); });
+    save();
+    queueExport();
+    renderLists();
+    setTarget(t);
+  });
+  $("edClose").addEventListener("click", () => setTarget(null));
+
+  const onRow = (e) => {
+    const row = e.target.closest("[data-t]");
+    if (!row) return;
+    const [type, id] = row.dataset.t.split(/:(.*)/s);
+    if (type === "g") {
+      // summary 自己会开合 details，这里记住开合状态
+      setTimeout(() => { const d = row.parentElement; if (d.open) openGroups.add(id); else openGroups.delete(id); });
+      setTarget({ type: "g", id });
+    } else {
+      setTarget({ type: "o", id: +id });
+    }
+  };
+  $("pane-color").addEventListener("click", onRow);
+  $("q").addEventListener("input", renderLists);
+  $("onlyPage").addEventListener("change", renderLists);
+}
+
+/* ================================================================
+   贴纸
+   ================================================================ */
+const uid = () => Math.random().toString(36).slice(2, 9);
+const LAYER_TIP = {
+  behind: "垫在元素的底色后面：比如标题有一块黄绿底色，贴纸会被这块底色挡住，只露出超出去的部分。",
+  under: "在元素底色的上面、文字的下面：最适合当蕾丝底纹 / 标题衬底，字永远压在贴纸上。",
+  over: "盖在一切上面：头像框、角落贴纸用这个。",
+};
+const LAYER_ZH = { behind: "垫在元素底色后面", under: "元素底色之上、文字之下", over: "盖在最上面" };
+
+function stById(id) { return S.stickers.find((s) => s.id === id); }
+function stH(st) { const im = S.images[st.img]; return st.w * (im.h / im.w); }
+
+function anchorEl(name) {
+  return doc.querySelector(`[data-anchor="${CSS.escape(name)}"]`) || doc.querySelector("#tl-root main[data-anchor]");
+}
+
+function styleSticker(el, st) {
+  Object.assign(el.style, {
+    left: st.x + "px", top: st.y + "px", width: st.w + "px",
+    transform: `rotate(${st.rot}deg)`,
+    zIndex: st.layer === "over" ? String(20 + S.stickers.indexOf(st)) : "-1",
+  });
+  const img = el.firstChild;
+  img.style.opacity = st.op / 100;
+  img.style.transform = st.flip ? "scaleX(-1)" : "";
+}
+
+function measure(st, a) {
+  st.aw = Math.round(a.clientWidth);
+  st.ah = Math.round(a.clientHeight);
+  st.vw = win.innerWidth;
+  st.anchorName = a.getAttribute("data-anchor-name");
+  st.anchorSel = a.getAttribute("data-anchor-sel");
+  st.anchor = a.getAttribute("data-anchor");
+}
+
+function renderStickers() {
+  if (!doc) return;
+  doc.querySelectorAll(".tl-st").forEach((e) => e.remove());
+  doc.querySelectorAll(".tl-rel,.tl-iso").forEach((e) => e.classList.remove("tl-rel", "tl-iso"));
+  for (const st of S.stickers) {
+    if (st.page !== S.page) continue;
+    const a = anchorEl(st.anchor);
+    if (!a) continue;
+    if (win.getComputedStyle(a).position === "static") a.classList.add("tl-rel");
+    if (st.layer === "under") a.classList.add("tl-iso");
+    const el = doc.createElement("div");
+    el.className = "tl-st" + (S.sel === st.id ? " sel" : "");
+    el.dataset.sid = st.id;
+    el.innerHTML = `<img alt="" draggable="false"><i class="tl-h" data-h="rs"></i><i class="tl-h" data-h="rot"></i>`;
+    el.firstChild.src = S.images[st.img].src;
+    styleSticker(el, st);
+    a.appendChild(el);
+    measure(st, a);
+  }
+}
+const stEl = (id) => doc && doc.querySelector(`.tl-st[data-sid="${id}"]`);
+
+function select(id) {
+  S.sel = id;
+  if (doc) doc.querySelectorAll(".tl-st").forEach((e) => e.classList.toggle("sel", e.dataset.sid === id));
+  renderStickerPanel();
+}
+
+function anchorUnder(cx, cy) {
+  const els = doc.elementsFromPoint(cx, cy).filter((e) => !e.closest(".tl-st"));
+  for (const e of els) { const a = e.closest("[data-anchor]"); if (a) return a; }
+  return null;
+}
+
+// 换挂载点，视觉位置不动
+function reanchor(st, a) {
+  const el = stEl(st.id);
+  const old = el && el.parentElement;
+  if (!a || a === old) return;
+  const r0 = old.getBoundingClientRect(), r1 = a.getBoundingClientRect();
+  st.x = Math.round(r0.left + old.clientLeft + st.x - r1.left - a.clientLeft);
+  st.y = Math.round(r0.top + old.clientTop + st.y - r1.top - a.clientTop);
+  st.anchor = a.getAttribute("data-anchor");
+  renderStickers();
+}
+
+function dropTarget(st, cx, cy) {
+  const el = stEl(st.id);
+  const curA = el.parentElement;
+  const found = anchorUnder(cx, cy);
+  const r = curA.getBoundingClientRect();
+  const inside = cx >= r.left && cx <= r.right && cy >= r.top && cy <= r.bottom;
+  if (!found) return curA;
+  if (inside && !curA.contains(found)) return curA;
+  return found;
+}
+
+let gesture = null;
+const ptrs = new Map();
+function snapGesture(st, el, handle) {
+  const r = el.getBoundingClientRect();
+  gesture = {
+    st, el, handle, s0: { ...st }, p0: new Map([...ptrs].map(([k, v]) => [k, { ...v }])),
+    c0: { x: r.left + r.width / 2, y: r.top + r.height / 2 }, moved: false,
+  };
+}
+function onStickerDown(e) {
+  const el = e.target.closest && e.target.closest(".tl-st");
+  if (!el) return;
+  e.preventDefault();
+  e.stopPropagation();
+  const st = stById(el.dataset.sid);
+  if (S.sel !== st.id) select(st.id);
+  if (S.tab !== "sticker") switchTab("sticker");
+  el.setPointerCapture(e.pointerId);
+  ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  snapGesture(st, el, e.target.dataset.h || null);
+  const mv = (ev) => {
+    if (!ptrs.has(ev.pointerId)) return;
+    ptrs.set(ev.pointerId, { x: ev.clientX, y: ev.clientY });
+    moveGesture();
+  };
+  const up = (ev) => {
+    ptrs.delete(ev.pointerId);
+    if (ptrs.size) { snapGesture(gesture.st, gesture.el, null); return; }
+    el.removeEventListener("pointermove", mv);
+    el.removeEventListener("pointerup", up);
+    el.removeEventListener("pointercancel", up);
+    endGesture();
+  };
+  if (ptrs.size === 1) {
+    el.addEventListener("pointermove", mv);
+    el.addEventListener("pointerup", up);
+    el.addEventListener("pointercancel", up);
+  }
+}
+function moveGesture() {
+  const g = gesture;
+  if (!g) return;
+  const { st, s0 } = g;
+  const h0 = s0.w * (S.images[st.img].h / S.images[st.img].w);
+  const pts = [...ptrs.values()], starts = [...g.p0.values()];
+  g.moved = true;
+  if (pts.length >= 2 && starts.length >= 2) {
+    const d = (a, b) => Math.hypot(a.x - b.x, a.y - b.y), ang = (a, b) => Math.atan2(b.y - a.y, b.x - a.x);
+    const k = d(pts[0], pts[1]) / Math.max(d(starts[0], starts[1]), 1);
+    const mid = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+    const mid0 = { x: (starts[0].x + starts[1].x) / 2, y: (starts[0].y + starts[1].y) / 2 };
+    st.w = clamp(Math.round(s0.w * k), 8, 2000);
+    st.rot = Math.round(s0.rot + ((ang(pts[0], pts[1]) - ang(starts[0], starts[1])) * 180) / Math.PI);
+    const cx = s0.x + s0.w / 2 + (mid.x - mid0.x), cy = s0.y + h0 / 2 + (mid.y - mid0.y);
+    st.x = Math.round(cx - st.w / 2);
+    st.y = Math.round(cy - stH(st) / 2);
+  } else if (g.handle === "rs") {
+    const p = pts[0], p0 = starts[0];
+    const k = Math.hypot(p.x - g.c0.x, p.y - g.c0.y) / Math.max(Math.hypot(p0.x - g.c0.x, p0.y - g.c0.y), 1);
+    st.w = clamp(Math.round(s0.w * k), 8, 2000);
+    st.x = Math.round(s0.x + s0.w / 2 - st.w / 2);
+    st.y = Math.round(s0.y + h0 / 2 - stH(st) / 2);
+  } else if (g.handle === "rot") {
+    const p = pts[0];
+    let a = (Math.atan2(p.y - g.c0.y, p.x - g.c0.x) * 180) / Math.PI + 90;
+    if (a > 180) a -= 360;
+    if (Math.abs(a) < 4) a = 0;
+    st.rot = Math.round(a);
+  } else {
+    const p = pts[0], p0 = starts[0];
+    st.x = Math.round(s0.x + p.x - p0.x);
+    st.y = Math.round(s0.y + p.y - p0.y);
+    const r = g.el.getBoundingClientRect();
+    const t = dropTarget(st, r.left + r.width / 2, r.top + r.height / 2);
+    doc.querySelectorAll(".tl-drop").forEach((e) => e !== t && e.classList.remove("tl-drop"));
+    t.classList.add("tl-drop");
+    $("hint").textContent = `松手会挂在：${t.getAttribute("data-anchor-name")}`;
+  }
+  styleSticker(g.el, st);
+  syncStickerControls();
+}
+function endGesture() {
+  const g = gesture;
+  gesture = null;
+  doc.querySelectorAll(".tl-drop").forEach((e) => e.classList.remove("tl-drop"));
+  setHint();
+  if (!g || !g.moved) return;
+  if (!g.handle) {
+    const r = g.el.getBoundingClientRect();
+    reanchor(g.st, dropTarget(g.st, r.left + r.width / 2, r.top + r.height / 2));
+  }
+  const a = stEl(g.st.id) && stEl(g.st.id).parentElement;
+  if (a) measure(g.st, a);
+  renderStickerPanel();
+  save();
+  queueExport();
+}
+
+async function addImageFile(file) {
+  if (!file || !file.type.startsWith("image/")) return;
+  const src = await new Promise((res, rej) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.onerror = rej; fr.readAsDataURL(file); });
+  const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+  let out = src, w = img.naturalWidth, h = img.naturalHeight;
+  const MAX = 1600;
+  if (Math.max(w, h) > MAX && !file.type.includes("gif")) {
+    const k = MAX / Math.max(w, h);
+    w = Math.round(w * k); h = Math.round(h * k);
+    const cv = document.createElement("canvas");
+    cv.width = w; cv.height = h;
+    cv.getContext("2d").drawImage(img, 0, 0, w, h);
+    out = cv.toDataURL("image/png");
+  }
+  const id = uid();
+  S.images[id] = { name: file.name && file.name !== "image.png" ? file.name : `贴纸-${Object.keys(S.images).length + 1}.png`, src: out, w, h };
+  placeSticker(id);
+}
+
+function placeSticker(imgId) {
+  if (!doc) return;
+  const im = S.images[imgId];
+  const cx = win.innerWidth / 2, cy = win.innerHeight / 2;
+  const a = anchorUnder(cx, cy) || anchorEl("");
+  const w = Math.round(Math.min(im.w, 160, win.innerWidth * 0.6));
+  const r = a.getBoundingClientRect();
+  const st = {
+    id: uid(), img: imgId, page: S.page, anchor: a.getAttribute("data-anchor"),
+    x: Math.round(cx - r.left - a.clientLeft - w / 2), y: Math.round(cy - r.top - a.clientTop - (w * im.h / im.w) / 2),
+    w, rot: 0, op: 100, flip: false, layer: "over",
+  };
+  S.stickers.push(st);
+  S.sel = st.id;
+  if (S.tab !== "sticker") switchTab("sticker");
+  renderStickers();
+  renderStickerPanel();
+  save();
+  queueExport();
+  toast("放好啦，拖到想要的位置吧");
+}
+
+function onPaste(e) {
+  const files = [...(e.clipboardData ? e.clipboardData.files : [])].filter((f) => f.type.startsWith("image/"));
+  if (!files.length) return;
+  e.preventDefault();
+  files.forEach(addImageFile);
+}
+function bindDrop(target) {
+  let shown = null;
+  target.addEventListener("dragover", (e) => {
+    if (![...e.dataTransfer.types].includes("Files")) return;
+    e.preventDefault();
+    if (!shown) { shown = document.createElement("div"); shown.className = "drop"; shown.textContent = "松手把图片加成贴纸 🧸"; document.body.appendChild(shown); }
+  });
+  const hide = () => { if (shown) { shown.remove(); shown = null; } };
+  target.addEventListener("dragleave", (e) => { if (!e.relatedTarget) hide(); });
+  target.addEventListener("drop", (e) => {
+    hide();
+    if (!e.dataTransfer.files.length) return;
+    e.preventDefault();
+    [...e.dataTransfer.files].forEach(addImageFile);
+  });
+}
+
+function syncStickerControls() {
+  const st = stById(S.sel);
+  if (!st) return;
+  $("stW").value = st.w; $("stWo").textContent = st.w + "px";
+  $("stR").value = st.rot; $("stRo").textContent = st.rot + "°";
+  $("stO").value = st.op; $("stOo").textContent = st.op + "%";
+}
+
+function renderStickerPanel() {
+  const imgs = Object.entries(S.images);
+  $("libEmpty").hidden = imgs.length > 0;
+  $("lib").innerHTML = imgs.map(([id, im]) =>
+    `<div class="it" data-img="${id}" title="${esc(im.name)}"><img src="${im.src}" alt=""><button class="del" data-del="${id}" title="从素材库删除">×</button></div>`).join("");
+
+  const st = stById(S.sel);
+  $("noSel").hidden = !!st;
+  $("selBox").hidden = !st;
+  if (st && doc) {
+    const anchors = [...new Map([...doc.querySelectorAll("#tl-root [data-anchor]")].map((a) => [a.getAttribute("data-anchor"), a])).values()];
+    $("anchorSel").innerHTML = anchors.map((a) =>
+      `<option value="${a.getAttribute("data-anchor")}"${a.getAttribute("data-anchor") === st.anchor ? " selected" : ""}>${esc(a.getAttribute("data-anchor-name"))}</option>`).join("");
+    $("selWhere").innerHTML = `📌 挂在 <b>${esc(st.anchorName || st.anchor)}</b> 上，会跟着它走`;
+    document.querySelectorAll("#layBtns button").forEach((b) => b.classList.toggle("on", b.dataset.l === st.layer));
+    $("layTip").textContent = LAYER_TIP[st.layer];
+    syncStickerControls();
+  }
+  const mine = S.stickers.filter((s) => s.page === S.page);
+  $("stCount").textContent = `${mine.length} 张` + (S.stickers.length > mine.length ? `（其他页面还有 ${S.stickers.length - mine.length} 张）` : "");
+  $("stList").innerHTML = mine.map((s) =>
+    `<div class="row${s.id === S.sel ? " cur" : ""}" data-sid="${s.id}"><img src="${S.images[s.img].src}" alt=""><div class="tx"><div class="tt">${esc(S.images[s.img].name)}</div><div class="ss">挂在 ${esc(s.anchorName || s.anchor)} · ${LAYER_ZH[s.layer]}</div></div></div>`).join("")
+    || '<p class="tip">这一页还没有贴纸</p>';
+}
+
+function bindStickerPanel() {
+  $("addImg").addEventListener("click", () => $("fileIn").click());
+  $("fileIn").addEventListener("change", () => { [...$("fileIn").files].forEach(addImageFile); $("fileIn").value = ""; });
+  $("lib").addEventListener("click", (e) => {
+    const del = e.target.closest("[data-del]");
+    if (del) {
+      const id = del.dataset.del;
+      const used = S.stickers.filter((s) => s.img === id).length;
+      if (used && !confirm(`有 ${used} 张贴纸在用这张图，一起删掉？`)) return;
+      S.stickers = S.stickers.filter((s) => s.img !== id);
+      delete S.images[id];
+      renderStickers(); renderStickerPanel(); save(); queueExport();
+      return;
+    }
+    const it = e.target.closest("[data-img]");
+    if (it) placeSticker(it.dataset.img);
+  });
+  $("stList").addEventListener("click", (e) => {
+    const r = e.target.closest("[data-sid]");
+    if (!r) return;
+    select(r.dataset.sid);
+    const el = stEl(r.dataset.sid);
+    if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
+  });
+  const edit = (fn) => () => {
+    const st = stById(S.sel);
+    if (!st) return;
+    fn(st);
+    const el = stEl(st.id);
+    if (el) styleSticker(el, st);
+    syncStickerControls();
+    save();
+    queueExport();
+  };
+  $("stW").addEventListener("input", edit((st) => {
+    const h0 = stH(st), w = +$("stW").value;
+    st.x = Math.round(st.x + st.w / 2 - w / 2);
+    st.w = w;
+    st.y = Math.round(st.y + h0 / 2 - stH(st) / 2);
+  }));
+  $("stR").addEventListener("input", edit((st) => { st.rot = +$("stR").value; }));
+  $("stO").addEventListener("input", edit((st) => { st.op = +$("stO").value; }));
+  $("stFlip").addEventListener("click", edit((st) => { st.flip = !st.flip; }));
+  $("layBtns").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-l]");
+    const st = stById(S.sel);
+    if (!b || !st) return;
+    st.layer = b.dataset.l;
+    renderStickers(); renderStickerPanel(); save(); queueExport();
+  });
+  $("anchorSel").addEventListener("change", () => {
+    const st = stById(S.sel);
+    if (!st) return;
+    reanchor(st, doc.querySelector(`[data-anchor="${CSS.escape($("anchorSel").value)}"]`));
+    const a = stEl(st.id) && stEl(st.id).parentElement;
+    if (a) measure(st, a);
+    renderStickerPanel(); save(); queueExport();
+  });
+  $("stDup").addEventListener("click", () => {
+    const st = stById(S.sel);
+    if (!st) return;
+    const n = { ...st, id: uid(), x: st.x + 16, y: st.y + 16 };
+    S.stickers.splice(S.stickers.indexOf(st) + 1, 0, n);
+    S.sel = n.id;
+    renderStickers(); renderStickerPanel(); save(); queueExport();
+  });
+  $("stDel").addEventListener("click", () => {
+    S.stickers = S.stickers.filter((s) => s.id !== S.sel);
+    S.sel = null;
+    renderStickers(); renderStickerPanel(); save(); queueExport();
+  });
+  const shift = (d) => () => {
+    const st = stById(S.sel);
+    if (!st) return;
+    const i = S.stickers.indexOf(st), j = i + d;
+    if (j < 0 || j >= S.stickers.length) return;
+    [S.stickers[i], S.stickers[j]] = [S.stickers[j], S.stickers[i]];
+    renderStickers(); save(); queueExport();
+  };
+  $("stUp").addEventListener("click", shift(1));
+  $("stDown").addEventListener("click", shift(-1));
+}
+
+/* ================================================================
+   导出
+   ================================================================ */
+function exportData() {
+  const colors = OCC.filter(changed).map((o) => ({
+    where: o.kind === "css" ? `${o.file} ${o.sel}` : o.label,
+    prop: o.prop, nth: o.k, from: o.orig, to: S.overrides[o.key], newVar: o.isNew || undefined,
+  }));
+  const pct = (v, base) => (base ? +((v / base) * 100).toFixed(1) : null);
+  const stickers = S.stickers.map((s, i) => ({
+    n: i + 1, image: S.images[s.img].name, imageSize: [S.images[s.img].w, S.images[s.img].h],
+    page: PAGES[s.page], anchor: s.anchorName, anchorCode: s.anchorSel, layer: s.layer,
+    x: s.x, y: s.y, w: s.w, h: Math.round(stH(s)),
+    xPct: pct(s.x, s.aw), yPct: pct(s.y, s.ah), wPct: pct(s.w, s.aw),
+    anchorSize: [s.aw, s.ah], viewport: s.vw, rotate: s.rot, opacity: s.op / 100, flip: s.flip,
+  }));
+  return { colors, stickers };
+}
+
+function exportText() {
+  const { stickers } = exportData();
+  const L = [];
+  L.push(`【Clairine 调色盘改动】${new Date().toLocaleString("zh-CN", { hour12: false })}`);
+  const ch = OCC.filter(changed);
+  if (ch.length) {
+    L.push("", `━━ 🎨 配色（${ch.length} 处）━━`);
+    const vars = ch.filter((o) => o.sel === ":root");
+    if (vars.length) {
+      L.push("◆ 主题变量（globals.css :root）");
+      vars.forEach((o) => L.push(`  ${o.prop}  ${o.isNew ? "（原来没定义）" : o.orig} → ${S.overrides[o.key]}${VAR_NAMES[o.prop] ? "   // " + VAR_NAMES[o.prop] : ""}`));
+    }
+    const done = new Set(vars.map((o) => o.id));
+    const whole = [];
+    for (const g of GROUPS) {
+      if (g.members.length < 2) continue;
+      const vals = new Set(g.members.map((o) => S.overrides[o.key] || ""));
+      if (vals.size === 1 && !vals.has("")) { whole.push(`  ${fmt(g.rgba)} → ${S.overrides[g.members[0].key]}   （全站 ${g.members.length} 处全换）`); g.members.forEach((o) => done.add(o.id)); }
+    }
+    if (whole.length) L.push("◆ 整体换色（这个颜色出现的地方全部换掉）", ...whole);
+    const rest = ch.filter((o) => !done.has(o.id));
+    if (rest.length) {
+      L.push("◆ 单独改的");
+      rest.forEach((o) => L.push(`  [${o.kind === "css" ? `${o.file}  ${o.sel}` : o.label}] ${o.prop}${o.k > 1 ? `（第${o.k}个色）` : ""}：${o.orig} → ${S.overrides[o.key]}`));
+    }
+  }
+  if (stickers.length) {
+    L.push("", `━━ 🧸 贴纸（${stickers.length} 张）━━`);
+    stickers.forEach((s) => {
+      L.push(`${s.n}. ${s.image}（原图 ${s.imageSize[0]}×${s.imageSize[1]}）`);
+      L.push(`   页面：${s.page}　挂在：${s.anchor} → ${s.anchorCode}`);
+      L.push(`   层级：${LAYER_ZH[s.layer]}`);
+      L.push(`   位置：相对挂载元素左上角 x=${s.x}px (${s.xPct}%)，y=${s.y}px (${s.yPct}%)`);
+      L.push(`   大小：宽 ${s.w}px（挂载元素宽的 ${s.wPct}%），高 ${s.h}px`);
+      L.push(`   旋转 ${s.rotate}°　透明度 ${Math.round(s.opacity * 100)}%${s.flip ? "　水平翻转" : ""}`);
+      L.push(`   （摆的时候预览宽 ${s.viewport}px，挂载元素 ${s.anchorSize[0]}×${s.anchorSize[1]}）`);
+    });
+    L.push("   ⚠️ 贴纸图片在「工程文件」里，记得一起发给 Claude");
+  }
+  if (L.length === 1) L.push("", "（还没改任何东西）");
+  L.push("", "━━ 机器读的（给 Claude）━━", "```json", JSON.stringify(exportData()), "```");
+  return L.join("\n");
+}
+let exportTimer = 0;
+function queueExport() { clearTimeout(exportTimer); exportTimer = setTimeout(() => { if (S.tab === "export") $("out").value = exportText(); }, 200); }
+
+function download(name, blob) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+const stamp = () => new Date().toISOString().slice(0, 16).replace(/[-:T]/g, "");
+
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); return true; } catch {
+    const ta = $("out");
+    ta.value = t; ta.focus(); ta.select();
+    try { return document.execCommand("copy"); } catch { return false; }
+  }
+}
+
+function bindExport() {
+  $("copyOut").addEventListener("click", async () => {
+    const t = exportText();
+    $("out").value = t;
+    toast((await copyText(t)) ? "复制好啦，直接粘贴给 Claude 🩷" : "没复制成功，手动全选下面的文字吧");
+  });
+  $("saveProj").addEventListener("click", () => {
+    download(`clairine-调色盘-${stamp()}.json`, new Blob([JSON.stringify({ ...snapshot(), export: exportData() })], { type: "application/json" }));
+  });
+  $("loadProj").addEventListener("click", () => $("projIn").click());
+  $("projIn").addEventListener("change", async () => {
+    const f = $("projIn").files[0];
+    $("projIn").value = "";
+    if (!f) return;
+    try {
+      loadState(JSON.parse(await f.text()));
+      afterStateLoad();
+      toast("导入好啦");
+    } catch { toast("这个文件读不出来 😢"); }
+  });
+  $("dlImgs").addEventListener("click", async () => {
+    const used = Object.values(S.images);
+    if (!used.length) { toast("还没有贴纸素材"); return; }
+    for (const im of used) {
+      download(im.name.replace(/\.[^.]+$/, "") + (im.src.startsWith("data:image/gif") ? ".gif" : ".png"), await (await fetch(im.src)).blob());
+      await new Promise((r) => setTimeout(r, 350));
+    }
+  });
+  $("resetAll").addEventListener("click", () => {
+    if (!confirm("所有配色改动和贴纸都清掉，确定吗？（建议先下载工程文件备份）")) return;
+    S.overrides = {}; S.stickers = []; S.images = {}; S.sel = null;
+    afterStateLoad();
+    toast("已经恢复成网站现在的样子");
+  });
+}
+
+function afterStateLoad() {
+  applyAll();
+  renderStickers();
+  renderLists();
+  renderStickerPanel();
+  setTarget(S.target);
+  save();
+  queueExport();
+}
+
+/* ================================================================
+   外壳
+   ================================================================ */
+function toast(msg) {
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => { t.style.opacity = "0"; }, 1800);
+  setTimeout(() => t.remove(), 2200);
+}
+function setHint() {
+  $("hint").textContent = S.tab === "sticker"
+    ? "拖贴纸摆位置 · 松手落在谁身上就挂在谁身上"
+    : S.tab === "color" ? "在预览里点任何东西 → 下面列出它用到的颜色" : "调完了就复制清单贴给 Claude";
+}
+function switchTab(t) {
+  S.tab = t;
+  document.querySelectorAll(".tabs .t").forEach((b) => b.classList.toggle("on", b.dataset.t === t));
+  for (const p of ["color", "sticker", "export"]) $("pane-" + p).hidden = p !== t;
+  if (t === "export") $("out").value = exportText();
+  if (t === "sticker") renderStickerPanel();
+  setHint();
+}
+const SIZES = ["half", "big", "mini"];
+function setPanel(size) {
+  S.panelSize = size;
+  S.panelMini = size === "mini";
+  $("panel").classList.toggle("big", size === "big");
+  $("panel").classList.toggle("mini", size === "mini");
+  $("sizeBtn").textContent = size === "half" ? "▴" : size === "big" ? "▾" : "▴";
+  $("sizeBtn").title = size === "half" ? "面板放大" : size === "big" ? "面板收起" : "面板展开";
+}
+
+async function main() {
+  buildPages();
+  await buildFrame();
+  buildGroups();
+  bindFrame();
+  bindEditor();
+  bindStickerPanel();
+  bindExport();
+  bindDrop(document);
+  document.addEventListener("paste", onPaste);
+
+  document.querySelectorAll(".tabs .t").forEach((b) => b.addEventListener("click", () => switchTab(b.dataset.t)));
+  $("pages").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-p]");
+    if (!b) return;
+    S.page = b.dataset.p; S.pick = null; S.sel = null;
+    renderPage();
+  });
+  $("sideBtn").addEventListener("click", () => { setSidebar(!S.sidebar); computeVisible(); renderLists(); });
+  $("phoneBtn").addEventListener("click", () => {
+    S.phone = !S.phone;
+    $("stage").classList.toggle("phone", S.phone);
+    $("phoneBtn").classList.toggle("on", S.phone);
+    $("phoneBtn").textContent = S.phone ? "📱 手机宽" : "🖥 铺满";
+    setTimeout(renderStickers, 50);
+  });
+  $("sizeBtn").addEventListener("click", () => setPanel(SIZES[(SIZES.indexOf(S.panelSize) + 1) % 3]));
+  setPanel("half");
+  win.addEventListener("resize", () => { if (!gesture) renderStickers(); });
+
+  try { loadState(await DB.get("state")); } catch { /* 无痕模式之类的，存不了就算了 */ }
+  applyAll();
+  renderPage();
+  setHint();
+}
+main();
+</script>
+</body>
+</html>
