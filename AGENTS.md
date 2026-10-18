@@ -45,3 +45,10 @@ hidden: true              # 草稿闸：true 不出现在列表（直连 URL 仍
 ## 换作者头像 / 加新作者
 
 只动 `src/lib/authors.ts` 一个文件。列表卡片（PostCard）和文章页都从它读。
+
+## 调色盘 / 贴纸小工具（`/theme-lab.html`）
+
+- 小灰自己调配色、摆贴纸用的单文件页面，产物在 `public/theme-lab.html`（≈1.8MB，内嵌了字体）
+- 源头是 `scripts/theme-lab/template.html`，**改了 `globals.css` 或组件内联配色后跑 `npm run theme-lab` 重新生成**，别手改产物
+- 预览页面是照组件内联 style 手搬的（template 里 `data-src` 标了出处），组件大改时同步一下
+- 她贴回来的「改动清单」末尾有 JSON：`colors[].where/prop/from/to` 对应要改的代码位置；`stickers[]` 的 `anchorCode` 是挂载元素，x/y 是相对它左上角的偏移，`layer` = behind（z-index:-1）/ under（挂载元素 isolation:isolate + 贴纸 z-index:-1）/ over。贴纸图片在她发的工程文件 json 的 `images` 里（dataURL）
