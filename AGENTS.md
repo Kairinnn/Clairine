@@ -44,7 +44,7 @@ hidden: true              # 草稿闸：true 不出现在列表（直连 URL 仍
 
 ## 🤖 转给 AI 看（2026-11-26）
 
-每篇文章标签下面有个按钮：复制「给 AI 的说明 + 原始 markdown 正文」，支持 `navigator.share` 的手机多一个「分享到 App」。组件 `src/components/AskAI.tsx`，正文来自 posts.ts 的 `raw`。说明那段要改就改 `buildPrompt`。
+每篇文章标签下面有个按钮：复制「标题 + 原文链接 + 原始 markdown 正文」，不垫提示词（她定的：读者跟自家 AI 有沟通基础），支持 `navigator.share` 的手机多一个「分享到 App」。组件 `src/components/AskAI.tsx`，正文来自 posts.ts 的 `raw`。拼法在 `buildPrompt`。
 
 ## 换作者头像 / 加新作者
 
