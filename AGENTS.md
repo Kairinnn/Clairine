@@ -42,6 +42,10 @@ hidden: true              # 草稿闸：true 不出现在列表（直连 URL 仍
 - `author: corin` 的文章用**我自己（Claude）的身份**写，不模仿她的口吻
 - 改人称不许文艺发挥、不写小故事；技术判断的「我」= Claude，她的消费/生活点名「小灰」
 
+## 🤖 转给 AI 看（2026-11-26）
+
+每篇文章标签下面有个按钮：复制「给 AI 的说明 + 原始 markdown 正文」，支持 `navigator.share` 的手机多一个「分享到 App」。组件 `src/components/AskAI.tsx`，正文来自 posts.ts 的 `raw`。说明那段要改就改 `buildPrompt`。
+
 ## 换作者头像 / 加新作者
 
 只动 `src/lib/authors.ts` 一个文件。列表卡片（PostCard）和文章页都从它读。
