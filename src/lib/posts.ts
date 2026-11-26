@@ -22,6 +22,7 @@ export interface PostMeta {
 
 export interface Post extends PostMeta {
   contentHtml: string;
+  raw: string;   // 原始 markdown 正文（去掉 frontmatter），给「转给 AI 看」按钮用
   signature?: string; // 版本号落款，如 "Claude Fable 5"
 }
 
@@ -160,6 +161,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
     author: data.author || "kairin",
     signature: data.signature || undefined,
     contentHtml,
+    raw: content.trim(),
     ...stats,
   };
 }

@@ -1,6 +1,7 @@
 import InlineCmdScript from "@/components/InlineCmdScript";
 import { notFound } from "next/navigation";
 import PostContent from "@/components/PostContent";
+import AskAI from "@/components/AskAI";
 import { getPostBySlug, getAllPostSlugs, getAllPosts } from "@/lib/posts";
 import { getAuthor } from "@/lib/authors";
 import BottomNav from "@/components/BottomNav";
@@ -155,6 +156,8 @@ export default async function PostPage({ params }: PageProps) {
           })}
         </div>
       )}
+    {/* ========= 🩷转给 AI 看 ========= */}
+      <AskAI title={post.title} raw={post.raw} />
     {/* ========= 🩷正文 ========= */}
       <PostContent html={post.contentHtml} />
 
